@@ -35,6 +35,7 @@ CREATE TABLE orders (
   id INT NOT NULL AUTO_INCREMENT UNIQUE,
   user_id INT,
   hotel_id INT,
+  num_rooms INT,
   price INT,
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) REFERENCES users(id),
