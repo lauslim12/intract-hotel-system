@@ -28,6 +28,7 @@
 		<tbody>
 			<?php 
 				foreach($hotels as $hotel) {
+					$id = $hotel['id'];
 					$name = $hotel['name'];
           $location = $hotel['location'];
           $desc = $hotel['description'];
@@ -43,7 +44,7 @@
 							<td>$rooms</td>
 							<td>$rating</td>
 							<td>$harga</td>
-							<td>booking disini</td>
+							<td><a href='booking/showBooking/$id'>booking disini</a></td>
 						</tr>
 					";
 
