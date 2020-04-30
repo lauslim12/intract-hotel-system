@@ -15,7 +15,6 @@ class Authentication extends CI_Controller {
     else {
       $username = $this->input->post("username", TRUE);
       $password = $this->input->post("password", TRUE);
-      var_dump($username, $password);
       $flag = $this->User_model->checkUser($username, $password);
       
       if($flag != FALSE) {
@@ -27,7 +26,14 @@ class Authentication extends CI_Controller {
           ];
 
           $this->session->set_userdata($session_data);
-          redirect('dashboard');
+          var_dump($this->session->userdata('privilege_level'));
+
+          if($this->session->userdata('privilege_level') == 1) {
+            redirect('admin');
+          }
+          else {
+            redirect('dashboard');
+          }
         }
       }
       else {

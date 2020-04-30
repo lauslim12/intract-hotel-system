@@ -13,8 +13,6 @@ class Dashboard extends CI_Controller {
     if($this->User_model->isLoggedIn()) {
       $data['hotels'] = $this->Hotel_model->getHotels();
       $this->load->view("dashboard", $data);
-
-
     }
     else {
       redirect(site_url());

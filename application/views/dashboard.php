@@ -23,6 +23,7 @@
 			<th>jumlah kamar</th>
 			<th>rating</th>
 			<th>harga</th>
+			<th>aksi</th>
 		</thead>
 		<tbody>
 			<?php 
@@ -42,6 +43,7 @@
 							<td>$rooms</td>
 							<td>$rating</td>
 							<td>$harga</td>
+							<td>booking disini</td>
 						</tr>
 					";
 
