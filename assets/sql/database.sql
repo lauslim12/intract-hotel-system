@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS intractive
-CREATE DATABASE IF NOT EXISTS intractive
-USE intractive
+DROP DATABASE IF EXISTS intractive;
+CREATE DATABASE IF NOT EXISTS intractive;
+USE intractive;
 
-CREATE DATABASE users (
+CREATE TABLE users (
   id INT NOT NULL AUTO_INCREMENT UNIQUE,
   first_name VARCHAR(25),
   last_name VARCHAR(25),
@@ -18,7 +18,7 @@ CREATE DATABASE users (
 )
 ENGINE = InnoDB;
 
-CREATE DATABASE hotels (
+CREATE TABLE hotels (
   id INT NOT NULL AUTO_INCREMENT UNIQUE,
   name VARCHAR(50),
   location VARCHAR(50),
@@ -31,16 +31,15 @@ CREATE DATABASE hotels (
 )
 ENGINE = InnoDB;
 
-CREATE DATABASE orders (
+CREATE TABLE orders (
   id INT NOT NULL AUTO_INCREMENT UNIQUE,
   user_id INT,
   hotel_id INT,
   price INT,
   PRIMARY KEY (id),
-  FOREIGN KEY user_id REFERENCES users(id),
-  FOREIGN KEY hotel_id REFERENCES hotels(id)
-)
-ENGINE = InnoDB;
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (hotel_id) REFERENCES hotels(id)
+) ENGINE = InnoDB;
 
 INSERT INTO hotels VALUES
 (1, 'Atalanta Greek Hotel', 'Arcadia, Greece', 'Hotel that lives for its customers!', 10, '', 5, 100000),
