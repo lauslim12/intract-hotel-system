@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+  - export DEPLOYPATH=/home/nichola2/public_html/Intractive/
+  - /bin/cp -r * $DEPLOYPATH
