@@ -26,7 +26,6 @@ class Authentication extends CI_Controller {
           ];
 
           $this->session->set_userdata($session_data);
-          var_dump($this->session->userdata('privilege_level'));
 
           if($this->session->userdata('privilege_level') == 1) {
             redirect('admin');
