@@ -18,6 +18,11 @@ class Hotel_model extends CI_Model {
     redirect('dashboard');
   }
 
+  public function searchHotel($keyword) {
+    $query = $this->db->query("SELECT * FROM hotels WHERE name LIKE '%$keyword%'");
+    return $query->result_array();
+  }
+
 }
 
 ?>
