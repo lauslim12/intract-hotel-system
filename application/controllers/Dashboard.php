@@ -11,7 +11,9 @@ class Dashboard extends CI_Controller {
 
   public function index() {
     if($this->User_model->isLoggedIn()) {
+      $user_id = $this->session->userdata('user_id');
       $data['hotels'] = $this->Hotel_model->getHotels();
+      $data['histories'] = $this->User_model->getHistory($user_id);
       $this->load->view("dashboard", $data);
     }
     else {
@@ -22,6 +24,12 @@ class Dashboard extends CI_Controller {
   public function logout() {
     $this->session->sess_destroy();
     redirect(site_url());
+  }
+
+  public function search() {
+    $keyword = $this->input->post('search');
+    $data['search'] = $this->Hotel_model->searchHotel($keyword);
+    $this->load->view('search', $data);
   }
   
 

@@ -54,6 +54,30 @@
 
 	</table>
 
+	<hr>
+	<h1>historyku</h1>
+	<?php
+		foreach($histories as $history) {
+			$nomor = $history['id'];
+			$hotel_name = $history['name'];
+			$number_rooms = $history['num_rooms'];
+			$price = $history['price'];
+
+			echo "
+				nomor: $nomor	
+				nama: $hotel_name
+				berapa kamar: $number_rooms
+				harga yang dibayar: $price
+				<hr>
+			";
+		}
+	?>
+
+	<h1>cari hotel</h1>
+	<form action="<?php echo site_url() . "/dashboard/search"; ?>", method="POST">
+		<input type="text" name="search">
+		<input type="submit" value="Search">
+	</form>
 
 </body>
 </html>

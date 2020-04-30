@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User_model extends CI_Model {
+  
   public function isLoggedIn() {
     return $this->session->userdata('user_id');
   }
@@ -31,7 +32,11 @@ class User_model extends CI_Model {
     else {
       echo "sukses register";
     }
+  }
 
+  public function getHistory($user_id) {
+    $query = $this->db->query("SELECT o.*, h.name FROM orders AS o JOIN hotels AS h ON (h.id = o.hotel_id) WHERE user_id = '$user_id'");
+    return $query->result_array();
   }
 
 }
