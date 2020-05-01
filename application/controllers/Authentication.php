@@ -49,7 +49,7 @@ class Authentication extends CI_Controller {
       'last_name' => $this->input->post('last_name'),
       'username' => $this->input->post('username'),
       'email' => $this->input->post('email'),
-      'password' => $this->input->post('password'),
+      'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT),
       'birthdate' => $this->input->post('birthdate'),
       'gender' => $this->input->post('gender'),
       'signup_date' => date('Y-m-d'),
