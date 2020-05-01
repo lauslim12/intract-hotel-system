@@ -1,0 +1,26 @@
+{
+  "name": "intractive",
+  "version": "1.0.0",
+  "description": "Intractive Hotel System",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lauslim12/intract-hotel-system.git"
+  },
+  "author": "Nicholas Dwiarto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lauslim12/intract-hotel-system/issues"
+  },
+  "homepage": "https://github.com/lauslim12/intract-hotel-system#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.7.6",
+    "concat": "^1.0.3",
+    "node-sass": "^4.14.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^7.1.1"
+  }
+}
