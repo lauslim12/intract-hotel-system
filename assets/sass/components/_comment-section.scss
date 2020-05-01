@@ -1,0 +1,29 @@
+.comment-section {
+  background-color: var(--color-grey-light-2);
+  background-image: none;
+
+  &__placeholder {
+    width: 100%;
+    text-align: center;
+    outline: 0;
+    border-radius: 10px;
+  }
+
+  &__holder {
+    width: 100%;
+    margin-top: 2rem;
+
+    & a {
+      text-decoration: none;
+      color: var(--color-primary);
+      font-size: 1.2rem;
+    }
+
+    & img {
+      height: 5rem;
+      width: 5rem;
+      border-radius: 1000px;
+    }
+  }
+
+}

@@ -1,0 +1,27 @@
+// Native CSS Variables
+:root {
+  --color-primary:        #0080ff;
+  --color-primary-light:  #89c4ff;
+  --color-primary-dark:   #004589;
+  
+  --color-secondary-light: #ffb900;
+  --color-secondary-dark: #ff7730;
+
+  --color-grey-light-1:   #faf9f9;
+  --color-grey-light-2:   #f4f2f2;
+  --color-grey-light-3:   #f0eeee;
+  --color-grey-light-4:   #ccc;
+
+  --color-grey-dark-1:    #333;
+  --color-grey-dark-2:    #777;
+  --color-grey-dark-3:    #999;
+
+  --color-white: #fff;
+  --color-black: #000;
+
+  --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, .5);
+  --shadow-light: 0 2rem 5rem rgba(0, 0, 0, .1);
+  --line: 1px solid var(--color-grey-light-2);
+
+  --min-height-placeholder: 70rem;
+}

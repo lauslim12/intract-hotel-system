@@ -1,0 +1,30 @@
+.form-view {
+  color: var(--color-secondary-light);
+
+  & input[type="text"], input[type="email"], input[type="password"], input[type="date"], select {
+    border: 1px solid var(--color-grey-light-2);
+    margin-top: .5rem;
+    width: 70%;
+    padding: 1rem;
+  }
+
+  & input[type="submit"] {
+    margin-top: .5rem;
+    color: var(--color-secondary-light);
+  }
+
+  &__login {
+
+    &--captcha {
+      background-color: var(--color-secondary-light);
+      text-align: center;
+      border: 0;
+      outline: 0;
+      color: var(--color-grey-dark-1);
+    }
+
+  }
+
+
+}
+

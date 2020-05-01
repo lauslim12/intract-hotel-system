@@ -1,0 +1,56 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &-detail {
+    min-height: var(--min-height-placeholder);
+    @include centerHorizontal;
+  }
+
+  &__profile-picture {
+    & img {
+      border-radius: 50%;
+      min-width: 10rem;
+      min-height: 10rem;
+      max-width: 20rem; 
+      max-height: 20rem;
+      display: block;
+    }
+  }
+
+  &__content {
+    margin-top: 1rem;
+    font-size: 1.6rem;
+    text-align: center;
+
+    & a {
+      color: var(--color-secondary-dark);
+    }
+
+  }
+
+  &__change-picture {
+    width: 100%;
+    margin-top: 1.5rem;
+
+    & form input[type="submit"] {
+      color: var(--color-secondary-dark);
+    }
+
+  }
+
+  &__text-gallery {
+    display: flex;
+    justify-content: space-between;
+
+    &__text-par {
+      flex: 0 0 15%;
+      text-align: center;
+    }
+
+  }
+
+  
+}

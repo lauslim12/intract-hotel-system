@@ -1,0 +1,39 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-grey-dark-2);
+}
+
+.legal {
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 2.5rem;
+  color: var(--color-grey-light-4);
+
+  @include respond(medium) {
+    display: none;
+  }
+}
+
+.paragraph {
+  &--bold {
+    font-weight: 600;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &:not(:last-of-type) {
+    margin-bottom: 2rem;
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: var(--color-secondary-dark);
+}
+
+
+

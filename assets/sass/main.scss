@@ -1,0 +1,69 @@
+/* Lecture Notes Jonas's Course - Trillo
+
+Architecture and Philosophies:
+- Flexbox Grid System
+- Think, Build, Architect Philosophy
+- Desktop-first Build
+- BEM Methodology
+- NPM Build Process -> Compile, Prefix, Compress, Run.
+- Perfect Responsive Design Philosphy -> Breakpoints where design starts to break.
+
+Sassy CSS:
+- CSS 7 in 1 Architecture
+- KISS and DRY
+- SASS Guidelines
+
+Flexbox Notes:
+- Justify Content to center all the content in the main axis (left to right).
+- Align Items to center all the content in the cross axis (up to bottom).
+- Align Self (set to stretch) is to maximize the current flex without overflowing. Without align self, it does not fit into the section.
+- Align Content is used to align all contents with each other (space between rows of the container).
+- Flex Wrap is to update the items into a new line when they break/not tidy.
+- Flex Direction (Column) changes the cross axis to be left to right, and main axis to be up to bottom.
+
+Notes:
+- Use the power of margin-x: auto in order to make an element span the size of itself. 
+- An example would be at the stars at overview component.
+- SVG's are inline elements - so set their display to flex to really center them (remove any whitespaces).
+
+*/
+
+// 1. Configuration and helpers
+@import 'abstracts/mixins';
+@import 'abstracts/variables';
+
+// 2. Base stuff
+@import 'base/animation';
+@import 'base/base';
+@import 'base/typography';
+
+// 3. Components.
+@import 'components/button';
+@import 'components/comment-section';
+@import 'components/cta';
+@import 'components/form-view';
+@import 'components/gallery';
+@import 'components/list';
+@import 'components/logo';
+@import 'components/overview';
+@import 'components/recommend';
+@import 'components/review';
+@import 'components/search-box';
+@import 'components/side-nav';
+@import 'components/status-post';
+@import 'components/user-nav';
+
+// 4. Layout related sections.
+@import 'layout/content';
+@import 'layout/header';
+@import 'layout/hotel-view';
+@import 'layout/sidebar';
+
+// 5. Page-specific styles.
+@import 'pages/home';
+@import 'pages/landing';
+@import 'pages/profile';
+@import 'pages/search-results';
+
+// 6. To get things up and running fast. Replace with good practise later.
+@import 'shame/shame';

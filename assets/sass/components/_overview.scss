@@ -1,0 +1,82 @@
+.overview {
+  display: flex;
+  align-items: center;
+  border-bottom: var(--line);
+
+  &__heading {
+    font-size: 2.25rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1.5rem 3rem;
+
+    @include respond(small) {
+      font-size: 1.8rem;
+      padding: 1.25rem 2rem;
+    }
+
+  }
+
+  &__stars {
+    margin-right: auto;
+    display: flex;
+  }
+
+  &__icon-star,
+  &__icon-location {
+    width: 1.75rem;
+    height: 1.75rem;
+    fill: var(--color-primary);
+  }
+
+  &__icon-location {
+    margin-right: 1rem;
+  }
+
+  &__location {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+  }
+
+  &__rating {
+    background-color: var(--color-primary);
+    margin-left: 3rem;
+    color: #ffffff;
+    padding: 0 2.25rem;
+
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include respond(small) {
+      padding: 0 1.5rem;
+    }
+  }
+
+  &__rating-average {
+    font-size: 2.25rem;
+    font-weight: 300;
+    margin-bottom: -3px;
+
+    @include respond(small) {
+      font-size: 1.8rem;
+    }
+  }
+
+  &__rating-count {
+    font-size: .8rem;
+    text-transform: uppercase;
+
+    @include respond(medium) {
+      text-align: center;
+    }
+
+    @include respond(small) {
+      font-size: .5rem;
+      text-align: center;
+    }
+  }
+}

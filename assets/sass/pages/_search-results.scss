@@ -1,0 +1,32 @@
+.search-results {
+
+  &__display {
+    display: flex;
+    align-items: center;
+  }
+
+  &__profile-picture {
+    flex: 0 0 20%;
+
+    & img {
+      max-width: 10rem;
+      max-height: 10rem;
+      min-width: 10rem;
+      min-height: 10rem;
+    }
+  }
+
+  &__text {
+    flex: 0 0 80%;
+
+    & p {
+      text-align: right;
+    }
+
+  }
+
+}
+
+.search-detail {
+  min-height: var(--min-height-placeholder);
+}

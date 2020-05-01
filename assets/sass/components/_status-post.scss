@@ -1,0 +1,51 @@
+.status-post {
+  margin-top: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  &__image {
+    display: flex;
+    flex-direction: column;
+    
+    & img {
+      max-height: 20rem;
+      max-width: 20rem;
+      margin-bottom: 1rem;
+    }
+
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+  }
+
+  &__posted-by {
+    color: --var(--color-grey-dark-2);
+    padding: 2rem;
+  }
+
+  &__profile-pic {
+    margin-right: 1rem;
+    
+    & img {
+      border-radius: 500px;
+    }
+
+  }
+
+  &__comments {
+    padding: 0;
+    text-decoration: none;
+    color: var(--color-primary);
+    border: none;
+  }
+
+}
