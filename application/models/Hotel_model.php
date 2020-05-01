@@ -3,7 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Hotel_model extends CI_Model {
   public function getHotels() {
-    $query = $this->db->query("SELECT * FROM hotels");
+    $query = $this->db->get('hotels');
+    return $query->result_array();
+  }
+
+  public function getRooms() {
+    $query = $this->db->get('rooms');
     return $query->result_array();
   }
 
