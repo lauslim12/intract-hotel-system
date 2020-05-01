@@ -30,9 +30,60 @@
 					<h1 class="overview__heading">Available Hotels</h1>
 				</div>
 
-				<div class="detail">
-					<!-- List of Hotels -->
-				</div>
+				<!-- List of Hotels -->
+				<?php
+					foreach ($hotels as $hotel) {
+						$id = $hotel['id'];
+						$name = $hotel['name'];
+						$location = $hotel['location'];
+						$desc = $hotel['description'];
+						$picture = base_url() . $hotel['picture'];
+						$rating = $hotel['rating'];
+						$star = $hotel['star'];
+						$stars = '';
+
+						$str =  
+						"
+							<div class='detail'>
+								<div class='description'>
+
+									<div class='hotel-card'>							
+										<p class='hotel-card__name'>$name</p>
+											<svg class='overview__icon-location'>
+													<use xlink:href='" . base_url() . "/assets/images/svg/sprite.svg#icon-location-pin'></use>
+											</svg>
+												<button class='btn-inline'>$location</button>
+												<p class='hotel-card__rating'>($rating)</p>
+
+											<p class='paragraph u-margin-top'>$desc</p>
+
+											<div class='overview__stars u-margin-top'>
+						";
+
+							for($i = 0; $i < $star; $i++) {
+								$stars .= "
+									<svg class='overview__icon-star'>
+										<use xlink:href='" . base_url() . "/assets/images/svg/sprite.svg#icon-star'></use>
+									</svg>
+								";
+							}
+
+						$endString = "
+										</div>
+									</div>	
+								</div>	
+							
+								<div class='user-reviews'>
+									<img src='$picture'>
+								</div>
+							</div>
+						";		
+						
+						echo $str . $stars . $endString;
+
+						}
+					?>
+					
 			</main>
 
 		</div>
