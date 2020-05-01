@@ -4,6 +4,13 @@
   "description": "Intractive Hotel System",
   "main": "index.js",
   "scripts": {
+    "watch:sass": "node-sass assets/sass/main.scss assets/css/style.css -w",
+    "start": "npm-run-all watch:sass",
+    "compile:sass": "node-sass assets/sass/main.scss assets/css/style.comp.css",
+    "concat:css": "concat -o assets/css/style.concat.css assets/css/icons-font.css assets/css/style.comp.css",
+    "prefix:css": "npx postcss assets/css/style.concat.css --use autoprefixer -o assets/css/style.prefix.css",
+    "compress:css": "node-sass assets/css/style.prefix.css assets/css/style.css --output-style compressed",
+    "build:project": "npm-run-all compile:sass concat:css prefix:css compress:css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
