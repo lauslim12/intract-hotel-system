@@ -30,7 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <form action='<?php echo site_url() . "/authentication/login"; ?>' method="POST" class="form-view__form">
         <input type="text" name="login_username" placeholder="Username" /><br>
         <input type="password" name="login_password" placeholder="Password" /><br>
-        <input type="submit" name="login_button" value="Submit" class="btn-inline">
+        <input type="submit" name="login_button" value="Submit" class="btn-inline"><br>
         <?php
           echo $this->session->flashdata('message');
         ?>
