@@ -9,7 +9,7 @@ CREATE TABLE users (
   username VARCHAR(100) UNIQUE,
   email VARCHAR(100) UNIQUE,
   password VARCHAR(255),
-  birthday DATE,
+  birthdate DATE,
   gender VARCHAR(2),
   signup_date DATE,
   profile_pic VARCHAR(255),
