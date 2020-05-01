@@ -31,37 +31,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <input type="text" name="login_username" placeholder="Username" /><br>
         <input type="password" name="login_password" placeholder="Password" /><br>
         <input type="submit" name="login_button" value="Submit" class="btn-inline">
+        <?php
+          echo $this->session->flashdata('message');
+        ?>
+
         <br>
         <a href="#" id="register">Do not have an account yet? Sign up by clicking me!</a>
       </form>
     </div>
 
-      <div class="form-view__register u-margin-bottom-small">
-        <form action="<?php echo site_url() . "/authentication/register"; ?>" method="POST" class="form-view__form">
-          <input type="text" name="fname" placeholder="First Name"/>
+    <div class="form-view__register u-margin-bottom-small">
+      <form action="<?php echo site_url() . "/authentication/register"; ?>" method="POST" class="form-view__form">
+        <input type="text" name="first_name" placeholder="First Name"/>
 
-          <input type="text" name="lname" placeholder="Last Name"/>
-          <input type="text" name="username" placeholder="Username" required />
+        <input type="text" name="last_name" placeholder="Last Name"/>
+        <input type="text" name="username" placeholder="Username" required />
 					
-					<input type="email" name="email" placeholder="Email" required />
-          <input type="email" name="email2" placeholder="Confirm Email" required />
+				<input type="email" name="email" placeholder="Email" required />
 					
-					<input type="password" name="password" placeholder="Password" required />
-          <input type="password" name="password2" placeholder="Confirm Password" required />
+				<input type="password" name="password" placeholder="Password" required />
 				
-					<input type="date" name="birthdate" required />
+				<input type="date" name="birthdate" required />
 
-          <select name="gender" required> 
-            <option value="M">Male</option>
-            <option value="F">Female</option>
-          </select><br>
+        <select name="gender" required> 
+          <option value="M">Male</option>
+          <option value="F">Female</option>
+        </select><br>
           
-          <input type="submit" name="register_button" value="Submit" class="btn-inline">
-          <br>
-          <a href="#" id="login">Already have an account? Click me to login!</a>
-        </form> 
-      </div>  
-		</main>
+        <input type="submit" name="register_button" value="Submit" class="btn-inline">
+        <br>
+        <a href="#" id="login">Already have an account? Click me to login!</a>
+      </form> 
+    </div>  
+  
+  </main>
 		
 </body>
 </html>
