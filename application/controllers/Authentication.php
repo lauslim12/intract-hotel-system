@@ -13,8 +13,8 @@ class Authentication extends CI_Controller {
       redirect('dashboard');
     }
     else {
-      $username = $this->input->post("username", TRUE);
-      $password = $this->input->post("password", TRUE);
+      $username = $this->input->post("login_username", TRUE);
+      $password = $this->input->post("login_password", TRUE);
       $flag = $this->User_model->checkUser($username, $password);
       
       if($flag != FALSE) {
@@ -36,20 +36,27 @@ class Authentication extends CI_Controller {
         }
       }
       else {
-        $this->load->view('welcome_message');
+        $this->load->view('landing');
       }
     }
   }
 
   public function register() {
-    $first_name = $this->input->post('first_name');
-    $last_name = $this->input->post('last_name');
-    $username = $this->input->post('username');
-    $email = $this->input->post('email');
-    $password = $this->input->post('password');
-    $birthday = $this->input->post('birthday');
-    $gender = $this->input->post('gender');
-    $this->User_model->register($first_name, $last_name, $username, $email, $password, $birthday, $gender);
+    $registerData = [
+      'id' => '',
+      'first_name' => $this->input->post('first_name'),
+      'last_name' => $this->input->post('last_name'),
+      'username' => $this->input->post('username'),
+      'email' => $this->input->post('email'),
+      'password' => $this->input->post('password'),
+      'birthdate' => $this->input->post('birthdate'),
+      'gender' => $this->input->post('gender'),
+      'signup_date' => date('Y-m-d'),
+      'profile_pic' => '/assets/images/profile_pics/defaults/head_belize_hole.png',
+      'privilege_level' => 0
+    ];
+
+    $this->User_model->register($registerData);
   }
 
 }

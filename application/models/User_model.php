@@ -23,15 +23,17 @@ class User_model extends CI_Model {
     }
   }
 
-  public function register($first_name, $last_name, $username, $email, $password, $birthday, $gender) {
-    $this->db->query("INSERT INTO users VALUES('', '$first_name', '$last_name', '$username', '$email', '$password', '$birthday', '$gender', date('Y-m-d'), NULL, 1)");
-    
+  public function register($registerData) {
+    $this->db->insert('users', $registerData);
+
     if($this->db->affected_rows() != 1) {
-      echo "fail register";
+      $this->session->set_flashdata('message', 'You failed to register!');
     }
     else {
-      echo "sukses register";
+      $this->session->set_flashdata('message', 'Successfully registered!');
     }
+
+    redirect('welcome');
   }
 
   public function getHistory($user_id) {
