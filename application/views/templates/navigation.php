@@ -1,5 +1,5 @@
 <header class="header">
-  <a href='index.php'>
+  <a href="<?php echo site_url(); ?>">
     <img src="<?php echo base_url() . "/assets/images/icons/logo.png"; ?>" alt="Trillo logo" class="logo">
   </a>
 
