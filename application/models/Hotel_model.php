@@ -27,10 +27,45 @@ class Hotel_model extends CI_Model {
     return $query;
   }
 
-  public function purchaseRoom($id, $rooms, $user_id, $price, $rooms_after_sale) {
-    $this->db->query("INSERT INTO orders VALUES ('', '$user_id', '$id', '$rooms', '$price')");
-    $this->db->query("UPDATE hotels SET rooms = '$rooms_after_sale' WHERE id = '$id'");
+  public function getHotelRooms($id) {
+    $this->db->select('*');
+    $this->db->from('rooms');
+    $this->db->where('hotel_id', $id);
+    $query = $this->db->get()->result_array();
+
+    return $query;
+  }
+
+  public function getHotelHeadlines($id) {
+    $this->db->select('*');
+    $this->db->from('hotel_headlines');
+    $this->db->where('hotel_id', $id);
+    $query = $this->db->get();
+
+    return $query->result_array();
+  }
+
+  public function getHotelPrice($id, $room_name) {
+    $this->db->select('*');
+    $this->db->from('rooms');
+    $this->db->where('hotel_id', $id);
+    $this->db->where('room_name', $room_name);
+    $query = $this->db->get();
+    $row = $query->row();
+
+    return $row;
+  }
+
+  public function purchaseRoom($purchaseData) {
+    $this->db->insert('orders', $purchaseData);
+    $roomId = $purchaseData['room_id'];
+    $roomPurchased = $purchaseData['num_rooms'];
+    $this->reduceAvailableRoom($roomPurchased, $roomId);
     redirect('dashboard');
+  }
+
+  public function reduceAvailableRoom($roomPurchased, $roomId) {
+    $this->db->query("UPDATE rooms SET room_count = room_count - '$roomPurchased' WHERE id = '$roomId'");
   }
 
   public function searchHotel($keyword) {
