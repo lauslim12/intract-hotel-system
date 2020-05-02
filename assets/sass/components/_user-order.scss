@@ -1,0 +1,63 @@
+.user-order {
+
+  &__figure {
+    background-color: #fff;
+    box-shadow: var(--shadow-light);
+    padding: 3rem;
+    margin-bottom: 3.5rem;
+    position: relative;
+    overflow: hidden;
+    
+    @include respond(medium) {
+      padding: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    &__heading {
+      font-size: 2.25rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 1.5rem 3rem;
+      text-align: right;
+
+      @include respond(small) {
+        font-size: 1.8rem;
+        padding: 1.25rem 2rem;
+      }
+    }
+
+    &__subheading {
+      font-size: 1.75rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 1.5rem 3rem;
+      text-align: center;
+
+      @include respond(small) {
+        font-size: 1.5rem;
+        padding: 1.25rem 2rem;
+      } 
+    }
+
+    &__text {
+      margin-bottom: 2rem;
+      z-index: 6;
+      position: relative;
+    }
+
+    &::before {
+      content: "\201C";
+      position: absolute;
+      line-height: 1;
+      top: -2.75rem;
+      left: -1rem;
+      font-size: 20rem;
+      color: var(--color-grey-light-2);
+      font-family: sans-serif;
+      z-index: 5;
+    }
+  }
+
+}
