@@ -204,7 +204,10 @@ body {
     color: var(--color-grey-dark-1); }
 
 .gallery {
-  display: flex; }
+  display: flex;
+  overflow: hidden; }
+  .gallery__item {
+    display: flex; }
   .gallery__photo {
     width: 100%;
     display: block; }
@@ -559,6 +562,54 @@ body {
     border-radius: 50%;
     margin-right: 1rem; }
 
+.user-order__figure {
+  background-color: #fff;
+  box-shadow: var(--shadow-light);
+  padding: 3rem;
+  margin-bottom: 3.5rem;
+  position: relative;
+  overflow: hidden; }
+  @media only screen and (max-width: 56.25em) {
+    .user-order__figure {
+      padding: 2rem;
+      margin-bottom: 3rem; } }
+  .user-order__figure__heading {
+    font-size: 2.25rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1.5rem 3rem;
+    text-align: right; }
+    @media only screen and (max-width: 37.5em) {
+      .user-order__figure__heading {
+        font-size: 1.8rem;
+        padding: 1.25rem 2rem; } }
+  .user-order__figure__subheading {
+    font-size: 1.75rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1.5rem 3rem;
+    text-align: center; }
+    @media only screen and (max-width: 37.5em) {
+      .user-order__figure__subheading {
+        font-size: 1.5rem;
+        padding: 1.25rem 2rem; } }
+  .user-order__figure__text {
+    margin-bottom: 2rem;
+    z-index: 6;
+    position: relative; }
+  .user-order__figure::before {
+    content: "\201C";
+    position: absolute;
+    line-height: 1;
+    top: -2.75rem;
+    left: -1rem;
+    font-size: 20rem;
+    color: var(--color-grey-light-2);
+    font-family: sans-serif;
+    z-index: 5; }
+
 .content {
   display: flex; }
   @media only screen and (max-width: 56.25em) {
@@ -640,6 +691,12 @@ body {
     width: 100%;
     display: block;
     height: 100%; }
+
+.user-order {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
 
 .sidebar {
   background-color: var(--color-grey-dark-1);
