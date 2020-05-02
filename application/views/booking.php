@@ -14,7 +14,7 @@
 <body>
   <div class="container">
     <?php
-      include 'templates/navigation.php';
+      echo $navigation;
     ?>
   
     <div class="content">
@@ -22,13 +22,13 @@
       <main class="hotel-view">
         <div class="gallery">
           <figure class="gallery__item">
-            <img src="assets/images/photos/hotel-1.jpg" alt="Photo 1" class="gallery__photo">
+            <img src="<?php echo base_url() . $headlines[0]['headline_picture']; ?>" alt="Photo 1" class="gallery__photo">
           </figure>
           <figure class="gallery__item">
-            <img src="assets/images/photos/hotel-2.jpg" alt="Photo 2" class="gallery__photo">
+            <img src="<?php echo base_url() . $headlines[1]['headline_picture']; ?>" alt="Photo 2" class="gallery__photo">
           </figure>
           <figure class="gallery__item">
-            <img src="assets/images/photos/hotel-3.jpg" alt="Photo 3" class="gallery__photo">
+            <img src="<?php echo base_url() . $headlines[2]['headline_picture']; ?>" alt="Photo 3" class="gallery__photo">
           </figure>
         </div>
 
@@ -140,9 +140,15 @@
         </div>
         -->
 
-        <?php
-          include 'templates/footer.php';
-          ?>
+        <div class="cta">
+          <h2 class="cta__book-now">
+            Good news! We have 2 free rooms for your selected dates!
+          </h2>
+          <button class="btn">
+            <span class="btn__visible">Book now!</span>
+            <span class="btn__invisible"><a href="<?php echo site_url() . "/booking/showBooking/$id"; ?>">Only 2 rooms left!</a></span>
+          </button>
+        </div>
       </main>
     </div>
   </div>

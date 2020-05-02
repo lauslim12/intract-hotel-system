@@ -66,7 +66,7 @@
 
 						$endString = "
 										</div>
-										<a href='booking/showBooking/$id' class='btn-inline u-margin-top'>See more!</a>
+										<a href='booking/showDetail/$id' class='btn-inline u-margin-top'>See more!</a>
 									</div>	
 								</div>	
 							
