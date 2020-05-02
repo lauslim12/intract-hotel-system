@@ -42,6 +42,26 @@ CREATE TABLE rooms (
 )
 ENGINE = InnoDB;
 
+CREATE TABLE hotel_features (
+  hotel_id INT NOT NULL,
+  feature VARCHAR(50),
+  PRIMARY KEY (hotel_id, feature),
+  FOREIGN KEY (hotel_id) REFERENCES hotels(id)
+  ON DELETE CASCADE
+)
+ENGINE = InnoDB;
+
+CREATE TABLE reviews (
+  id INT NOT NULL AUTO_INCREMENT UNIQUE,
+  body TEXT,
+  added_by VARCHAR(100),
+  user_to VARCHAR(100),
+  date_added DATETIME,
+  image VARCHAR(255),
+  PRIMARY KEY (id)
+)
+ENGINE = InnoDB;
+
 CREATE TABLE orders (
   id INT NOT NULL AUTO_INCREMENT UNIQUE,
   user_id INT,
@@ -57,6 +77,9 @@ CREATE TABLE orders (
   FOREIGN KEY (room_id) REFERENCES rooms(id)
 ) 
 ENGINE = InnoDB;
+
+INSERT INTO users VALUES
+(1, 'Nicholas', 'Dwiarto',  'nicholasnwr', 'nicholas@nicholas.com', '$2y$10$2twydAVZ1MvZTv/Gk8nzQe6h9JGmPvade6u6046cE7IT3vS/.JmYK', '2000-04-07', 'M', '2020-04-07', '/assets/images/profile_pics/defaults/head_belize_hole.png', 1);
 
 INSERT INTO hotels VALUES
   (1,
@@ -88,3 +111,17 @@ INSERT INTO rooms VALUES
 (8, 2, 'Deluxe Suite', 20, 2000000),
 (9, 2, 'Twin Bed', 10, 1250000),
 (10, 2, 'Junior Class', 30, 500000);
+
+INSERT INTO hotel_features VALUES
+(1, 'Close to the beach'),
+(1, 'Free airport shuttle'),
+(1, 'Close to the museum of France!'),
+(1, 'Comfortable bed'),
+(1, 'Breakfast included'),
+(1, 'Free wifi in all rooms'),
+(1, 'Luxurious hotel'),
+(1, 'Ancient style, modern services'),
+(2, 'Close to the resort'),
+(2, 'Free pickup from the airport!'),
+(2, 'Close to the museum of Greece!'),
+(2, 'Comfortable bungalows!');
