@@ -51,6 +51,15 @@ CREATE TABLE hotel_features (
 )
 ENGINE = InnoDB;
 
+CREATE TABLE hotel_headlines (
+  hotel_id INT NOT NULL,
+  headline_picture VARCHAR(150),
+  PRIMARY KEY (hotel_id, headline_picture),
+  FOREIGN KEY (hotel_id) REFERENCES hotels(id)
+  ON DELETE CASCADE
+)
+ENGINE = InnoDB;
+
 CREATE TABLE reviews (
   id INT NOT NULL AUTO_INCREMENT UNIQUE,
   body TEXT,
@@ -125,3 +134,11 @@ INSERT INTO hotel_features VALUES
 (2, 'Free pickup from the airport!'),
 (2, 'Close to the museum of Greece!'),
 (2, 'Comfortable bungalows!');
+
+INSERT INTO hotel_headlines VALUES
+(1, "/assets/images/hotel_headlines/hotel-1.jpg"),
+(1, "/assets/images/hotel_headlines/hotel-2.jpg"),
+(1, "/assets/images/hotel_headlines/hotel-3.jpg"),
+(2, "/assets/images/hotel_headlines/parilio-1.jpg"),
+(2, "/assets/images/hotel_headlines/parilio-2.jpg"),
+(2, "/assets/images/hotel_headlines/parilio-3.jpg");
