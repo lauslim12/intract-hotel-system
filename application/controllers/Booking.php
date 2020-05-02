@@ -9,10 +9,11 @@ class Booking extends CI_Controller {
   }
 
   public function index() {
-    $this->load->view('booking');
+    redirect('dashboard');
   }
 
   public function showBooking() {
+    $data = call_frontend($this);
     $data['id'] = $this->uri->segment(3);
     $data['hotel'] = $this->Hotel_model->getHotel($data['id']);
     $this->load->view('booking', $data);
