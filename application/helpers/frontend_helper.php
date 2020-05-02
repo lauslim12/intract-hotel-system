@@ -5,6 +5,7 @@
 		$data['navigation'] = $object->load->view('templates/navigation.php', NULL, TRUE);
     $data['footer'] = $object->load->view('templates/footer.php', NULL, TRUE);
     $data['sidebar'] = $object->load->view('templates/sidebar.php', NULL, TRUE);
+    $data['css'] = $object->load->view('includes/css.php', NULL, TRUE);
     return $data;
   }
 ?>
