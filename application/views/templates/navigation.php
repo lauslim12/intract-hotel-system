@@ -37,7 +37,7 @@
 
     <div class="user-nav__user">
       <img src="<?php echo base_url() . $this->session->userdata('profile_pic'); ?>" alt="User photo" class="user-nav__user-photo">
-      <span class="user-nav__user-name"><a href="#"><?php echo $this->session->userdata('username'); ?></a></span>
+      <span class="user-nav__user-name"><a href="<?php echo site_url() . 'profile/view/' . $this->session->userdata('username'); ?>"><?php echo $this->session->userdata('username'); ?></a></span>
     </div>
 
     <div class="user-nav__icon-box">

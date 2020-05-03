@@ -3,7 +3,7 @@
 
     <?php
       // Change this after hosting.
-      if(!strpos($_SERVER['REQUEST_URI'], "search") && !strpos($_SERVER['REQUEST_URI'], $this->session->userdata('username'))) {
+      if(!strpos($_SERVER['REQUEST_URI'], "search") && !strpos($_SERVER['REQUEST_URI'], "profile/view/")) {
         echo '<li class="side-nav__item side-nav__item--active">';
       }
       else {
@@ -19,18 +19,18 @@
     </li>
 
     <?php
-      if(strpos($_SERVER['REQUEST_URI'], $this->session->userdata('username'))) {
+      if(strpos($_SERVER['REQUEST_URI'], 'profile/view/')) {
         echo '<li class="side-nav__item side-nav__item--active">';
       }
       else {
         echo '<li class="side-nav__item side-nav__item">';
       }
     ?>
-      <a href="<?php echo $this->session->userdata('username'); ?>" class="side-nav__link">
+      <a href="<?php echo site_url() . "profile/view/" . $this->session->userdata('username'); ?>" class="side-nav__link">
         <svg class="side-nav__icon">
           <use xlink:href="<?php echo base_url() . "/assets/images/svg/sprite.svg#icon-aircraft-take-off"; ?>"></use>
         </svg>
-        <span>My Profile</span>
+        <span>Profile</span>
       </a>
     </li>
 
