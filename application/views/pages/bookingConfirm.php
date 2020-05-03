@@ -29,28 +29,23 @@
         <div class="detail">
           <div class="description">      
           <h2 class="user-order__figure__subheading">Your orders:</h2>
-            <?php 
-              $id = $user_orders['id'];
-              $hotel_name = $user_orders['hotel_name'];
-              $num_rooms = $user_orders['num_rooms'];
-              $duration = $user_orders['duration'];
-              $room = $user_orders['room'];
-
-              $room_id = $room_id;
+            <?php
+              $id = $this->session->userdata('hotel_id');
+              $hotel_name = $this->session->userdata('hotel_name');
+              $num_rooms = $this->session->userdata('num_rooms');
+              $duration = $this->session->userdata('duration');
+              $room = $this->session->userdata('room_name');
 
               echo "
-                <form action='" . site_url() . "/booking/orderHotel" . "' method='POST'>
-                  <input type='hidden' name='hotel_id' value='$id' readonly>
-                  <input type='hidden' name='room_id' value='$room_id' readonly>
-                  <input type='text' name='hotel_name' value='$hotel_name' readonly>
-                  <input type='number' name='num_rooms' value='$num_rooms' required readonly>
-                  <input type='number' name='duration' value='$duration' required readonly>
-                  <input type='text' name='room_name' value='$room' required readonly>
-                  <input type='number' name='price' value='$payment_price' required readonly>
-                  <input type='submit' value='Order!'>
-                </form>
+                <p class='paragraph'>Hotel name: $hotel_name</p>
+                <p class='paragraph'>Total price: $payment_price</p>
+                <p class='paragraph'>Number of rooms: $num_rooms</p>
+                <p class='paragraph'>Duration: $duration</p>
+                <p class='paragraph'>Room name: $room</p>
               ";
             ?>
+            <a href="<?php echo site_url() . "/booking/orderHotel"; ?>">Order!</a>
+
           </div>
         </div>
 			</main>

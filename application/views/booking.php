@@ -18,6 +18,9 @@
     ?>
   
     <div class="content">
+      <?php
+        echo $sidebar;
+      ?>
 
       <main class="hotel-view">
         <div class="gallery">
@@ -80,6 +83,7 @@
               ?>
             </ul>
 
+            <!-- Add reccommendation later
             <div class="recommend">
               <p class="paragraph__count">
                 Nicholas and 5 other friends recommend this place!
@@ -91,37 +95,46 @@
                 <img src="assets/images/photos/user-6.jpg" alt="Friend 6" class="recommend__photo">
               </div>
             </div>
+              -->
           </div>
+          
           <div class="user-reviews">
             <figure class="review">
               <blockquote class="review__text">
                 During a trip to France this summer, I spent my last night at the InterContinental Bordeaux Le Grand Hôtel. 
                 I’d actually stayed there several years before when it was part of Regent Hotels, but was eager to stay again now that it’s part of IHG.
               </blockquote>
+              
               <figcaption class="review__user">
-                <img src="assets/images/photos/user-1.jpg" alt="Photo of reviewer 1" class="review__photo">
+                <img src="<?php echo base_url() . "/assets/images/reviewers/reviewer-1.jpg"; ?>" alt="Photo of reviewer 1" class="review__photo">
                 <div class="review__user-box">
                   <p class="review__user-name">Nicholas Dwiarto</p>
                   <p class="review__user-date">Dec 31st, 2019</p>
                 </div>
                 <div class="review__rating">4.5</div>
+              
               </figcaption>
             </figure>
+            
             <figure class="review">
               <blockquote class="review__text">
                 Our view overlooked one of the hotel’s central courtyards, which was nice and quiet, and the windows actually opened, so we could enjoy some fresh air.
               </blockquote>
+              
               <figcaption class="review__user">
-                <img src="assets/images/photos/user-2.jpg" alt="Photo of reviewer 2" class="review__photo">
+                <img src="<?php echo base_url() . "/assets/images/reviewers/reviewer-2.jpg"; ?>" alt="Photo of reviewer 2" class="review__photo">
                 <div class="review__user-box">
                   <p class="review__user-name">Marie Julis-Alexia</p>
                   <p class="review__user-date">Jan 1st, 2020</p>
                 </div>
                 <div class="review__rating">4.75</div>
+              
               </figcaption>
             </figure>
+          
           </div>
         </div>
+        
 
         <!-- 
         <div class="detail">
@@ -140,15 +153,40 @@
         </div>
         -->
 
+        <?php
+          $booking_url = site_url() . "/booking/showBooking/$id";
+          if($rooms != FALSE) {
+        ?>
+
         <div class="cta">
           <h2 class="cta__book-now">
-            Good news! We have 2 free rooms for your selected dates!
+            Good news! Rooms available for you right now!
           </h2>
           <button class="btn">
             <span class="btn__visible">Book now!</span>
-            <span class="btn__invisible"><a href="<?php echo site_url() . "/booking/showBooking/$id"; ?>">Only 2 rooms left!</a></span>
+            
+            <span class="btn__invisible">
+              <a href="<?php echo $booking_url; ?>">Only a few left!</a>
+            </span>
+
           </button>
         </div>
+
+        <?php
+          }
+          else {
+        ?>
+        
+        <div class="cta">
+          <h2 class="cta__book-now">
+            We're sorry, but all rooms seems to be sold out on this hotel &#128530;
+          </h2>
+        </div>
+
+        <?php
+          }
+        ?>
+
       </main>
     </div>
   </div>

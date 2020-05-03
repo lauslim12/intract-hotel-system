@@ -20,6 +20,9 @@
 		?>
 
 		<div class="content">
+			<?php
+        echo $sidebar;
+      ?>
 			<main class="hotel-view">
 
 				<div class="overview">
@@ -32,7 +35,7 @@
 						$id = $hotel['id'];
 						$name = $hotel['name'];
 						$location = $hotel['location'];
-						$desc = $hotel['description'];
+						$headline = $hotel['headline'];
 						$picture = base_url() . $hotel['picture'];
 						$rating = $hotel['rating'];
 						$star = $hotel['star'];
@@ -51,7 +54,7 @@
 												<button class='btn-inline'>$location</button>
 												<p class='hotel-card__rating'>($rating)</p>
 
-											<p class='paragraph u-margin-top'>$desc</p>
+											<p class='paragraph u-margin-top'>$headline</p>
 
 											<div class='overview__stars u-margin-top'>
 						";
@@ -71,7 +74,7 @@
 								</div>	
 							
 								<div class='user-reviews'>
-									<img src='$picture'>
+									<img src='$picture' class='user-reviews--hotel-photo'>
 								</div>
 							</div>
 						";		

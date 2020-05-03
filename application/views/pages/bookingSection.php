@@ -20,6 +20,9 @@
 		?>
 
 		<div class="content">
+      <?php
+        echo $sidebar;
+      ?>
 			<main class="hotel-view">
         
         <div class="gallery">
@@ -82,6 +85,7 @@
               ?>
             </ul>
 
+            <!--
             <div class="recommend">
               <p class="paragraph__count">
                 Nicholas and 5 other friends recommend this place!
@@ -93,13 +97,22 @@
                 <img src="assets/images/photos/user-6.jpg" alt="Friend 6" class="recommend__photo">
               </div>
             </div>
+            -->
           </div>
-          
+              
           <div class="user-order">
             <figure class="user-order__figure">
               <blockquote class="user-order__figure__text">
                 <h1 class='user-order__figure__heading'>Book</h1>
                 Book your own personal hotel room by filling the form below!
+                
+                <?php
+                  if($rooms === FALSE) {
+                    echo "<p class='paragraph'>We are sorry, but there is no rooms available!</p>";
+                  }
+                  // I actually despise doing this.
+                  else {
+                ?>
 
                 <form action="<?php echo site_url() . "/booking/confirmBooking"; ?>" method="POST">
                   <input type='hidden' name='hotel_id' value="<?php echo $id; ?>" readonly>
@@ -119,7 +132,9 @@
               </blockquote>
             </figure>
 
-
+            <?php
+              }
+            ?>
 
           </div>
         </div>
