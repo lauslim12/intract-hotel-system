@@ -32,8 +32,10 @@ class Booking extends CI_Controller {
     $data = call_frontend($this);
     $data['id'] = $this->uri->segment(3);
     $data['hotel'] = $this->Hotel_model->getHotel($data['id']);
-    $data['rooms'] = $this->Hotel_model->getHotelRooms($data['id']);
     $data['headlines'] = $this->Hotel_model->getHotelHeadlines($data['id']);
+    $data['rooms'] = $this->Hotel_model->getHotelRooms($data['id']);
+
+    $this->session->set_userdata('if_transaction_fail', current_url());
 
     $this->load->view('pages/bookingSection', $data);
   }
@@ -88,6 +90,35 @@ class Booking extends CI_Controller {
 
     $this->clearBookingData();
     $this->Hotel_model->purchaseRoom($purchaseData);
+  }
+
+  public function finishBooking() {
+    $data = call_frontend($this);
+    $data['id'] = $this->uri->segment(3);
+    $data['rooms'] = $this->Hotel_model->getRoomByOrder($data['id']);
+    $this->load->view('pages/bookingFinish', $data);
+  }
+
+  public function confirmFinishBooking() {
+    $bookingFinishedData = [
+      'id' => $this->input->post('order_id'),
+      'room_id' => $this->input->post('room_id'),
+      'num_rooms' => $this->input->post('ordered_rooms'),
+      'payment' => $this->input->post('payment'),
+      'rating' => $this->input->post('rating')
+    ];
+
+    $result = $this->Hotel_model->getRoomByOrder($bookingFinishedData['id']);
+
+    if($result['price'] != $bookingFinishedData['payment']) {
+      $this->session->set_flashdata('error_message', 'Please pay the exact amount!');
+      redirect('booking/finishBooking');
+    }
+    else {
+      $this->Hotel_model->payHotel($bookingFinishedData['num_rooms'], $bookingFinishedData['room_id'], $bookingFinishedData['id']);
+      redirect('profile');
+    }
+
   }
 
 }
