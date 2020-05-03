@@ -15,10 +15,16 @@ class Hotel_model extends CI_Model {
   public function getHotel($id) {
     $this->db->select('*');
     $this->db->from('hotels');
-    $this->db->join('rooms', 'hotels.id = rooms.hotel_id');
     $this->db->join('hotel_features', 'hotels.id = hotel_features.hotel_id');
     $this->db->where('hotels.id', $id);
-    $query = $this->db->get()->result_array();
+    $query = $this->db->get();
+    
+    if($query->num_rows() === 0) {
+      return FALSE;
+    }
+    else {
+      $query = $query->result_array();
+    }
 
     $this->db->from('hotel_features');
     $this->db->where('hotel_id', $id);
@@ -31,9 +37,16 @@ class Hotel_model extends CI_Model {
     $this->db->select('*');
     $this->db->from('rooms');
     $this->db->where('hotel_id', $id);
-    $query = $this->db->get()->result_array();
+    $this->db->where('room_count > 0');
+    $query = $this->db->get();
 
-    return $query;
+    if($query->num_rows() === 0) {
+      return FALSE;
+    }
+    else {
+      $query = $query->result_array();
+      return $query;
+    }
   }
 
   public function getHotelHeadlines($id) {
