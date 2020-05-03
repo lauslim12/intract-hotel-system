@@ -81,6 +81,11 @@ class Hotel_model extends CI_Model {
     $this->db->query("UPDATE rooms SET room_count = room_count - '$roomPurchased' WHERE id = '$roomId'");
   }
 
+  public function payHotel($orderedRoom, $roomId, $orderId) {
+    $this->db->query("UPDATE rooms SET room_count = room_count + '$orderedRoom' WHERE id = '$roomId'");
+    $this->db->query("UPDATE orders SET finished = 1 WHERE id = '$orderId'");
+  }
+
   public function searchHotel($keyword) {
     $query = $this->db->query("SELECT * FROM hotels WHERE name LIKE '%$keyword%'");
     return $query->result_array();
