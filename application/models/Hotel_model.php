@@ -73,12 +73,23 @@ class Hotel_model extends CI_Model {
     $this->db->insert('orders', $purchaseData);
     $roomId = $purchaseData['room_id'];
     $roomPurchased = $purchaseData['num_rooms'];
-    $this->reduceAvailableRoom($roomPurchased, $roomId);
-    redirect('dashboard');
+    $status = $this->reduceAvailableRoom($roomPurchased, $roomId);
+    
+    if($status === 0) {
+      $back = $this->session->userdata('if_transaction_fail');
+      $this->session->unset_userdata('if_transaction_fail');
+      $this->session->set_flashdata('message', 'It looks like that we do not have that amount of rooms available. Please try again!');
+      redirect($back);
+    }
+    else {
+      redirect('dashboard');
+    }
   }
 
   public function reduceAvailableRoom($roomPurchased, $roomId) {
-    $this->db->query("UPDATE rooms SET room_count = room_count - '$roomPurchased' WHERE id = '$roomId'");
+    $this->db->query("UPDATE rooms SET room_count = IF(room_count - '$roomPurchased' >= 0, room_count - '$roomPurchased', room_count) WHERE id = '$roomId'");
+    $status = $this->db->affected_rows();
+    return $status;
   }
 
   public function payHotel($orderedRoom, $roomId, $orderId) {
@@ -89,6 +100,15 @@ class Hotel_model extends CI_Model {
   public function searchHotel($keyword) {
     $query = $this->db->query("SELECT * FROM hotels WHERE name LIKE '%$keyword%'");
     return $query->result_array();
+  }
+
+  public function getRoomByOrder($order_id) {
+    $this->db->select('*');
+    $this->db->from('orders');
+    $this->db->where('id', $order_id);
+    $query = $this->db->get();
+
+    return $query->row_array();
   }
 
 }
