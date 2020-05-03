@@ -687,7 +687,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center; }
-  .user-reviews img {
+  .user-reviews--hotel-photo {
     width: 100%;
     display: block;
     height: 100%; }
