@@ -3,6 +3,54 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
+  &__container {
+    flex: 0 0 100%;
+    background-color: #ffffff;
+    box-shadow: var(--shadow-light);
+    padding: 3rem;
+  
+    &--posts,
+    &--profile {
+      flex: 0 0 100%;
+      background-color: var(--color-white);
+      box-shadow: var(--shadow-light);
+      padding: 3rem;
+      margin-right: 4.5rem;
+  
+      & h2 {
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+    
+      & textarea {
+        text-align: center;
+        width: 100%;
+        font-family: 'Open-Sans', sans-serif;
+      }
+  
+      @include respond(medium) {
+        padding: 2rem;
+        margin-right: 3rem;
+      }
+    
+      @include respond(small) {
+        margin-right: 0;
+        margin-bottom: 3rem;
+      }
+  
+    }
+  
+    @include respond(medium) {
+      padding: 2rem;
+      margin-right: 3rem;
+    }
+  
+    @include respond(small) {
+      margin-right: 0;
+      margin-bottom: 3rem;
+    }
+  }
 
   &-detail {
     min-height: var(--min-height-placeholder);
@@ -52,5 +100,44 @@
 
   }
 
-  
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+
+    & tr {
+      border-bottom: 2px solid #e0e0e0;
+      border-collapse: collapse;
+    }
+
+    & tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    & tr:hover {
+      background-color: #ddd;
+    }
+
+    &__header {
+      width: 100%;
+      background-color: #FFEEDB;
+      font-weight: bold;
+      padding-top: .8rem;
+      padding-bottom: .8rem;
+      text-align: center;
+      font-size: 1.6rem;
+
+      & tr:hover {
+        background-color: #FFEEDB;
+      }
+    }
+
+    &__body {
+      border-bottom: 1px solid var(--color-grey-dark);
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+  }
+
 }

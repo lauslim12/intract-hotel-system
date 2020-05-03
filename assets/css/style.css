@@ -766,6 +766,40 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center; }
+  .profile__container {
+    flex: 0 0 100%;
+    background-color: #ffffff;
+    box-shadow: var(--shadow-light);
+    padding: 3rem; }
+    .profile__container--posts, .profile__container--profile {
+      flex: 0 0 100%;
+      background-color: var(--color-white);
+      box-shadow: var(--shadow-light);
+      padding: 3rem;
+      margin-right: 4.5rem; }
+      .profile__container--posts h2, .profile__container--profile h2 {
+        text-align: center;
+        margin-bottom: 1rem; }
+      .profile__container--posts textarea, .profile__container--profile textarea {
+        text-align: center;
+        width: 100%;
+        font-family: 'Open-Sans', sans-serif; }
+      @media only screen and (max-width: 56.25em) {
+        .profile__container--posts, .profile__container--profile {
+          padding: 2rem;
+          margin-right: 3rem; } }
+      @media only screen and (max-width: 37.5em) {
+        .profile__container--posts, .profile__container--profile {
+          margin-right: 0;
+          margin-bottom: 3rem; } }
+    @media only screen and (max-width: 56.25em) {
+      .profile__container {
+        padding: 2rem;
+        margin-right: 3rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .profile__container {
+        margin-right: 0;
+        margin-bottom: 3rem; } }
   .profile-detail {
     min-height: var(--min-height-placeholder);
     display: flex;
@@ -794,6 +828,31 @@ body {
     .profile__text-gallery__text-par {
       flex: 0 0 15%;
       text-align: center; }
+  .profile__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem; }
+    .profile__table tr {
+      border-bottom: 2px solid #e0e0e0;
+      border-collapse: collapse; }
+    .profile__table tr:nth-child(even) {
+      background-color: #f2f2f2; }
+    .profile__table tr:hover {
+      background-color: #ddd; }
+    .profile__table__header {
+      width: 100%;
+      background-color: #FFEEDB;
+      font-weight: bold;
+      padding-top: .8rem;
+      padding-bottom: .8rem;
+      text-align: center;
+      font-size: 1.6rem; }
+      .profile__table__header tr:hover {
+        background-color: #FFEEDB; }
+    .profile__table__body {
+      border-bottom: 1px solid var(--color-grey-dark);
+      text-align: center;
+      font-size: 1.5rem; }
 
 .search-results__display {
   display: flex;
