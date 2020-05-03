@@ -129,6 +129,11 @@
                   <input type="submit" value="Book Now!">
                 </form>
 
+                <?php
+                  $error_message = $this->session->flashdata('message');
+                  echo "<p class='paragraph'>$error_message</p>";
+                ?>
+
               </blockquote>
             </figure>
 

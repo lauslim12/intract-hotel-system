@@ -10,32 +10,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Intractive &mdash; Your Profile</title>
-  
-  <!-- Will only use modal on this page only, so I will not include it on other pages. -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-  <!-- Done jQuery -->
-
   <?php echo $css; ?>
 </head>
 
 <body>
 
   <!-- jQuery Modal -->
-  <div id="ex1" class="modal">
-    <form action="<?php echo site_url() . ""; ?>" method="POST">
-      <input type='hidden' name='order_id'>
-      <input type="hidden" name='room_id'>
-      <h2>Payment</h2>
-      <input type="number" name='payment'>
-      <select name="rating">
-        <option value="1">1</option>
-      </select>
-      <input type="submit" value="Finish!">
-    </form>    
-    <a href="#" rel="modal:close">Close</a>
-  </div>
+
   <!-- End jQuery Modal -->
 
   <div class="container">
@@ -110,8 +91,8 @@
                 </thead>
                 <tbody class='profile__table__body'>
                   <?php
-                    /*  Combine joined arrays by its primary key.
-                    *   The length of the array should be same, as it's a simple logic - one cannot have more rooms that he/she had ordered.
+                    /*  Combine joined arrays by its primary keys / foreign keys.
+                    *   The length of the array should be same, as it's a simple logic - one cannot have more rooms that one had ordered.
                     *   Algorithm: Knapsack. Can't believe I have to use this in web development.
                     */
                     for($i = 0; $i < count($user_hotel); $i++) {
@@ -121,6 +102,8 @@
                       $duration = $user_hotel[$i]['duration'];
                       $price = number_format($user_hotel[$i]['price']);
                       $num_rooms = $user_hotel[$i]['num_rooms'];
+                      $status = $transaction_data[$i]['finished'];
+                      $path_to_finish = site_url() . "booking/finishBooking/$order_id";
 
                       echo "<tr>";
                         echo "<td>$order_id</td>";
@@ -129,7 +112,12 @@
                         echo "<td>$num_rooms</td>";
                         echo "<td>$duration</td>";
                         echo "<td>$price</td>";
-                        echo "<td><a href='#ex1' rel='modal:open'>Finish</a></td>";
+                        if($status == 0) {
+                          echo "<td><a href=$path_to_finish>Finish</a></td>";
+                        }
+                        else {
+                          echo "<td>Done!</td>";
+                        }
                       echo "</tr>";
                     }
                   ?>
