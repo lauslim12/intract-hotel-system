@@ -1,5 +1,7 @@
 # Dependencies added by programmer.
 node_modules/
+assets/images/profile_pics/profile_users/
+!assets/images/profile_pics/profile_users/user.jpg
 
 # Old Intract
 .documents/
