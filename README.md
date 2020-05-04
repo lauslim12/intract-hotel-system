@@ -21,6 +21,9 @@ For now, the website has three features, more will be added as the project progr
 * Sign Up System
 * Login System
 * See Hotels
+* Hotel Booking System
+* Transaction History
+* Hotel Searching
 
 Features that is available at the classic Intract, but not yet ported here:
 * Profile System
@@ -28,9 +31,7 @@ Features that is available at the classic Intract, but not yet ported here:
 
 TOA:
 * CodeIgniter Validations
-* Booking A Hotel
-* Search A Hotel
-* Transaction History
+* Refactor EVERY code, add comments, and apply the DRY principle.
 
 TODO:
 * Admin Panel
