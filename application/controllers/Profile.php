@@ -7,6 +7,7 @@ class Profile extends CI_Controller {
     parent::__construct();
     $this->load->model('User_model');
     $this->load->model('Hotel_model');
+    $this->load->helper('form');
   }
 
   public function index() {
@@ -27,6 +28,42 @@ class Profile extends CI_Controller {
     else {
       $this->load->view('profile', $data);
     }
+  }
+
+  public function uploadDisplayPicture() {
+    $config['upload_path'] = './assets/images/profile_pics/profile_users';
+    $config['allowed_types'] = 'jpg|jpeg|png';
+    $config['max_size'] = 5120;
+    $config['max_width'] = 1920;
+    $config['max_height'] = 1080;
+
+    $this->load->library('upload', $config);
+
+    if(!$this->upload->do_upload('fileToUpload')) {
+      $error = ['error' => $this->upload->display_errors()];
+      var_dump($error);
+      //redirect('profile');
+    }
+    else {
+      $data = ['upload_data' => $this->upload->data()];
+      $image_name = $data['upload_data']['orig_name'];
+      $path_to_img = "/assets/images/profile_pics/profile_users/" . $image_name;
+      $this->changeDisplayPicture($path_to_img);
+    }
+  }
+
+  public function changeDisplayPicture($path_to_img) {
+    $user_id = $this->session->userdata('user_id');
+    $update_status = $this->User_model->setDisplayPicture($user_id, $path_to_img);
+
+    if($update_status === TRUE) {
+      $this->session->set_userdata('profile_pic', $path_to_img);
+      redirect('profile/view');
+    }
+    else {
+      redirect('profile/view');
+    }
+
   }
 
 }
