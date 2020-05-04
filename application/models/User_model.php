@@ -101,6 +101,22 @@ class User_model extends CI_Model {
     }
   }
 
+  public function setDisplayPicture($user_id, $path_to_image) {
+    $this->db->trans_begin();
+    $this->db->set('profile_pic', $path_to_image);
+    $this->db->where('id', $user_id);
+    $this->db->update('users');
+    $this->db->trans_complete();
+
+    if($this->db->trans_status() === FALSE) {
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
+
+  }
+
 }
 
 ?>
