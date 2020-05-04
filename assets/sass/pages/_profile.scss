@@ -60,10 +60,9 @@
   &__profile-picture {
     & img {
       border-radius: 50%;
-      min-width: 10rem;
-      min-height: 10rem;
-      max-width: 20rem; 
-      max-height: 20rem;
+      width: 15rem;
+      height: 15rem;
+      object-fit: cover;
       display: block;
     }
   }
@@ -76,7 +75,6 @@
     & a {
       color: var(--color-secondary-dark);
     }
-
   }
 
   &__change-picture {
@@ -86,7 +84,6 @@
     & form input[type="submit"] {
       color: var(--color-secondary-dark);
     }
-
   }
 
   &__text-gallery {
