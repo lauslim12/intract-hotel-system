@@ -10,7 +10,7 @@
         echo '<li class="side-nav__item side-nav__item">';
       }
     ?>
-      <a href="index.php" class="side-nav__link">
+      <a href="<?php echo site_url(); ?>" class="side-nav__link">
         <svg class="side-nav__icon">
           <use xlink:href="<?php echo base_url() . "/assets/images/svg/sprite.svg#icon-home"; ?>"></use>
         </svg>
@@ -49,6 +49,22 @@
         <span>Search Results</span>
       </a>
     </li>
+
+    <?php
+      if($this->session->userdata('privilege_level') == 1) {
+        echo '<li class="side-nav__item side-nav__item">';
+    ?>
+    <a href="<?php echo site_url() . "admin"; ?> " class="side-nav__link side-nav__link--results">
+        <svg class="side-nav__icon">
+          <use xlink:href="<?php echo base_url() . "/assets/images/svg/sprite.svg#icon-star"; ?>"></use>
+        </svg>
+        <span>Admin Panel</span>
+      </a>
+    </li>
+    <?php
+      }
+    ?>
+    
 
   </ul>
 

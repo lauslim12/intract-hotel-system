@@ -3,7 +3,7 @@
     <img src="<?php echo base_url() . "/assets/images/icons/logo.png"; ?>" alt="Trillo logo" class="logo">
   </a>
 
-  <form action="search.php" class="search" name="search_form">
+  <form action="<?php echo site_url() . "search/searchHotel"; ?>" class="search" name="search_form" method="GET">
     <input type="text" class="search__input" name="q" autocomplete="off" placeholder="Search hotels...">
     <button class="search__button">
       <svg class="search__icon">
