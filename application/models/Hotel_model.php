@@ -70,11 +70,10 @@ class Hotel_model extends CI_Model {
   }
 
   public function purchaseRoom($purchaseData) {
-    $this->db->insert('orders', $purchaseData);
     $roomId = $purchaseData['room_id'];
     $roomPurchased = $purchaseData['num_rooms'];
     $status = $this->reduceAvailableRoom($roomPurchased, $roomId);
-    
+
     if($status === 0) {
       $back = $this->session->userdata('if_transaction_fail');
       $this->session->unset_userdata('if_transaction_fail');
@@ -82,23 +81,32 @@ class Hotel_model extends CI_Model {
       redirect($back);
     }
     else {
+      $this->db->insert('orders', $purchaseData);
       redirect('dashboard');
     }
   }
 
   public function reduceAvailableRoom($roomPurchased, $roomId) {
-    $this->db->query("UPDATE rooms SET room_count = IF(room_count - '$roomPurchased' >= 0, room_count - '$roomPurchased', room_count) WHERE id = '$roomId'");
+    $sql = "UPDATE rooms SET room_count = IF(room_count - ? >= 0, room_count - ?, room_count) WHERE id = ?";
+    $this->db->query($sql, $roomPurchased, $roomId);
     $status = $this->db->affected_rows();
     return $status;
   }
 
   public function payHotel($orderedRoom, $roomId, $orderId) {
-    $this->db->query("UPDATE rooms SET room_count = room_count + '$orderedRoom' WHERE id = '$roomId'");
-    $this->db->query("UPDATE orders SET finished = 1 WHERE id = '$orderId'");
+    $restore_room_query = "UPDATE rooms SET room_count = room_count + ? WHERE id = ?";
+    $this->db->query($restore_room_query, $orderedRoom, $roomId);
+    
+    $finish_order_query = "UPDATE orders SET finished = 1 WHERE id = ?";
+    $this->db->query($finish_order_query, $orderId);
   }
 
   public function searchHotel($keyword) {
-    $query = $this->db->query("SELECT * FROM hotels WHERE name LIKE '%$keyword%'");
+    $this->db->select('*');
+    $this->db->from('hotels');
+    $this->db->like('name', $keyword);
+    $query = $this->db->get();
+
     return $query->result_array();
   }
 
@@ -111,6 +119,30 @@ class Hotel_model extends CI_Model {
     return $query->row_array();
   }
 
-}
+  public function sortHotel($choice) {
+    $this->db->select('*');
+    $this->db->from('hotels');
 
-?>
+    if($choice === 1) {
+      $this->db->order_by('rating DESC');
+    }
+    else {
+      $this->db->order_by('rating ASC');
+    }
+
+    $query = $this->db->get();
+
+    return $query->result_array();
+  }
+
+  public function filterHotel() {
+    $this->db->select('*');
+    $this->db->from('hotels');
+    $this->db->where('star', 5);
+    $query = $this->db->get();
+
+    return $query->result_array();
+  }
+
+
+}
