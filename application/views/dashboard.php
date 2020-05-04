@@ -27,6 +27,9 @@
 
 				<div class="overview">
 					<h1 class="overview__heading">Available Hotels</h1>
+					<a href="<?php echo site_url() . "search/sortByRating/ascending"; ?>">Sort by Rating (Asc) &nbsp;&nbsp;&nbsp;</a>
+					<a href="<?php echo site_url() . "search/sortByRating/descending"; ?>">Sort by Rating (Desc) &nbsp;&nbsp;&nbsp;</a>
+					<a href="<?php echo site_url() . "search/filterByStar"; ?>">Filter Star (5)</a>
 				</div>
 
 				<!-- List of Hotels -->
@@ -40,6 +43,7 @@
 						$rating = $hotel['rating'];
 						$star = $hotel['star'];
 						$stars = '';
+						$link_to_hotel = site_url() . "booking/showDetail/$id";
 
 						$str =  
 						"
@@ -69,7 +73,7 @@
 
 						$endString = "
 										</div>
-										<a href='booking/showDetail/$id' class='btn-inline u-margin-top'>See more!</a>
+										<a href='$link_to_hotel' class='btn-inline u-margin-top'>See more!</a>
 									</div>	
 								</div>	
 							

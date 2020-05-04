@@ -55,16 +55,16 @@
             <?php
               if($user_data['username'] === $this->session->userdata('username')) {
                 $username = $user_data['username'];
-                echo "
-                <div class='profile__change-picture'>
-                  <form action='' method='POST' enctype='multipart/form-data'>
-                    <p class='paragraph'>Change your profile picture here:</p>
-                    <input type='hidden' name='username' value=$username readonly/>
-                    <input type='file' name='fileToUpload' id='fileToUpload'>
-                    <input type='submit' value='Upload Image' name='submit' class='btn-inline'>
-                  </form>
-                </div>
-                ";
+            ?>
+              <div class='profile__change-picture'>
+                <?php echo form_open_multipart('profile/uploadDisplayPicture'); ?>
+                  <p class='paragraph'>Change your profile picture here:</p>
+                  <input type='file' name='fileToUpload' id='fileToUpload'>
+                  <input type='submit' value='Upload Image' name='submit' class='btn-inline'>
+                </form>
+
+              </div>
+            <?php
               }
             ?>
           </div>
