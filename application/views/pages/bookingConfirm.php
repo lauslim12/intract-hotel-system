@@ -20,6 +20,9 @@
 		?>
 
 		<div class="content">
+      <?php
+        echo $sidebar;
+      ?>
 			<main class="hotel-view">
   
         <div class="overview">
