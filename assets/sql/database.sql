@@ -77,6 +77,8 @@ CREATE TABLE orders (
   hotel_id INT,
   room_id INT,
   num_rooms INT,
+  date_check_in DATE,
+  date_check_out DATE,
   duration INT,
   price INT,
   finished BOOLEAN,
