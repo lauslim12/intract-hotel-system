@@ -88,17 +88,17 @@ class Hotel_model extends CI_Model {
 
   public function reduceAvailableRoom($roomPurchased, $roomId) {
     $sql = "UPDATE rooms SET room_count = IF(room_count - ? >= 0, room_count - ?, room_count) WHERE id = ?";
-    $this->db->query($sql, $roomPurchased, $roomId);
+    $this->db->query($sql, [$roomPurchased, $roomPurchased, $roomId]);
     $status = $this->db->affected_rows();
     return $status;
   }
 
   public function payHotel($orderedRoom, $roomId, $orderId) {
     $restore_room_query = "UPDATE rooms SET room_count = room_count + ? WHERE id = ?";
-    $this->db->query($restore_room_query, $orderedRoom, $roomId);
+    $this->db->query($restore_room_query, [$orderedRoom, $roomId]);
     
     $finish_order_query = "UPDATE orders SET finished = 1 WHERE id = ?";
-    $this->db->query($finish_order_query, $orderId);
+    $this->db->query($finish_order_query, [$orderId]);
   }
 
   public function searchHotel($keyword) {

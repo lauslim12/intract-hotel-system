@@ -48,9 +48,14 @@ class Booking extends CI_Controller {
       'id' => $this->input->post('hotel_id'),
       'hotel_name' => $this->input->post('hotel_name'),
       'num_rooms' => $this->input->post('num_rooms'),
-      'duration' => $this->input->post('duration'),
+      'date_check_in' => $this->input->post('date_check_in'),
+      'date_check_out' => $this->input->post('date_check_out'),
       'room' => $this->input->post('room')
     ];
+
+    $data['user_orders']['duration'] = strtotime($data['user_orders']['date_check_out']) - strtotime($data['user_orders']['date_check_in']);
+    // Count the number of difference in days.
+    $data['user_orders']['duration'] = $data['user_orders']['duration'] / (60 * 60 * 24);
 
     $row = $this->Hotel_model->getHotelPrice($id, $data['user_orders']['room']);
     $data['payment_price'] = $row->price * $data['user_orders']['duration'] * $data['user_orders']['num_rooms'];
@@ -66,13 +71,15 @@ class Booking extends CI_Controller {
     $this->session->set_userdata('hotel_name', $data['user_orders']['hotel_name']);
     $this->session->set_userdata('num_rooms', $data['user_orders']['num_rooms']);
     $this->session->set_userdata('duration', $data['user_orders']['duration']);
+    $this->session->set_userdata('date_check_in', $data['user_orders']['date_check_in']);
+    $this->session->set_userdata('date_check_out', $data['user_orders']['date_check_out']);
     $this->session->set_userdata('room_name', $data['user_orders']['room']);
     $this->session->set_userdata('payment_price', $data['payment_price']);
     $this->session->set_userdata('room_id', $data['room_id']);
   }
 
   public function clearBookingData() {
-    $unset = ['hotel_id', 'hotel_name', 'num_rooms', 'duration', 'payment_price', 'room_name', 'room_id'];
+    $unset = ['hotel_id', 'hotel_name', 'num_rooms', 'date_check_in', 'date_check_out', 'duration', 'payment_price', 'room_name', 'room_id'];
     $this->session->unset_userdata($unset);
   }
 
@@ -84,6 +91,8 @@ class Booking extends CI_Controller {
       'room_id' => $this->session->userdata('room_id'),
       'num_rooms' => $this->session->userdata('num_rooms'),
       'duration' => $this->session->userdata('duration'),
+      'date_check_in' => $this->session->userdata('date_check_in'),
+      'date_check_out' => $this->session->userdata('date_check_out'),
       'price' => $this->session->userdata('payment_price'),
       'finished' => FALSE
     ];
