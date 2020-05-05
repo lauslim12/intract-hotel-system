@@ -241,7 +241,7 @@ body {
   border-bottom: var(--line);
   display: flex;
   flex-wrap: wrap; }
-  .list__item::before {
+  .list__item::before, .list__item--oneline::before, .list__item--indented::before {
     content: "";
     display: inline-block;
     width: 1rem;
@@ -250,7 +250,7 @@ body {
     background-image: url(../images/svg/chevron-thin-right.svg);
     background-size: cover; }
     @supports (-webkit-mask-image: url()) or (mask-image: url()) {
-      .list__item::before {
+      .list__item::before, .list__item--oneline::before, .list__item--indented::before {
         background-color: var(--color-primary);
         -webkit-mask-image: url(../images/svg/chevron-thin-right.svg);
         -webkit-mask-size: cover;
@@ -260,6 +260,12 @@ body {
   .list__item {
     flex: 0 0 50%;
     margin-bottom: .7rem; }
+    .list__item--oneline {
+      flex: 0 0 100%;
+      margin-bottom: .5rem; }
+    .list__item--indented {
+      flex: 0 0 100%;
+      margin-left: 2rem; }
 
 .logo {
   height: 3.25rem;

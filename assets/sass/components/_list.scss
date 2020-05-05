@@ -8,7 +8,9 @@
   display: flex;
   flex-wrap: wrap;
 
-  &__item::before {
+  &__item::before,
+  &__item--oneline::before,
+  &__item--indented::before {
     content: "";
     display: inline-block;
     width: 1rem;
@@ -28,12 +30,21 @@
       mask-size: cover;
       background-image: none;
     }
-
   }
 
   &__item {
     flex: 0 0 50%;
     margin-bottom: .7rem;
-  }
+    
+    &--oneline {
+      flex: 0 0 100%;
+      margin-bottom: .5rem;
+    }
 
+    &--indented {
+      flex: 0 0 100%;
+      margin-left: 2rem;
+    }
+
+  }
 }
