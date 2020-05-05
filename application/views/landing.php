@@ -32,10 +32,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <input type="password" name="login_password" placeholder="Password" /><br>
         <input type="submit" name="login_button" value="Submit" class="btn-inline">
         <?php
-          echo "<br>" . $this->session->flashdata('message');
+          echo "<br>" . $this->session->flashdata('message') . "<br>";
         ?>
 
-        <br>
         <a href="#" id="register">Do not have an account yet? Sign up by clicking me!</a>
       </form>
     </div>

@@ -118,7 +118,8 @@
                   <input type='hidden' name='hotel_id' value="<?php echo $id; ?>" readonly>
                   <input type="text" name='hotel_name' value="<?php echo $hotel[0]['name']; ?>" readonly>
                   <input type="number" name='num_rooms' placeholder="Number of rooms..." required>
-                  <input type="number" name='duration' placeholder="Duration..." required>
+                  <input type="date" name='date_check_in' required>
+                  <input type="date" name='date_check_out' required>
                   <select name="room" required>
                     <?php 
                       foreach($rooms as $room) {
