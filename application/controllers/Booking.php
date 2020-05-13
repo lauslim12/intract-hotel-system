@@ -12,6 +12,12 @@ class Booking extends CI_Controller {
     redirect('dashboard');
   }
 
+  public function guard($array) {
+    if(empty($array)) {
+      redirect('dashboard');
+    }
+  }
+
   public function showDetail() {
     $data = call_frontend($this);
     $data['id'] = $this->uri->segment(3);
@@ -19,13 +25,8 @@ class Booking extends CI_Controller {
     $data['headlines'] = $this->Hotel_model->getHotelHeadlines($data['id']);
     $data['rooms'] = $this->Hotel_model->getHotelRooms($data['id']);
 
-    // Guard to prevent parameter tampering.
-    if($data['hotel'] === FALSE) {
-      redirect('dashboard');
-    }
-    else {
-      $this->load->view('booking', $data);
-    }
+    $this->guard($data['hotel']);
+    $this->load->view('booking', $data);
   }
 
   public function showBooking() {
