@@ -14,7 +14,7 @@
 
   <nav class="user-nav">
     <div class="user-nav__icon-box">
-      <a href='https://github.com/lauslim12/intract-social-network'>
+      <a href='https://github.com/lauslim12/intract-hotel-system'>
         <svg class="user-nav__icon">
           <use xlink:href="<?php echo base_url() . "/assets/images/svg/sprite.svg#icon-github"; ?>"></use>
         </svg>
