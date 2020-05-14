@@ -27,12 +27,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 
     <div class="form-view__login u-margin-bottom-small">
-      <form action='<?php echo site_url() . "/authentication/login"; ?>' method="POST" class="form-view__form">
+      <form action='<?php echo site_url() . "authentication/login"; ?>' method="POST" class="form-view__form">
         <input type="text" name="login_username" placeholder="Username" /><br>
         <input type="password" name="login_password" placeholder="Password" /><br>
-        <input type="submit" name="login_button" value="Submit" class="btn-inline">
+        <input type="submit" name="login_button" value="Submit" class="btn-inline"><br>
         <?php
-          echo "<br>" . $this->session->flashdata('message') . "<br>";
+          if($this->session->flashdata('message') != '') {
+            echo $this->session->flashdata('message') . "<br>";
+          }
         ?>
 
         <a href="#" id="register">Do not have an account yet? Sign up by clicking me!</a>
@@ -40,10 +42,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 
     <div class="form-view__register u-margin-bottom-small">
-      <form action="<?php echo site_url() . "/authentication/register"; ?>" method="POST" class="form-view__form">
-        <input type="text" name="first_name" placeholder="First Name"/>
+      <form action="<?php echo site_url() . "authentication/register"; ?>" method="POST" class="form-view__form">
+        <input type="text" name="first_name" placeholder="First Name" required />
 
-        <input type="text" name="last_name" placeholder="Last Name"/>
+        <input type="text" name="last_name" placeholder="Last Name" required />
         <input type="text" name="username" placeholder="Username" required />
 					
 				<input type="email" name="email" placeholder="Email" required />
