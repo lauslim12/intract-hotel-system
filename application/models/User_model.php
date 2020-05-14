@@ -6,6 +6,10 @@ class User_model extends CI_Model {
   public function isLoggedIn() {
     return $this->session->userdata('user_id');
   }
+
+  public function isAdmin() {
+    return $this->session->userdata('privilege_level');
+  }
   
   public function checkUser($username, $password) {
     $this->db->select("*");
