@@ -68,15 +68,19 @@ class Booking extends CI_Controller {
 
   // Session for userdata (security measures against parameter tampering)
   public function setBookingData($data) {
-    $this->session->set_userdata('hotel_id', $data['user_orders']['id']);
-    $this->session->set_userdata('hotel_name', $data['user_orders']['hotel_name']);
-    $this->session->set_userdata('num_rooms', $data['user_orders']['num_rooms']);
-    $this->session->set_userdata('duration', $data['user_orders']['duration']);
-    $this->session->set_userdata('date_check_in', $data['user_orders']['date_check_in']);
-    $this->session->set_userdata('date_check_out', $data['user_orders']['date_check_out']);
-    $this->session->set_userdata('room_name', $data['user_orders']['room']);
-    $this->session->set_userdata('payment_price', $data['payment_price']);
-    $this->session->set_userdata('room_id', $data['room_id']);
+    $session_data = [
+      'hotel_id' => $data['user_orders']['id'],
+      'hotel_name' => $data['user_orders']['hotel_name'],
+      'num_rooms' => $data['user_orders']['num_rooms'],
+      'duration' => $data['user_orders']['duration'],
+      'date_check_in' => $data['user_orders']['date_check_in'],
+      'date_check_out' => $data['user_orders']['date_check_out'],
+      'room_name' => $data['user_orders']['room'],
+      'payment_price' => $data['payment_price'],
+      'room_id' => $data['room_id']
+    ];
+    
+    $this->session->set_userdata($session_data);
   }
 
   public function clearBookingData() {
