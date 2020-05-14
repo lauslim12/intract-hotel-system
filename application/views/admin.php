@@ -10,6 +10,6 @@
 </head>
 <body>
   panel admin
-  <a href="<?php echo site_url() . "/dashboard"; ?>">akses dasboard</a>
+  <a href="<?php echo site_url() . "dashboard"; ?>">User Dashboard</a>
 </body>
 </html>
