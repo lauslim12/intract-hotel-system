@@ -1,6 +1,6 @@
 {
   "name": "intractive",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Intractive Hotel System",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,8 @@
     "concat:css": "concat -o assets/css/style.concat.css assets/css/icons-font.css assets/css/style.comp.css",
     "prefix:css": "npx postcss assets/css/style.concat.css --use autoprefixer -o assets/css/style.prefix.css",
     "compress:css": "node-sass assets/css/style.prefix.css assets/css/style.css --output-style compressed",
-    "build:project": "npm-run-all compile:sass concat:css prefix:css compress:css",
+    "clean:css": "del-cli assets/css/style.comp.css assets/css/style.concat.css assets/css/style.prefix.css",
+    "build:project": "npm-run-all compile:sass concat:css prefix:css compress:css clean:css",
     "electron": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -27,6 +28,7 @@
   "devDependencies": {
     "autoprefixer": "^9.7.6",
     "concat": "^1.0.3",
+    "del-cli": "^3.0.0",
     "electron": "^8.2.5",
     "node-sass": "^4.14.0",
     "npm-run-all": "^4.1.5",
