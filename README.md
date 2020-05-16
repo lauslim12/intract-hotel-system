@@ -15,6 +15,7 @@ Advanced form of [Intract Social Network](https://github.com/lauslim12/intract-s
 * HTML, SCSS, JavaScript, Node.js, and React for the Front-End.
 * CodeIgniter 3.1.11, MariaDB, IBM Cloud Services for the Back-End.
 * Block, Element, Modifier SCSS Methodology for Styling.
+* Low Cohesion, High Coupling Design Pattern
 * Usage of Agile Process Model.
 * Security Software Design and Development Process.
 * Hosted on a Cloud Provider.
@@ -46,6 +47,7 @@ TODO:
 * REST API for Database Usage (React-friendly)
 * Messaging System
 * User Interface
+* Add every dependency at `assets/vendors` to NPM, also the React.
 
 Future work:
 * Swap to CodeIgniter 4
@@ -72,6 +74,7 @@ Same like the old Intract,
 * Use `git pull repo` to fetch the code, or download it by using `git clone`.
 * Copy the repository into the `htdocs` folder in XAMPP or any other local host web server that you have.
 * Import the `.sql` file that is located in the `assets/dev` folder.
+* Use `composer install` to resolve PHP dependencies.
 * Register an account to be used at the website.
 * Done.
 
