@@ -1,41 +1,460 @@
-<?php
-  defined('BASEPATH') OR exit('No direct script access allowed');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="utf-8">
-	<title>Intractive &mdash; Admin Panel</title>
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="<?php echo base_url() . "assets/images/icons/favicon.png"; ?>"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="<?php echo base_url() . "assets/images/icons/favicon.png"; ?>" rel="shortcut icon">
 
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="<?php echo base_url() . "assets/css/style.css"; ?>" />
-
-</head>
-<body>
-  <div id="root"></div>
+  <title>Intractive &mdash; Administrator</title>
   
-  <!-- <a href="<?php echo site_url() . "dashboard"; ?>">User Dashboard</a> -->
+  <link href="<?php echo base_url() . "assets/vendors/fontawesome-free/css/all.min.css"; ?>" rel="stylesheet" type="text/css">
+  <link href="<?php echo base_url() . "assets/vendors/bootstrap/css/bootstrap.min.css"; ?>" rel="stylesheet" type="text/css">
+  <link href="<?php echo base_url() . "assets/css/ruang-admin.css"; ?>" rel="stylesheet">
+</head>
 
-  <!-- Bootstrap and jQuery -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<body id="page-top">
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon">
+          <img src="<?php echo base_url() . "assets/images/icons/logo.png"; ?>" />
+        </div>
+        <div class="sidebar-brand-text mx-3">Admin</div>
+      </a>
+      <hr class="sidebar-divider my-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span></a>
+      </li>
+      <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Features
+      </div>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
+          aria-expanded="true" aria-controls="collapseBootstrap">
+          <i class="far fa-fw fa-window-maximize"></i>
+          <span>Bootstrap UI</span>
+        </a>
+        <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Bootstrap UI</h6>
+            <a class="collapse-item" href="alerts.html">Alerts</a>
+            <a class="collapse-item" href="buttons.html">Buttons</a>
+            <a class="collapse-item" href="dropdowns.html">Dropdowns</a>
+            <a class="collapse-item" href="modals.html">Modals</a>
+            <a class="collapse-item" href="popovers.html">Popovers</a>
+            <a class="collapse-item" href="progress-bar.html">Progress Bars</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="forms.html">
+          <i class="fab fa-fw fa-wpforms"></i>
+          <span>Forms</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
+          aria-controls="collapseTable">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Tables</span>
+        </a>
+        <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Tables</h6>
+            <a class="collapse-item" href="simple-tables.html">Simple Tables</a>
+            <a class="collapse-item" href="datatables.html">DataTables</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="ui-colors.html">
+          <i class="fas fa-fw fa-palette"></i>
+          <span>UI Colors</span>
+        </a>
+      </li>
+      <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Examples
+      </div>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true"
+          aria-controls="collapsePage">
+          <i class="fas fa-fw fa-columns"></i>
+          <span>Pages</span>
+        </a>
+        <div id="collapsePage" class="collapse" aria-labelledby="headingPage" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Example Pages</h6>
+            <a class="collapse-item" href="login.html">Login</a>
+            <a class="collapse-item" href="register.html">Register</a>
+            <a class="collapse-item" href="404.html">404 Page</a>
+            <a class="collapse-item" href="blank.html">Blank Page</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Charts</span>
+        </a>
+      </li>
+      <hr class="sidebar-divider">
+      <div class="version" id="version-ruangadmin"></div>
+    </ul>
+    <!-- Sidebar -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <!-- TopBar -->
+        <div id="root"></div>
+        <!-- Topbar -->
 
+        <!-- Container Fluid-->
+        <div class="container-fluid" id="container-wrapper">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="./">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+            </ol>
+          </div>
+
+          <div class="row mb-3">
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">Earnings (Monthly)</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                      <div class="mt-2 mb-0 text-muted text-xs">
+                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                        <span>Since last month</span>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-calendar fa-2x text-primary"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Earnings (Annual) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">Sales</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">650</div>
+                      <div class="mt-2 mb-0 text-muted text-xs">
+                        <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
+                        <span>Since last years</span>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-shopping-cart fa-2x text-success"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- New User Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">New User</div>
+                      <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">366</div>
+                      <div class="mt-2 mb-0 text-muted text-xs">
+                        <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 20.4%</span>
+                        <span>Since last month</span>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-users fa-2x text-info"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">Pending Requests</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                      <div class="mt-2 mb-0 text-muted text-xs">
+                        <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
+                        <span>Since yesterday</span>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-comments fa-2x text-warning"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Area Chart -->
+            <div class="col-xl-8 col-lg-7">
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Monthly Recap Report</h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                      aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="chart-area">
+                    <canvas id="myAreaChart"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Pie Chart -->
+            <div class="col-xl-4 col-lg-5">
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Products Sold</h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle btn btn-primary btn-sm" href="#" role="button" id="dropdownMenuLink"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Month <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                      aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Select Periode</div>
+                      <a class="dropdown-item" href="#">Today</a>
+                      <a class="dropdown-item" href="#">Week</a>
+                      <a class="dropdown-item active" href="#">Month</a>
+                      <a class="dropdown-item" href="#">This Year</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="mb-3">
+                    <div class="small text-gray-500">Oblong T-Shirt
+                      <div class="small float-right"><b>600 of 800 Items</b></div>
+                    </div>
+                    <div class="progress" style="height: 12px;">
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 80%" aria-valuenow="80"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <div class="small text-gray-500">Gundam 90'Editions
+                      <div class="small float-right"><b>500 of 800 Items</b></div>
+                    </div>
+                    <div class="progress" style="height: 12px;">
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 70%" aria-valuenow="70"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <div class="small text-gray-500">Rounded Hat
+                      <div class="small float-right"><b>455 of 800 Items</b></div>
+                    </div>
+                    <div class="progress" style="height: 12px;">
+                      <div class="progress-bar bg-danger" role="progressbar" style="width: 55%" aria-valuenow="55"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <div class="small text-gray-500">Indomie Goreng
+                      <div class="small float-right"><b>400 of 800 Items</b></div>
+                    </div>
+                    <div class="progress" style="height: 12px;">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <div class="small text-gray-500">Remote Control Car Racing
+                      <div class="small float-right"><b>200 of 800 Items</b></div>
+                    </div>
+                    <div class="progress" style="height: 12px;">
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer text-center">
+                  <a class="m-0 small text-primary card-link" href="#">View More <i
+                      class="fas fa-chevron-right"></i></a>
+                </div>
+              </div>
+            </div>
+            <!-- Invoice Example -->
+            <div class="col-xl-8 col-lg-7 mb-4">
+              <div class="card">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Invoice</h6>
+                  <a class="m-0 float-right btn btn-danger btn-sm" href="#">View More <i
+                      class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="table-responsive">
+                  <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Item</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><a href="#">RA0449</a></td>
+                        <td>Udin Wayang</td>
+                        <td>Nasi Padang</td>
+                        <td><span class="badge badge-success">Delivered</span></td>
+                        <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#">RA5324</a></td>
+                        <td>Jaenab Bajigur</td>
+                        <td>Gundam 90' Edition</td>
+                        <td><span class="badge badge-warning">Shipping</span></td>
+                        <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#">RA8568</a></td>
+                        <td>Rivat Mahesa</td>
+                        <td>Oblong T-Shirt</td>
+                        <td><span class="badge badge-danger">Pending</span></td>
+                        <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#">RA1453</a></td>
+                        <td>Indri Junanda</td>
+                        <td>Hat Rounded</td>
+                        <td><span class="badge badge-info">Processing</span></td>
+                        <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#">RA1998</a></td>
+                        <td>Udin Cilok</td>
+                        <td>Baby Powder</td>
+                        <td><span class="badge badge-success">Delivered</span></td>
+                        <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="card-footer"></div>
+              </div>
+            </div>
+            <!-- Message From Customer-->
+            <div class="col-xl-4 col-lg-5 ">
+              <div class="card">
+                <div class="card-header py-4 bg-primary d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-light">Message From Customer</h6>
+                </div>
+                <div>
+                  <div class="customer-message align-items-center">
+                    <a class="font-weight-bold" href="#">
+                      <div class="text-truncate message-title">Hi there! I am wondering if you can help me with a
+                        problem I've been having.</div>
+                      <div class="small text-gray-500 message-time font-weight-bold">Udin Cilok · 58m</div>
+                    </a>
+                  </div>
+                  <div class="customer-message align-items-center">
+                    <a href="#">
+                      <div class="text-truncate message-title">But I must explain to you how all this mistaken idea
+                      </div>
+                      <div class="small text-gray-500 message-time">Nana Haminah · 58m</div>
+                    </a>
+                  </div>
+                  <div class="customer-message align-items-center">
+                    <a class="font-weight-bold" href="#">
+                      <div class="text-truncate message-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                      </div>
+                      <div class="small text-gray-500 message-time font-weight-bold">Jajang Cincau · 25m</div>
+                    </a>
+                  </div>
+                  <div class="customer-message align-items-center">
+                    <a class="font-weight-bold" href="#">
+                      <div class="text-truncate message-title">At vero eos et accusamus et iusto odio dignissimos
+                        ducimus qui blanditiis
+                      </div>
+                      <div class="small text-gray-500 message-time font-weight-bold">Udin Wayang · 54m</div>
+                    </a>
+                  </div>
+                  <div class="card-footer text-center">
+                    <a class="m-0 small text-primary card-link" href="#">View More <i
+                        class="fas fa-chevron-right"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Row-->
+
+          <div class="row">
+            <div class="col-lg-12 text-center">
+              <p>Do you like this template ? you can download from <a href="https://github.com/indrijunanda/RuangAdmin"
+                  class="btn btn-primary btn-sm" target="_blank"><i class="fab fa-fw fa-github"></i>&nbsp;GitHub</a></p>
+            </div>
+          </div>
+
+        </div>
+        <!---Container Fluid-->
+      </div>
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>copyright &copy; <script> document.write(new Date().getFullYear()); </script> - developed by
+              <b><a href="https://indrijunanda.gitlab.io/" target="_blank">indrijunanda</a></b>
+            </span>
+          </div>
+        </div>
+      </footer>
+      <!-- Footer -->
+    </div>
+  </div>
+
+  <!-- Scroll to top -->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <script src="<?php echo base_url() . "assets/vendors/jquery/jquery.min.js"; ?>"></script>
+  <script src="<?php echo base_url() . "assets/vendors/bootstrap/js/bootstrap.bundle.min.js"; ?>"></script>
+  <script src="<?php echo base_url() . "assets/vendors/jquery-easing/jquery.easing.min.js"; ?>"></script>
+  <script src="<?php echo base_url() . "assets/js/ruang-admin.js"; ?>"></script>
+  <script src="<?php echo base_url() . "assets/vendors/chart.js/Chart.min.js"; ?>"></script>
+  <script src="<?php echo base_url() . "assets/js/vendors/demo/chart-area-demo.js"; ?>"></script>  
   <!-- Load React. -->
   <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
   <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
   <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
-
   <!-- Load our React component. -->
   <script type="text/babel" src="<?php echo base_url() . "assets/js/react.js"; ?>"></script>
-
 </body>
+
 </html>
