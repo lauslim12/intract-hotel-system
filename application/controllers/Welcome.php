@@ -19,12 +19,14 @@ class Welcome extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
-	public function __construct() {
+	public function __construct() 
+	{
 		parent::__construct();
 		$this->load->model('User_model');
 	}
 
-	public function index() {
+	public function index() 
+	{
 		if($this->User_model->isLoggedIn()) {
 			redirect('dashboard');
 		}

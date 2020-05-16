@@ -3,13 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dashboard extends CI_Controller {
 
-	public function __construct() {
+  public function __construct() 
+  {
     parent::__construct();
     $this->load->model('User_model');
     $this->load->model('Hotel_model');
   }
 
-  public function index() {
+  public function index() 
+  {
     if($this->User_model->isLoggedIn()) {
       $data = call_frontend($this);
       
@@ -23,7 +25,8 @@ class Dashboard extends CI_Controller {
     }
   }
 
-  public function logout() {
+  public function logout() 
+  {
     $this->session->sess_destroy();
     redirect(site_url());
   }

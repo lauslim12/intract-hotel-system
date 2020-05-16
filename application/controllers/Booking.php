@@ -3,22 +3,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Booking extends CI_Controller {
 
-  public function __construct() {
+  public function __construct() 
+  {
     parent::__construct();
     $this->load->model('Hotel_model');
   }
 
-  public function index() {
+  public function index() 
+  {
     redirect('dashboard');
   }
 
-  public function guard($array) {
+  public function guard($array) 
+  {
     if(empty($array)) {
       redirect('dashboard');
     }
   }
 
-  public function showDetail() {
+  public function showDetail() 
+  {
     $data = call_frontend($this);
     $data['id'] = $this->uri->segment(3);
     $data['hotel'] = $this->Hotel_model->getHotel($data['id']);
@@ -29,7 +33,8 @@ class Booking extends CI_Controller {
     $this->load->view('booking', $data);
   }
 
-  public function showBooking() {
+  public function showBooking() 
+  {
     $data = call_frontend($this);
     $data['id'] = $this->uri->segment(3);
     $data['hotel'] = $this->Hotel_model->getHotel($data['id']);
@@ -41,7 +46,8 @@ class Booking extends CI_Controller {
     $this->load->view('pages/bookingSection', $data);
   }
 
-  public function confirmBooking() {
+  public function confirmBooking() 
+  {
     $id = $this->input->post('hotel_id');
     $data = call_frontend($this);
 
@@ -67,7 +73,8 @@ class Booking extends CI_Controller {
   }
 
   // Session for userdata (security measures against parameter tampering)
-  public function setBookingData($data) {
+  public function setBookingData($data) 
+  {
     $session_data = [
       'hotel_id' => $data['user_orders']['id'],
       'hotel_name' => $data['user_orders']['hotel_name'],
@@ -83,12 +90,14 @@ class Booking extends CI_Controller {
     $this->session->set_userdata($session_data);
   }
 
-  public function clearBookingData() {
+  public function clearBookingData() 
+  {
     $unset = ['hotel_id', 'hotel_name', 'num_rooms', 'date_check_in', 'date_check_out', 'duration', 'payment_price', 'room_name', 'room_id'];
     $this->session->unset_userdata($unset);
   }
 
-  public function orderHotel() {
+  public function orderHotel() 
+  {
     $purchaseData = [
       'id' => '',
       'user_id' => $this->session->userdata('user_id'),
@@ -106,14 +115,16 @@ class Booking extends CI_Controller {
     $this->Hotel_model->purchaseRoom($purchaseData);
   }
 
-  public function finishBooking() {
+  public function finishBooking() 
+  {
     $data = call_frontend($this);
     $data['id'] = $this->uri->segment(3);
     $data['rooms'] = $this->Hotel_model->getRoomByOrder($data['id']);
     $this->load->view('pages/bookingFinish', $data);
   }
 
-  public function confirmFinishBooking() {
+  public function confirmFinishBooking() 
+  {
     $bookingFinishedData = [
       'id' => $this->input->post('order_id'),
       'room_id' => $this->input->post('room_id'),

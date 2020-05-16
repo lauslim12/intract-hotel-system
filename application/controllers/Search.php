@@ -3,16 +3,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Search extends CI_Controller {
 
-  public function __construct() {
+  public function __construct() 
+  {
     parent::__construct();
     $this->load->model('Hotel_model');
   }
 
-  public function index() {
+  public function index() 
+  {
     redirect('dashboard');
   }
 
-  public function searchHotel() {
+  public function searchHotel() 
+  {
     $keyword = $this->input->get('q');
 
     if($keyword === '') {
@@ -30,7 +33,8 @@ class Search extends CI_Controller {
     $this->load->view("dashboard", $data);
   }
 
-  public function sortByRating() {
+  public function sortByRating() 
+  {
     $param = $this->uri->segment(3);
 
     if($param === 'ascending') {
@@ -50,7 +54,8 @@ class Search extends CI_Controller {
     }
   }
 
-  public function filterByStar() {
+  public function filterByStar() 
+  {
     $filtered_hotels = $this->Hotel_model->filterHotel();
     $data = call_frontend($this);
     $data['hotels'] = $filtered_hotels;

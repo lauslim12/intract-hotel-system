@@ -3,18 +3,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Profile extends CI_Controller {
 
-	public function __construct() {
+  public function __construct() 
+  {
     parent::__construct();
     $this->load->model('User_model');
     $this->load->model('Hotel_model');
     $this->load->helper('form');
   }
 
-  public function index() {
+  public function index() 
+  {
     redirect('dashboard');
   }
 
-  public function view() {
+  public function view() 
+  {
     $username = $this->uri->segment(3);
     $data = call_frontend($this);
     $data['user_data'] = $this->User_model->getUserData($username);
@@ -30,7 +33,8 @@ class Profile extends CI_Controller {
     }
   }
 
-  public function uploadDisplayPicture() {
+  public function uploadDisplayPicture() 
+  {
     $config['upload_path'] = './assets/images/profile_pics/profile_users';
     $config['allowed_types'] = 'jpg|jpeg|png';
     $config['max_size'] = 5120;
@@ -52,7 +56,8 @@ class Profile extends CI_Controller {
     }
   }
 
-  public function changeDisplayPicture($path_to_img) {
+  public function changeDisplayPicture($path_to_img) 
+  {
     $user_id = $this->session->userdata('user_id');
     $update_status = $this->User_model->setDisplayPicture($user_id, $path_to_img);
 

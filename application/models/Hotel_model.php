@@ -2,17 +2,21 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Hotel_model extends CI_Model {
-  public function getHotels() {
+  
+  public function getHotels() 
+  {
     $query = $this->db->get('hotels');
     return $query->result_array();
   }
 
-  public function getRooms() {
+  public function getRooms() 
+  {
     $query = $this->db->get('rooms');
     return $query->result_array();
   }
 
-  public function getHotel($id) {
+  public function getHotel($id) 
+  {
     $this->db->select('*');
     $this->db->from('hotels');
     $this->db->join('hotel_features', 'hotels.id = hotel_features.hotel_id');
@@ -33,7 +37,8 @@ class Hotel_model extends CI_Model {
     return $query;
   }
 
-  public function getHotelRooms($id) {
+  public function getHotelRooms($id) 
+  {
     $this->db->select('*');
     $this->db->from('rooms');
     $this->db->where('hotel_id', $id);
@@ -49,7 +54,8 @@ class Hotel_model extends CI_Model {
     }
   }
 
-  public function getHotelHeadlines($id) {
+  public function getHotelHeadlines($id) 
+  {
     $this->db->select('*');
     $this->db->from('hotel_headlines');
     $this->db->where('hotel_id', $id);
@@ -58,7 +64,8 @@ class Hotel_model extends CI_Model {
     return $query->result_array();
   }
 
-  public function getHotelPrice($id, $room_name) {
+  public function getHotelPrice($id, $room_name) 
+  {
     $this->db->select('*');
     $this->db->from('rooms');
     $this->db->where('hotel_id', $id);
@@ -69,7 +76,8 @@ class Hotel_model extends CI_Model {
     return $row;
   }
 
-  public function purchaseRoom($purchaseData) {
+  public function purchaseRoom($purchaseData) 
+  {
     $roomId = $purchaseData['room_id'];
     $roomPurchased = $purchaseData['num_rooms'];
     $status = $this->reduceAvailableRoom($roomPurchased, $roomId);
@@ -86,14 +94,16 @@ class Hotel_model extends CI_Model {
     }
   }
 
-  public function reduceAvailableRoom($roomPurchased, $roomId) {
+  public function reduceAvailableRoom($roomPurchased, $roomId) 
+  {
     $sql = "UPDATE rooms SET room_count = IF(room_count - ? >= 0, room_count - ?, room_count) WHERE id = ?";
     $this->db->query($sql, [$roomPurchased, $roomPurchased, $roomId]);
     $status = $this->db->affected_rows();
     return $status;
   }
 
-  public function payHotel($orderedRoom, $roomId, $orderId) {
+  public function payHotel($orderedRoom, $roomId, $orderId) 
+  {
     $restore_room_query = "UPDATE rooms SET room_count = room_count + ? WHERE id = ?";
     $this->db->query($restore_room_query, [$orderedRoom, $roomId]);
     
@@ -101,7 +111,8 @@ class Hotel_model extends CI_Model {
     $this->db->query($finish_order_query, [$orderId]);
   }
 
-  public function searchHotel($keyword) {
+  public function searchHotel($keyword) 
+  {
     $this->db->select('*');
     $this->db->from('hotels');
     $this->db->like('name', $keyword);
@@ -110,7 +121,8 @@ class Hotel_model extends CI_Model {
     return $query->result_array();
   }
 
-  public function getRoomByOrder($order_id) {
+  public function getRoomByOrder($order_id) 
+  {
     $this->db->select('*');
     $this->db->from('orders');
     $this->db->where('id', $order_id);
@@ -119,7 +131,8 @@ class Hotel_model extends CI_Model {
     return $query->row_array();
   }
 
-  public function sortHotel($choice) {
+  public function sortHotel($choice) 
+  {
     $this->db->select('*');
     $this->db->from('hotels');
 
@@ -135,7 +148,8 @@ class Hotel_model extends CI_Model {
     return $query->result_array();
   }
 
-  public function filterHotel() {
+  public function filterHotel() 
+  {
     $this->db->select('*');
     $this->db->from('hotels');
     $this->db->where('star', 5);

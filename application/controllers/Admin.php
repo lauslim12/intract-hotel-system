@@ -3,13 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
 
-  public function __construct() {
+  public function __construct() 
+  {
     parent::__construct();
     $this->load->model('User_model');
     $this->load->model('Hotel_model');
   }
 
-  public function index() {
+  public function index() 
+  {
     if($this->User_model->isAdmin() == 1) {
       $this->load->view('admin');
     }
@@ -18,7 +20,8 @@ class Admin extends CI_Controller {
     }
   }
 
-  public function showData() {
+  public function showData() 
+  {
     if($this->User_model->isAdmin() == 1) {
       $data['user'] = $this->User_model->getUserData($this->session->userdata('username'));
       $data['hotels'] = $this->Hotel_model->getHotels();

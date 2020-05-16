@@ -3,15 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User_model extends CI_Model {
   
-  public function isLoggedIn() {
+  public function isLoggedIn() 
+  {
     return $this->session->userdata('user_id');
   }
 
-  public function isAdmin() {
+  public function isAdmin() 
+  {
     return $this->session->userdata('privilege_level');
   }
   
-  public function checkUser($username, $password) {
+  public function checkUser($username, $password) 
+  {
     $this->db->select("*");
     $this->db->from("users");
     $this->db->where("username", $username);
@@ -27,7 +30,8 @@ class User_model extends CI_Model {
     }
   }
 
-  public function register($registerData) {
+  public function register($registerData) 
+  {
     $this->db->insert('users', $registerData);
 
     if($this->db->affected_rows() != 1) {
@@ -40,12 +44,14 @@ class User_model extends CI_Model {
     redirect('welcome');
   }
 
-  public function getHistory($user_id) {
+  public function getHistory($user_id) 
+  {
     $query = $this->db->query("SELECT o.*, h.name FROM orders AS o JOIN hotels AS h ON (h.id = o.hotel_id) WHERE user_id = '$user_id'");
     return $query->result_array();
   }
 
-  public function getUserTransactionsHotel($user_id) {
+  public function getUserTransactionsHotel($user_id) 
+  {
     $this->db->select('*');
     $this->db->from('orders');
     $this->db->join('hotels', 'hotels.id = orders.hotel_id');
@@ -61,7 +67,8 @@ class User_model extends CI_Model {
   }
 
 
-  public function getUserTransactionsRooms($user_id) {
+  public function getUserTransactionsRooms($user_id) 
+  {
     $this->db->select('*');
     $this->db->from('orders');
     $this->db->join('rooms', 'rooms.id = orders.room_id');
@@ -76,7 +83,8 @@ class User_model extends CI_Model {
     }
   }
 
-  public function getUserTransactionData($user_id) {
+  public function getUserTransactionData($user_id) 
+  {
     $this->db->select('*');
     $this->db->from('orders');
     $this->db->where('user_id', $user_id);
@@ -90,7 +98,8 @@ class User_model extends CI_Model {
     }
   }
 
-  public function getUserData($username) {
+  public function getUserData($username) 
+  {
     $this->db->select('*');
     $this->db->from('users');
     $this->db->where('username', $username);
@@ -105,7 +114,8 @@ class User_model extends CI_Model {
     }
   }
 
-  public function setDisplayPicture($user_id, $path_to_image) {
+  public function setDisplayPicture($user_id, $path_to_image) 
+  {
     $this->db->trans_begin();
     $this->db->set('profile_pic', $path_to_image);
     $this->db->where('id', $user_id);
@@ -122,5 +132,3 @@ class User_model extends CI_Model {
   }
 
 }
-
-?>

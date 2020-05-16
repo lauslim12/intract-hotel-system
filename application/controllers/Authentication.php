@@ -3,12 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Authentication extends CI_Controller {
 
-  public function __construct() {
+  public function __construct() 
+  {
     parent::__construct();
     $this->load->model('User_model');
   }
   
-  public function login() {
+  public function login() 
+  {
     if($this->User_model->isLoggedIn()) {
       redirect('dashboard');
     }
@@ -43,7 +45,8 @@ class Authentication extends CI_Controller {
     }
   }
 
-  public function register() {
+  public function register() 
+  {
     $registerData = [
       'id' => '',
       'first_name' => $this->input->post('first_name', TRUE),
