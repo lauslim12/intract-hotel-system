@@ -15,7 +15,7 @@ Advanced form of [Intract Social Network](https://github.com/lauslim12/intract-s
 * HTML, SCSS, JavaScript, Node.js, and React for the Front-End.
 * CodeIgniter 3.1.11, MariaDB, IBM Cloud Services for the Back-End.
 * Block, Element, Modifier SCSS Methodology for Styling.
-* Low Cohesion, High Coupling Design Pattern
+* Low Coupling, High Cohesion Design Pattern
 * Usage of Agile Process Model.
 * Security Software Design and Development Process.
 * Hosted on a Cloud Provider.
