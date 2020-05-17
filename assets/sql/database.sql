@@ -39,6 +39,7 @@ CREATE TABLE rooms (
   price INT,
   PRIMARY KEY (id),
   FOREIGN KEY (hotel_id) REFERENCES hotels(id)
+  ON DELETE CASCADE
 )
 ENGINE = InnoDB;
 
@@ -63,11 +64,13 @@ ENGINE = InnoDB;
 CREATE TABLE reviews (
   id INT NOT NULL AUTO_INCREMENT UNIQUE,
   body TEXT,
-  added_by VARCHAR(100),
+  added_by INT NOT NULL,
   user_to VARCHAR(100),
   date_added DATETIME,
   image VARCHAR(255),
-  PRIMARY KEY (id)
+  PRIMARY KEY (id),
+  FOREIGN KEY (added_by) REFERENCES users(id)
+  ON DELETE NO ACTION
 )
 ENGINE = InnoDB;
 
@@ -86,6 +89,7 @@ CREATE TABLE orders (
   FOREIGN KEY (user_id) REFERENCES users(id),
   FOREIGN KEY (hotel_id) REFERENCES hotels(id),
   FOREIGN KEY (room_id) REFERENCES rooms(id)
+  ON DELETE NO ACTION
 ) 
 ENGINE = InnoDB;
 
