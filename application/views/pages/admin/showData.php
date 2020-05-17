@@ -5,14 +5,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="<?php echo base_url() . "assets/images/icons/favicon.png"; ?>" rel="shortcut icon">
 
   <title>Intractive &mdash; Administrator</title>
-  
-  <link href="<?php echo base_url() . "assets/vendors/fontawesome-free/css/all.min.css"; ?>" rel="stylesheet" type="text/css">
-  <link href="<?php echo base_url() . "assets/vendors/bootstrap/css/bootstrap.min.css"; ?>" rel="stylesheet" type="text/css">
-  <link href="<?php echo base_url() . "assets/vendors/datatables/dataTables.bootstrap4.min.css"; ?>" rel="stylesheet" type="text/css">
-  <link href="<?php echo base_url() . "assets/css/ruang-admin.css"; ?>" rel="stylesheet">
+  <?= $css; ?>
 </head>
 
 <body id="page-top">
@@ -29,7 +24,7 @@
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">DataTables</h1>
+            <h1 class="h3 mb-0 text-gray-800">All Hotels</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="<?php echo site_url() . "admin"; ?>">Home</a></li>
               <li class="breadcrumb-item">Manage Hotels</li>
@@ -57,16 +52,6 @@
                         <th>Action</th>
                       </tr>
                     </thead>
-                    <tfoot>
-                      <tr>
-                        <th>Name</th>
-                        <th>Location</th>
-                        <th>Headline</th>
-                        <th>Rating</th>
-                        <th>Star</th>
-                        <th>Action</th>
-                      </tr>
-                    </tfoot>
                     <tbody>
                       <?php
                         foreach($hotels as $hotel) {
@@ -101,12 +86,7 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-  <script src="<?php echo base_url() . "assets/vendors/jquery/jquery.min.js"; ?>"></script>
-  <script src="<?php echo base_url() . "assets/vendors/bootstrap/js/bootstrap.bundle.min.js"; ?>"></script>
-  <script src="<?php echo base_url() . "assets/vendors/jquery-easing/jquery.easing.min.js"; ?>"></script>
-  <script src="<?php echo base_url() . "assets/js/ruang-admin.js"; ?>"></script>
-  <script src="<?php echo base_url() . "assets/vendors/chart.js/Chart.min.js"; ?>"></script>
-  <script src="<?php echo base_url() . "assets/js/vendors/demo/chart-area-demo.js"; ?>"></script>  
+  <?= $js; ?>
 </body>
 
 </html>
