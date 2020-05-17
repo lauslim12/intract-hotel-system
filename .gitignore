@@ -2,6 +2,16 @@
 node_modules/
 assets/images/profile_pics/profile_users/
 !assets/images/profile_pics/profile_users/user.jpg
+assets/images/hotel_headlines/
+!assets/images/hotel_headlines/hotel-1.jpg
+!assets/images/hotel_headlines/hotel-2.jpg
+!assets/images/hotel_headlines/hotel-3.jpg
+!assets/images/hotel_headlines/parilio-1.jpg
+!assets/images/hotel_headlines/parilio-2.jpg
+!assets/images/hotel_headlines/parilio-3.jpg
+assets/images/hotel_pics/
+!assets/images/hotel_pics/bordeaux.jpg
+!assets/images/hotel_pics/parilio.jpg
 
 # Old Intract
 .documents/
