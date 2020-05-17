@@ -66,6 +66,14 @@ $(document).ready(function () {
   $('#modalCenter').click(function () {
     $('.modal').modal('show');
   });
+
+  // Added JavaScript
+  $('.modal').on('show.bs.modal', function(e) {
+    let hotel_id = $(e.relatedTarget).data('hotel_id');
+    $(e.currentTarget).find('input[name="hotel_id"]').val(hotel_id);
+  });
+  // End of added JavaScript
+
 });
 
 // Popover Javascript
