@@ -64,6 +64,7 @@ Still the same like old Intract:
 
 ## Project Structure
 The project structure will follow the standard CodeIgniter's Model, View, Controller principles. However, there are some small changes, which are:
+* An `.architecture` folder to store the plans regarding the project. Usually in the form of diagrams, whether it is Entity Relationship Diagram, or other diagrams that might be useful in the design process.
 * There's a `index.js` file in the root folder to use Electron.
 * In the `assets/js` folder, there's a file called `react.js`.
 In due time, I will place the public files two-levels below root for more security (assuming I do not have time yet to port to Laravel / CodeIgniter 4). 
@@ -79,6 +80,7 @@ Same like the old Intract,
 * Done.
 
 For Developers,
+
 SASS:
 * You can use `npm install` in order to modify the SASS file and or production CSS code.
 * Then, utilize `npm start` to start the production SASS code.
@@ -89,6 +91,10 @@ Electron:
 * Use `npm install` to install all of the development dependencies.
 * Use `npm run electron` to try to run the website in a desktop environment (without a browser).
 * It's still a webview connected to [my web server](https://nicholasdw.com/Intractive) though, not a dedicated desktop application like Visual Studio Code, Slack, Atom, WhatsApp, etcetera.
+
+React:
+* Because the only component that used React is the Dashboard of the Admin Panel, I used React's CDN with Babel.
+* The React file is located at `assets/js/react.js`. Fetch and edit it from there.
 
 Notes:
 * Without `npm install`, it is still possible to use the website application though, as the node packages are only used for development dependencies.
