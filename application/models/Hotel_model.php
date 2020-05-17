@@ -164,12 +164,92 @@ class Hotel_model extends CI_Model {
     return $query->result_array();
   }
 
-  public function insertHotel()
+  public function insertHotel($dataHotel)
+  {    
+    $this->db->trans_begin();
+    $this->db->insert('hotels', $dataHotel);
+    $insert_id = $this->db->insert_id();
+    $this->db->trans_complete();
+
+    if($this->db->trans_status() === FALSE) {
+      return FALSE;
+    }
+    else {
+      return $insert_id;
+    }
+  }
+
+  public function insertHotelDetails($dataRoom, $dataFeature, $dataHeadline)
   {
-    $dataHotel = [];
-    $dataRoom = [];
-    $dataFeatures = [];
-    $dataHeadline = [];
+    $this->db->trans_begin();
+    $this->db->insert('rooms', $dataRoom);
+    $this->db->insert('hotel_features', $dataFeature);
+    $this->db->insert_batch('hotel_headlines', $dataHeadline);
+
+    if($this->db->trans_status() === FALSE) {
+      $this->db->trans_rollback();
+    }
+    else {
+      $this->db->trans_commit();
+      return TRUE;
+    }
+  }
+
+  public function insertRoom($dataRoom)
+  {
+    $this->db->trans_begin();
+    $this->db->insert('rooms', $dataRoom);
+    $this->db->trans_complete();
+
+    if($this->db->trans_status() === FALSE) {
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
+  }
+
+  public function insertHeadline($dataHeadline)
+  {
+    $this->db->trans_begin();
+    $this->db->insert_batch('hotel_headlines', $dataHeadline);
+    $this->db->trans_complete();
+
+    if($this->db->trans_status() === FALSE) {
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
+  }
+
+  public function insertFeature($dataFeature)
+  {
+    $this->db->trans_begin();
+    $this->db->insert('hotel_features', $dataFeature);
+    $this->db->trans_complete();
+
+    if($this->db->trans_status() === FALSE) {
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
+  }
+
+  public function deleteHotel($id)
+  {
+    $this->db->trans_begin();
+    $this->db->where('id', $id);
+    $this->db->delete('hotels');
+    $this->db->trans_complete();
+    
+    if($this->db->trans_status() === FALSE) {
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
   }
 
 }
