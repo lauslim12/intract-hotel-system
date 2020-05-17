@@ -7,7 +7,7 @@
   </a>
   <hr class="sidebar-divider my-0" />
   <li class="nav-item active">
-    <a class="nav-link" href="<?php echo site_url() . "/admin"; ?>">
+    <a class="nav-link" href="<?php echo site_url() . "admin"; ?>">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Panel</span></a>
   </li>
@@ -20,20 +20,53 @@
   <div class="sidebar-heading">
     Manage Hotels
   </div>
+
+  <?php if(strpos($_SERVER['REQUEST_URI'], "showNewHotel")) { ?>
+  <li class="nav-item active">
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseBootstrap" aria-expanded="true" aria-controls="collapseBootstrap">
+      <i class="fab fa-fw fa-wpforms"></i>
+      <span>Manage Hotels</span>
+    </a>
+    <div id="collapseBootstrap" class="collapse show" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Hotel Management</h6>
+        <a class="collapse-item active" href="<?php echo site_url() . "admin/showNewHotel"; ?>">New Hotel</a>
+        <a class="collapse-item" href="buttons.html">Edit Hotel</a>
+        <a class="collapse-item" href="dropdowns.html">Delete Hotel</a>
+      </div>
+    </div>
+  <?php } 
+  else { ?>
   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap" aria-expanded="true" aria-controls="collapseBootstrap">
       <i class="fab fa-fw fa-wpforms"></i>
       <span>Manage Hotels</span>
     </a>
     <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Hotel Management</h6>
-          <a class="collapse-item" href="alerts.html">New Hotel</a>
-          <a class="collapse-item" href="buttons.html">Edit Hotel</a>
-          <a class="collapse-item" href="dropdowns.html">Delete Hotel</a>
-        </div>
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Hotel Management</h6>
+        <a class="collapse-item" href="<?php echo site_url() . "admin/showNewHotel"; ?>">New Hotel</a>
+        <a class="collapse-item" href="buttons.html">Edit Hotel</a>
+        <a class="collapse-item" href="dropdowns.html">Delete Hotel</a>
       </div>
+    </div>
+  <?php } ?>
   </li>
+  <?php if(strpos($_SERVER['REQUEST_URI'], "showData")) { ?>
+  <li class="nav-item active">
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true" aria-controls="collapseTable">
+      <i class="fas fa-fw fa-table"></i>
+      <span>Tables</span>
+    </a>
+    <div id="collapseTable" class="collapse show" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Tables</h6>
+        <a class="collapse-item active" href="<?php echo site_url() . "admin/showData"; ?>">All Hotels</a>
+        <a class="collapse-item" href="datatables.html">All Orders</a>
+      </div>
+    </div>
+  <?php }
+  else { ?>
   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true" aria-controls="collapseTable">
       <i class="fas fa-fw fa-table"></i>
@@ -43,9 +76,10 @@
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Tables</h6>
         <a class="collapse-item" href="<?php echo site_url() . "admin/showData"; ?>">All Hotels</a>
-        <a class="collapse-item" href="datatables.html">All Rooms</a>
+        <a class="collapse-item" href="datatables.html">All Orders</a>
       </div>
     </div>
+  <?php } ?>
   </li>
   <hr class="sidebar-divider" />
 </ul>
