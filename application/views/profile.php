@@ -14,11 +14,6 @@
 </head>
 
 <body>
-
-  <!-- jQuery Modal -->
-
-  <!-- End jQuery Modal -->
-
   <div class="container">
     <?php
       echo $navigation;
@@ -61,8 +56,7 @@
                   <p class='paragraph'>Change your profile picture here:</p>
                   <input type='file' name='fileToUpload' id='fileToUpload'>
                   <input type='submit' value='Upload Image' name='submit' class='btn-inline'>
-                </form>
-
+                <?php echo form_close(); ?>
               </div>
             <?php
               }
