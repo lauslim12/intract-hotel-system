@@ -9,6 +9,12 @@ class Hotel_model extends CI_Model {
     return $query->result_array();
   }
 
+  public function getOrders()
+  {
+    $query = $this->db->get('orders');
+    return $query->result_array();
+  }
+
   public function getRooms() 
   {
     $query = $this->db->get('rooms');
@@ -158,5 +164,12 @@ class Hotel_model extends CI_Model {
     return $query->result_array();
   }
 
+  public function insertHotel()
+  {
+    $dataHotel = [];
+    $dataRoom = [];
+    $dataFeatures = [];
+    $dataHeadline = [];
+  }
 
 }
