@@ -12,6 +12,30 @@
 
 <body id="page-top">
   <div id="wrapper">
+    <!-- Delete Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Delete Confirmation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="<?php echo site_url() . "admin/deleteHotel"; ?>" method="POST">
+            <div class="modal-body">
+              <input type="hidden" name="hotel_id" value="">
+              Are you certain to delete the hotel data? This will REMOVE ALL of the FEATURES and ROOMS! Please be certain!
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Delete</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <!-- Sidebar -->
     <?= $sidebar; ?>
     <!-- Sidebar -->
@@ -27,7 +51,7 @@
             <h1 class="h3 mb-0 text-gray-800">All Hotels</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="<?php echo site_url() . "admin"; ?>">Home</a></li>
-              <li class="breadcrumb-item">Manage Hotels</li>
+              <li class="breadcrumb-item">Tables</li>
               <li class="breadcrumb-item active" aria-current="page">All Hotels</li>
             </ol>
           </div>
@@ -41,7 +65,7 @@
                   <h6 class="m-0 font-weight-bold text-primary">All Hotels</h6>
                 </div>
                 <div class="table-responsive p-3">
-                  <table class="table align-items-center table-flush table-hover" id="dataTableHover">
+                  <table class="table text-center align-items-center table-flush table-hover" id="dataTableHover">
                     <thead class="thead-light">
                       <tr>
                         <th>Name</th>
@@ -54,16 +78,17 @@
                     </thead>
                     <tbody>
                       <?php
-                        foreach($hotels as $hotel) {
-                          echo "<tr>";
-                            echo "<td>" . $hotel['name'] . "</td>";
-                            echo "<td>" . $hotel['location'] . "</td>";
-                            echo "<td>" . $hotel['headline'] . "</td>";
-                            echo "<td>" . $hotel['rating'] . "</td>";
-                            echo "<td>" . $hotel['star'] . "</td>";
-                            echo "<td>Action</td>";
-                          echo "</tr>";
-                        }
+                      foreach ($hotels as $hotel) {
+                        $id = $hotel['id'];
+                        echo "<tr>";
+                          echo "<td>" . $hotel['name'] . "</td>";
+                          echo "<td>" . $hotel['location'] . "</td>";
+                          echo "<td>" . $hotel['headline'] . "</td>";
+                          echo "<td>" . $hotel['rating'] . "</td>";
+                          echo "<td>" . $hotel['star'] . "</td>";
+                          echo "<td><button class='btn btn-sm btn-warning' data-toggle='modal' data-target='#exampleModalCenter' data-hotel_id=$id id='#modalCenter'>Delete</button></td>";
+                        echo "</tr>";
+                      }
                       ?>
                     </tbody>
                   </table>
