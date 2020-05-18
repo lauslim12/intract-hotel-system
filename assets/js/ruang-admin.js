@@ -68,6 +68,29 @@ $(document).ready(function () {
   });
 
   // Added JavaScript
+  $('.exampleModalEdit').on('show.bs.modal', function(e) {
+    let hotel_id = $(e.relatedTarget).data('hotel_id');
+    let room_id = $(e.relatedTarget).data('room_id');
+    let room_name = $(e.relatedTarget).data('room_name');
+    let room_count = $(e.relatedTarget).data('room_count');
+    let price = $(e.relatedTarget).data('price');
+    $(e.currentTarget).find('input[name="hotel_id"]').val(hotel_id);
+    $(e.currentTarget).find('input[name="room_id"]').val(room_id);
+    $(e.currentTarget).find('input[name="room_name"]').val(room_name);
+    $(e.currentTarget).find('input[name="room_count"]').val(room_count);
+    $(e.currentTarget).find('input[name="room_price"]').val(price);
+  });
+
+  $('#modalDeleteRoom').on('show.bs.modal', function(e) {
+    let room_id = $(e.relatedTarget).data('room_id');
+    $(e.currentTarget).find('input[name="room_id"]').val(room_id);
+  });
+
+  $('#modalNewRoom').on('show.bs.modal', function(e) {
+    let hotel_id = $(e.relatedTarget).data('room_id');
+    $(e.currentTarget).find('input[name="hotel_id"]').val(hotel_id);
+  });
+
   $('.modal').on('show.bs.modal', function(e) {
     let hotel_id = $(e.relatedTarget).data('hotel_id');
     $(e.currentTarget).find('input[name="hotel_id"]').val(hotel_id);
