@@ -68,25 +68,27 @@
                   <table class="table text-center align-items-center table-flush table-hover" id="dataTableHover">
                     <thead class="thead-light">
                       <tr>
+                        <th>ID</th>
                         <th>Name</th>
-                        <th>Location</th>
-                        <th>Headline</th>
-                        <th>Rating</th>
-                        <th>Star</th>
-                        <th>Action</th>
+                        <th>Detail</th>
+                        <th>Edit Hotel</th>
+                        <th>Delete</th>
+                        <th>Room Info</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php
                       foreach ($hotels as $hotel) {
                         $id = $hotel['id'];
+                        $path_to_hotel = site_url() . "admin/showEditHotel/$id";
+                        $path_to_room = site_url() . "admin/showEditRoom/$id";
                         echo "<tr>";
+                          echo "<td>" . $id . "</td>";
                           echo "<td>" . $hotel['name'] . "</td>";
-                          echo "<td>" . $hotel['location'] . "</td>";
-                          echo "<td>" . $hotel['headline'] . "</td>";
-                          echo "<td>" . $hotel['rating'] . "</td>";
-                          echo "<td>" . $hotel['star'] . "</td>";
+                          echo "<td><button class='btn btn-sm btn-primary'>Detail</button></td>";
+                          echo "<td><a href='$path_to_hotel'><button class='btn btn-sm btn-success'>Edit Hotel</button></a></td>";
                           echo "<td><button class='btn btn-sm btn-warning' data-toggle='modal' data-target='#exampleModalCenter' data-hotel_id=$id id='#modalCenter'>Delete</button></td>";
+                          echo "<td><a href='$path_to_room'><button class='btn btn-sm btn-info'>Room Info</button></a></td>";
                         echo "</tr>";
                       }
                       ?>
@@ -99,7 +101,6 @@
         </div>
         <!---Container Fluid-->
       </div>
-
       <!-- Footer -->
       <?= $footer ?>
       <!-- Footer -->
