@@ -38,15 +38,18 @@ Features that is available at the classic Intract, but not yet ported here:
 * Wall System (Complete with infinite scrolling!)
 
 TOA:
-* Refine the Filter Search
-* CodeIgniter Validations
+* Admin Panel
+* Customer's Rating System
+* Edit Basic Profile Information
+* Refine the Filter Search (based on room price, and add filter based on stars other than 5)
+* CodeIgniter Validations for Register and Login
+* Graphical Statistics for Admin
+* User Interface
 * Refactor EVERY code, add comments, and apply the DRY principle.
 
 TODO:
-* Admin Panel
 * REST API for Database Usage (React-friendly)
 * Messaging System
-* User Interface
 * Add every dependency at `assets/vendors` to NPM, also the React.
 
 Future work:
