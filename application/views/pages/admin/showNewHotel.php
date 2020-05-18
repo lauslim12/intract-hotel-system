@@ -42,27 +42,27 @@
                   <?php echo form_open_multipart('admin/newHotel'); ?>
                   <div class="form-group">
                     <label for="exampleFormControlInput1">Hotel Name</label>
-                    <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="Bordeaux Le Grand Hotel? Fill me up!">
+                    <input type="text" name="name" value="<?php echo set_value('name'); ?>" class="form-control" id="exampleFormControlInput1" placeholder="Bordeaux Le Grand Hotel? Fill me up!">
                     <?php echo form_error('name', '<small><p class="form-text text-danger">', '</small></p>'); ?>
                   </div>
                   <div class="form-group">
                     <label for="exampleFormControlInput2">Hotel Location</label>
-                    <input type="text" name="location" class="form-control" id="exampleFormControlInput2" placeholder="Bordeaux, France? Fill me up!">
+                    <input type="text" name="location" value="<?php echo set_value('location'); ?>" class="form-control" id="exampleFormControlInput2" placeholder="Bordeaux, France? Fill me up!">
                     <?php echo form_error('location', '<small><p class="form-text text-danger">', '</small></p>'); ?>
                   </div>
                   <div class="form-group">
                     <label for="exampleFormControlInput3">Hotel Star</label>
-                    <input type="number" name="star" class="form-control" id="exampleFormControlInput3" placeholder="5 stars, maybe? Fill me with numbers!">
+                    <input type="number" name="star" value="<?php echo set_value('star'); ?>" class="form-control" id="exampleFormControlInput3" placeholder="5 stars, maybe? Fill me with numbers!">
                     <?php echo form_error('star', '<small><p class="form-text text-danger">', '</small></p>'); ?>
                   </div>
                   <div class="form-group">
                     <label for="exampleFormControlTextarea1">Headline</label>
-                    <textarea class="form-control" name="headline" id="exampleFormControlTextarea1" rows="3" placeholder="Fill me with hotel headlines! Min is 10 characters, max is 30 characters!"></textarea>
+                    <textarea class="form-control" value="<?php echo set_value('headline'); ?>" name="headline" id="exampleFormControlTextarea1" rows="3" placeholder="Fill me with hotel headlines! Min is 10 characters, max is 30 characters!"></textarea>
                     <?php echo form_error('headline', '<small><p class="form-text text-danger">', '</small></p>'); ?>
                   </div>
                   <div class="form-group">
                     <label for="exampleFormControlTextarea2">Description</label>
-                    <textarea class="form-control" name="description" id="exampleFormControlTextarea2" rows="3" placeholder="Fill me with hotel headlines! Min is 40 characters!"></textarea>
+                    <textarea class="form-control" name="description" value="<?php echo set_value('description'); ?>" id="exampleFormControlTextarea2" rows="3" placeholder="Fill me with hotel headlines! Min is 40 characters!"></textarea>
                     <?php echo form_error('description', '<small><p class="form-text text-danger">', '</small></p>'); ?>
                   </div>
                   <div class="form-group">
@@ -79,22 +79,22 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleFormControlInput4">Room Name</label>
-                    <input type="text" class="form-control" name="room_name" id="exampleFormControlInput4" placeholder="Presidental Suite, maybe? Fill me up!">
+                    <input type="text" class="form-control" name="room_name" value="<?php echo set_value('room_name'); ?>" id="exampleFormControlInput4" placeholder="Presidental Suite, maybe? Fill me up!">
                     <?php echo form_error('room_name', '<small><p class="form-text text-danger">', '</small></p>'); ?>
                   </div>
                   <div class="form-group">
                     <label for="exampleFormControlInput5">Room Available</label>
-                    <input type="number" class="form-control" name="room_count" id="exampleFormControlInput5" placeholder="10 rooms available, maybe? Fill me with numbers!">
+                    <input type="number" class="form-control" name="room_count" value="<?php echo set_value('room_count'); ?>" id="exampleFormControlInput5" placeholder="10 rooms available, maybe? Fill me with numbers!">
                     <?php echo form_error('room_count', '<small><p class="form-text text-danger">', '</small></p>'); ?>
                   </div>
                   <div class="form-group">
                     <label for="exampleFormControlInput6">Room Price</label>
-                    <input type="number" class="form-control" name="price" id="exampleFormControlInput4" placeholder="Rp. 1.500.000 per night? Fill me without dots and currency notations!">
+                    <input type="number" class="form-control" name="price" value="<?php echo set_value('price'); ?>" id="exampleFormControlInput4" placeholder="Rp. 1.500.000 per night? Fill me without dots and currency notations!">
                     <?php echo form_error('price', '<small><p class="form-text text-danger">', '</small></p>'); ?>
                   </div>
                   <div class="form-group">
                     <label for="exampleFormControlInput6">Hotel Feature</label>
-                    <input type="text" class="form-control" name="feature" id="exampleFormControlInput4" placeholder="Swimming pool? Breakfast in rooms? Or else?">
+                    <input type="text" class="form-control" name="feature" value="<?php echo set_value('feature'); ?>" id="exampleFormControlInput4" placeholder="Swimming pool? Breakfast in rooms? Or else?">
                     <?php echo form_error('feature', '<small><p class="form-text text-danger">', '</small></p>'); ?>
                   </div>
                   <div class="form-group">
