@@ -32,10 +32,43 @@
         <h6 class="collapse-header">Hotel Management</h6>
         <a class="collapse-item active" href="<?php echo site_url() . "admin/showNewHotel"; ?>">New Hotel</a>
         <a class="collapse-item" href="buttons.html">Edit Hotel</a>
-        <a class="collapse-item" href="dropdowns.html">Delete Hotel</a>
+        <a class="collapse-item" href="dropdowns.html">Room Management</a>
       </div>
     </div>
-  <?php } 
+  <?php 
+  }
+  else if(strpos($_SERVER['REQUEST_URI'], "showEditRoom")) { ?>
+  <li class="nav-item active">
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseBootstrap" aria-expanded="true" aria-controls="collapseBootstrap">
+      <i class="fab fa-fw fa-wpforms"></i>
+      <span>Manage Hotels</span>
+    </a>
+    <div id="collapseBootstrap" class="collapse show" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Hotel Management</h6>
+        <a class="collapse-item" href="<?php echo site_url() . "admin/showNewHotel"; ?>">New Hotel</a>
+        <a class="collapse-item" href="buttons.html">Edit Hotel</a>
+        <a class="collapse-item active" href="dropdowns.html">Room Management</a>
+      </div>
+    </div>
+  <?php
+  } 
+  else if(strpos($_SERVER['REQUEST_URI'], "showEditHotel")) { ?>
+  <li class="nav-item active">
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseBootstrap" aria-expanded="true" aria-controls="collapseBootstrap">
+      <i class="fab fa-fw fa-wpforms"></i>
+      <span>Manage Hotels</span>
+    </a>
+    <div id="collapseBootstrap" class="collapse show" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Hotel Management</h6>
+        <a class="collapse-item" href="<?php echo site_url() . "admin/showNewHotel"; ?>">New Hotel</a>
+        <a class="collapse-item active" href="buttons.html">Edit Hotel</a>
+        <a class="collapse-item" href="dropdowns.html">Room Management</a>
+      </div>
+    </div>
+  <?php
+  }
   else { ?>
   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap" aria-expanded="true" aria-controls="collapseBootstrap">
@@ -47,7 +80,7 @@
         <h6 class="collapse-header">Hotel Management</h6>
         <a class="collapse-item" href="<?php echo site_url() . "admin/showNewHotel"; ?>">New Hotel</a>
         <a class="collapse-item" href="buttons.html">Edit Hotel</a>
-        <a class="collapse-item" href="dropdowns.html">Delete Hotel</a>
+        <a class="collapse-item" href="dropdowns.html">Room Management</a>
       </div>
     </div>
   <?php } ?>
