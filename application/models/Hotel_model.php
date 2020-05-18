@@ -21,6 +21,24 @@ class Hotel_model extends CI_Model {
     return $query->result_array();
   }
 
+  public function getRoom($id)
+  {
+    $this->db->select('*');
+    $this->db->from('rooms');
+    $this->db->where('hotel_id', $id);
+    $query = $this->db->get();
+    return $query->result_array();
+  }
+
+  public function getHotelEssentialData($id)
+  {
+    $this->db->select('*');
+    $this->db->from('hotels');
+    $this->db->where('id', $id);
+    $query = $this->db->get();
+    return $query->row_array();
+  }
+
   public function getHotel($id) 
   {
     $this->db->select('*');
@@ -68,6 +86,24 @@ class Hotel_model extends CI_Model {
     $query = $this->db->get();
 
     return $query->result_array();
+  }
+
+  public function getHotelFeatures($id)
+  {
+    $this->db->select('*');
+    $this->db->from('hotel_features');
+    $this->db->where('hotel_id', $id);
+    $query = $this->db->get();
+
+    return $query->result_array();
+  }
+
+  public function getTotalHotelFeatures($id)
+  {
+    $this->db->select('*');
+    $this->db->from('hotel_features');
+    $this->db->where('hotel_id', $id);
+    return $this->db->count_all_results();
   }
 
   public function getHotelPrice($id, $room_name) 
@@ -237,11 +273,102 @@ class Hotel_model extends CI_Model {
     }
   }
 
+  public function editHotel($data, $id)
+  {
+    $this->db->trans_begin();
+    $this->db->where('id', $id);
+    $this->db->update('hotels', $data);
+    $this->db->trans_complete();
+    
+    if($this->db->trans_status() === FALSE) {
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
+  }
+
+  public function editHotelHeadlines($data, $id)
+  {
+    $this->db->trans_begin();
+    $this->db->where('hotel_id', $id);
+    $this->db->delete('hotel_headlines');
+    $this->db->insert_batch('hotel_headlines', $data);
+    $this->db->trans_complete();
+    
+    if($this->db->trans_status() === FALSE) {
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
+  }
+
+  public function editHotelFeatures($data, $id)
+  {
+    $this->db->trans_begin();
+    $this->db->where('hotel_id', $id);
+    $this->db->delete('hotel_features');
+    $this->db->insert_batch('hotel_features', $data);
+    $this->db->trans_complete();
+    
+    if($this->db->trans_status() === FALSE) {
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
+  }
+
   public function deleteHotel($id)
   {
     $this->db->trans_begin();
     $this->db->where('id', $id);
     $this->db->delete('hotels');
+    $this->db->trans_complete();
+    
+    if($this->db->trans_status() === FALSE) {
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
+  }
+
+  public function newRoom($data)
+  {
+    $this->db->trans_begin();
+    $this->db->insert('rooms', $data);
+    $this->db->trans_complete();
+    
+    if($this->db->trans_status() === FALSE) {
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
+  }
+
+  public function editRoom($data, $id)
+  {
+    $this->db->trans_begin();
+    $this->db->where('id', $id);
+    $this->db->update('rooms', $data);
+    $this->db->trans_complete();
+    
+    if($this->db->trans_status() === FALSE) {
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
+  }
+
+  public function deleteRoom($id)
+  {
+    $this->db->trans_begin();
+    $this->db->where('id', $id);
+    $this->db->delete('rooms');
     $this->db->trans_complete();
     
     if($this->db->trans_status() === FALSE) {
