@@ -38,8 +38,7 @@ CREATE TABLE rooms (
   room_count INT,
   price INT,
   PRIMARY KEY (id),
-  FOREIGN KEY (hotel_id) REFERENCES hotels(id)
-  ON DELETE CASCADE
+  FOREIGN KEY (hotel_id) REFERENCES hotels(id) ON DELETE CASCADE
 )
 ENGINE = InnoDB;
 
@@ -47,8 +46,7 @@ CREATE TABLE hotel_features (
   hotel_id INT NOT NULL,
   feature VARCHAR(50),
   PRIMARY KEY (hotel_id, feature),
-  FOREIGN KEY (hotel_id) REFERENCES hotels(id)
-  ON DELETE CASCADE
+  FOREIGN KEY (hotel_id) REFERENCES hotels(id) ON DELETE CASCADE
 )
 ENGINE = InnoDB;
 
@@ -56,21 +54,19 @@ CREATE TABLE hotel_headlines (
   hotel_id INT NOT NULL,
   headline_picture VARCHAR(150),
   PRIMARY KEY (hotel_id, headline_picture),
-  FOREIGN KEY (hotel_id) REFERENCES hotels(id)
-  ON DELETE CASCADE
+  FOREIGN KEY (hotel_id) REFERENCES hotels(id) ON DELETE CASCADE
 )
 ENGINE = InnoDB;
 
 CREATE TABLE reviews (
   id INT NOT NULL AUTO_INCREMENT UNIQUE,
   body TEXT,
-  added_by INT NOT NULL,
+  added_by INT,
   user_to VARCHAR(100),
   date_added DATETIME,
   image VARCHAR(255),
   PRIMARY KEY (id),
-  FOREIGN KEY (added_by) REFERENCES users(id)
-  ON DELETE NO ACTION
+  FOREIGN KEY (added_by) REFERENCES users(id) ON DELETE SET NULL
 )
 ENGINE = InnoDB;
 
@@ -86,10 +82,9 @@ CREATE TABLE orders (
   price INT,
   finished BOOLEAN,
   PRIMARY KEY (id),
-  FOREIGN KEY (user_id) REFERENCES users(id),
-  FOREIGN KEY (hotel_id) REFERENCES hotels(id),
-  FOREIGN KEY (room_id) REFERENCES rooms(id)
-  ON DELETE NO ACTION
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL,
+  FOREIGN KEY (hotel_id) REFERENCES hotels(id) ON DELETE SET NULL,
+  FOREIGN KEY (room_id) REFERENCES rooms(id) ON DELETE SET NULL
 ) 
 ENGINE = InnoDB;
 
