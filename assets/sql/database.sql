@@ -4,16 +4,16 @@ USE intractive;
 
 CREATE TABLE users (
   id INT NOT NULL AUTO_INCREMENT UNIQUE,
-  first_name VARCHAR(25),
-  last_name VARCHAR(25),
-  username VARCHAR(100) UNIQUE,
-  email VARCHAR(100) UNIQUE,
-  password VARCHAR(255),
-  birthdate DATE,
-  gender VARCHAR(2),
-  signup_date DATE,
-  profile_pic VARCHAR(255),
-  privilege_level INT,
+  first_name VARCHAR(25) NOT NULL,
+  last_name VARCHAR(25) NOT NULL,
+  username VARCHAR(100) NOT NULL UNIQUE,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  birthdate DATE NOT NULL,
+  gender VARCHAR(2) NOT NULL,
+  signup_date DATE NOT NULL,
+  profile_pic VARCHAR(255) NOT NULL,
+  privilege_level INT NOT NULL,
   PRIMARY KEY (id)
 )
 ENGINE = InnoDB;
