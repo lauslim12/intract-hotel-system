@@ -15,16 +15,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 <body>
   <div class="container">
-    <?php
-    echo $navigation;
-    ?>
-
+    <?= $navigation; ?>
     <div class="content">
-      <?php
-      echo $sidebar;
-      ?>
+      <?= $sidebar; ?>
       <main class="hotel-view">
-
         <div class="gallery">
           <figure class="gallery__item">
             <img src="<?php echo base_url() . $headlines[0]['headline_picture']; ?>" alt="Photo 1" class="gallery__photo">
@@ -36,10 +30,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <img src="<?php echo base_url() . $headlines[2]['headline_picture']; ?>" alt="Photo 3" class="gallery__photo">
           </figure>
         </div>
-
         <div class="overview">
           <h1 class="overview__heading"><?php echo $hotel[0]['name']; ?></h1>
-
           <div class="overview__stars">
             <?php
             for ($i = 0; $i < $hotel[0]['star']; $i++) {
@@ -51,21 +43,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
             }
             ?>
           </div>
-
           <div class="overview__location">
             <svg class="overview__icon-location">
               <use xlink:href="<?php echo base_url() . "/assets/images/svg/sprite.svg#icon-location-pin"; ?>"></use>
             </svg>
             <button class="btn-inline"><?php echo $hotel[0]['location']; ?></button>
           </div>
-
           <div class="overview__rating">
             <div class="overview__rating-average"><?php echo $hotel[0]['rating']; ?></div>
             <div class="overview__rating-count">888 votes</div>
           </div>
-
         </div>
-
         <div class="detail">
           <div class="description">
             <h3 class="paragraph--center">
@@ -73,13 +61,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 echo $hotel[0]['headline'];
               ?>
             </h3>
-
             <p class="paragraph">
               <?php
               echo $hotel[0]['description'];
               ?>
             </p>
-
             <ul class='list'>
               <?php
               for ($i = 0; $i < $hotel['count_feature']; $i++) {
@@ -89,7 +75,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
               }
               ?>
             </ul>
-
             <!--
             <div class="recommend">
               <p class="paragraph__count">
@@ -104,7 +89,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
             </div>
             -->
           </div>
-
           <div class="user-order">
             <figure class="user-order__figure">
               <blockquote class="user-order__figure__text">
@@ -126,49 +110,58 @@ defined('BASEPATH') or exit('No direct script access allowed');
               <blockquote class="user-order__figure__text">
                 <h1 class='user-order__figure__heading'>Book</h1>
                 <p class='paragraph'>Book your own personal hotel room by filling the form below!</p>
-
                 <?php
                 if ($rooms === FALSE) {
                   echo "<p class='paragraph'>We are sorry, but there are no rooms available!</p>";
                 }
-                // I actually despise doing this.
                 else {
+                  validation_errors();
                 ?>
-
-                  <form action="<?php echo site_url() . "/booking/confirmBooking"; ?>" method="POST">
-                    <input type='hidden' name='hotel_id' value="<?php echo $id; ?>" readonly>
-                    <input type="text" name='hotel_name' value="<?php echo $hotel[0]['name']; ?>" readonly>
-                    <input type="number" name='num_rooms' placeholder="Number of rooms..." required>
-                    <input type="date" name='date_check_in' required>
-                    <input type="date" name='date_check_out' required>
-                    <select name="room" required>
+                  <form action="<?php echo site_url() . "booking/confirmBooking"; ?>" class='form_booking' method="POST">
+                    <input type='hidden' name='hotel_id' class='form-booking__input' value="<?php echo $id; ?>" readonly>
+                    <p class="paragraph--bold-colored">Hotel:</p>
+                    <input type="text" name='hotel_name' class='form-booking__input--readonly' value="<?php echo $hotel[0]['name']; ?>" readonly>
+                    <p class="paragraph--bold-colored">Rooms:</p>
+                    <input type="number" name='num_rooms' class='form-booking__input' placeholder="Number of rooms..." required>
+                    <?php echo form_error('num_rooms'); ?>
+                    <p class="paragraph--bold-colored">Check In:</p>
+                    <input id="check_in_date" type="date" name='date_check_in' class='form-booking__input' required>
+                    <?php echo form_error('date_check_in'); ?>
+                    <p class="paragraph--bold-colored">Check Out:</p>
+                    <input id="check_out_date" type="date" name='date_check_out' class='form-booking__input' required>
+                    <?php echo form_error('date_check_out'); ?>
+                    <p class="paragraph--bold-colored">Rooms Type:</p>
+                    <select name="room" class='form-booking__input' required>
                       <?php
                       foreach ($rooms as $room) {
                         echo "<option value='" . $room['room_name'] . "'>" . $room['room_name'] . "</option>";
                       }
                       ?>
                     </select><br>
+                    <?php echo form_error('room'); ?>
                     <input type="submit" value="Book Now!" class='btn-inline u-center-text'>
                   </form>
-
                   <?php
                     $error_message = $this->session->flashdata('message');
                     echo "<p class='paragraph'>$error_message</p>";
                   ?>
-
               </blockquote>
             </figure>
-
           <?php
                 }
           ?>
-
           </div>
         </div>
       </main>
     </div>
-
   </div>
+
+  <!-- Same laziness. Add this to Intractive.js when all is over. -->
+  <script>
+    let today = new Date().toISOString().substr(0, 10);
+    document.querySelector("#check_in_date").value = today;
+  </script>
+
 </body>
 
 </html>
