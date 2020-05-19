@@ -7,6 +7,10 @@ class Booking extends CI_Controller {
   {
     parent::__construct();
     $this->load->model('Hotel_model');
+    $this->load->model('Room_model');
+    $this->load->helper('form');
+    $this->load->library('form_validation');
+    $this->form_validation->set_error_delimiters('<p class="warning">', '</p>');
   }
 
   public function index() 
@@ -21,6 +25,51 @@ class Booking extends CI_Controller {
     }
   }
 
+  public function compareDate($string)
+  {
+    $startDate = strtotime($this->input->post('date_check_in', TRUE));
+    $endDate = strtotime($this->input->post('date_check_out', TRUE));
+
+    if($endDate > $startDate) {
+      return TRUE;
+    }
+    else {
+      $this->form_validation->set_message('compareDate', 'The end date cannot be lesser than the start date!');
+      return FALSE;
+    }
+  }
+
+  public function compareRooms($number)
+  {
+    $roomWanted = $this->input->post('room', TRUE);
+    $hotel_id = $this->input->post('hotel_id', TRUE);
+    $roomAvailable = $this->Room_model->getRoomAvailableByRoomName($hotel_id, $roomWanted);
+
+    if($number > $roomAvailable) {
+      $this->form_validation->set_message('compareRooms', 'We do not have that much room!');
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
+  }
+
+  public function validateBooking()
+  {
+    $this->form_validation->set_rules('num_rooms', 'Number of Rooms', 'trim|required|numeric|callback_compareRooms', array(
+      'required' => "Please fill out the number of rooms!",
+      'numeric' => "The data you entered is not a numerical value!"
+    ));
+
+    $this->form_validation->set_rules('date_check_in', 'Check In Date', 'required|callback_compareDate', array(
+      'required' => "You have to fill the check in date!"
+    ));
+
+    $this->form_validation->set_rules('date_check_out', 'Check Out Date', 'required', array(
+      'required' => "You have to fill the check out date!"
+    ));
+  }
+
   public function showDetail() 
   {
     $data = call_frontend($this);
@@ -33,22 +82,34 @@ class Booking extends CI_Controller {
     $this->load->view('booking', $data);
   }
 
-  public function showBooking() 
+  public function showBooking($id = NULL) 
   {
     $data = call_frontend($this);
-    $data['id'] = $this->uri->segment(3);
+
+    if($id === NULL) {
+      $data['id'] = $this->uri->segment(3);
+    }
+    else {
+      $data['id'] = $id;
+    }
+
     $data['hotel'] = $this->Hotel_model->getHotel($data['id']);
     $data['headlines'] = $this->Hotel_model->getHotelHeadlines($data['id']);
     $data['rooms'] = $this->Hotel_model->getHotelRooms($data['id']);
-
+    $this->guard($data['hotel']);
     $this->session->set_userdata('if_transaction_fail', current_url());
-
     $this->load->view('pages/bookingSection', $data);
   }
 
   public function confirmBooking() 
   {
     $id = $this->input->post('hotel_id');
+    $this->validateBooking();
+    if($this->form_validation->run() === FALSE) {
+      $this->showBooking($id);
+      return;
+    }
+
     $data = call_frontend($this);
 
     $data['user_orders'] = [
@@ -108,6 +169,7 @@ class Booking extends CI_Controller {
       'date_check_in' => $this->session->userdata('date_check_in'),
       'date_check_out' => $this->session->userdata('date_check_out'),
       'price' => $this->session->userdata('payment_price'),
+      'rating' => NULL,
       'finished' => FALSE
     ];
 
@@ -120,17 +182,21 @@ class Booking extends CI_Controller {
     $data = call_frontend($this);
     $data['id'] = $this->uri->segment(3);
     $data['rooms'] = $this->Hotel_model->getRoomByOrder($data['id']);
+    $this->guard($data['rooms']);
+    if($data['rooms']['user_id'] != $this->session->userdata('user_id')) {
+      redirect('dashboard');
+    }
     $this->load->view('pages/bookingFinish', $data);
   }
 
   public function confirmFinishBooking() 
   {
     $bookingFinishedData = [
-      'id' => $this->input->post('order_id'),
-      'room_id' => $this->input->post('room_id'),
-      'num_rooms' => $this->input->post('ordered_rooms'),
-      'payment' => $this->input->post('payment'),
-      'rating' => $this->input->post('rating')
+      'id' => $this->input->post('order_id', TRUE),
+      'room_id' => $this->input->post('room_id', TRUE),
+      'num_rooms' => $this->input->post('ordered_rooms', TRUE),
+      'payment' => $this->input->post('payment', TRUE),
+      'rating' => $this->input->post('rating', TRUE)
     ];
 
     $result = $this->Hotel_model->getRoomByOrder($bookingFinishedData['id']);
@@ -140,7 +206,7 @@ class Booking extends CI_Controller {
       redirect('booking/finishBooking');
     }
     else {
-      $this->Hotel_model->payHotel($bookingFinishedData['num_rooms'], $bookingFinishedData['room_id'], $bookingFinishedData['id']);
+      $this->Hotel_model->payHotel($bookingFinishedData['num_rooms'], $bookingFinishedData['room_id'], $bookingFinishedData['id'], $bookingFinishedData['rating'], $result['hotel_id']);
       redirect('profile');
     }
 
