@@ -1,7 +1,6 @@
-<?php 
-  defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,28 +14,49 @@
 
 <body>
   <div class="container">
-    <?php
-      echo $navigation;
-    ?>
-
+    <?= $navigation; ?>
     <div class="content">
-      <?php
-        echo $sidebar;
-      ?>
-
+      <?= $sidebar; ?>
       <main class="hotel-view">
         <div class="profile-detail detail">
           <div class="profile__container">
-
             <div class="profile">
-              <form action="<?php echo site_url() . "booking/confirmFinishBooking"; ?>" method="POST">
-                <input type='hidden' name='order_id' value="<?php echo $id; ?>">
-                <input type="hidden" name='room_id' value="<?php echo $rooms['room_id']; ?>">
-                <input type='hidden' name='ordered_rooms' value="<?php echo $rooms['num_rooms']; ?>"> 
-                <h2>Payment</h2>
-                <input type="number" name='payment' placeholder="Pay..." required>
-                <h2>Rating</h2>
-                <select name="rating" required>
+              <h4>Before you finish this order, please accept our thanks for using our services!</h4>
+              <h2 class="paragraph">
+                <?php if($this->session->userdata('gender') == 'M') {
+                  $str = 'Dear Mr.';
+                }
+                else {
+                  $str = 'Dear Ms.';
+                }
+                  echo $str . ' ' . $this->session->userdata('first_name') . ' ' . $this->session->userdata('last_name') . ":"; 
+                ?>
+              </h2>
+              <p class="paragraph">
+                I just wanted you to know that we truly enjoy working with you and feel honored to be your chosen hotel provider.<br/>
+                Your business is much appreciated, and we will do our very best to continue to meet your hotel booking needs.<br/>
+                Your continued patronage and suggestions are a vital part of our growth.<br/><br/> 
+                
+                As the boss of Intractive, I founded this company and raised it to be glorious with my own skills and talents.<br/>
+                While skills and talents can be limitless, there are two things that are more valuable, customers and friends.<br/> 
+                Without my friends and team, Intractive would not be as big as now.<br/>
+                Without customers, we would be nothing more than a speck of dust. For that, we are most grateful.<br/>
+                Thanks again! We look forward to serving you for many years to come.<br/><br/>
+                <span class="paragraph--bold">
+                  Best regards,<br/>
+                  Nicholas Dwiarto Wirasbawa<br/>
+                  Leader/Boss of Intractive.
+                </span>
+              </p><br/>
+              <p class="paragraph">Please pay and give us your rating here!</p>
+              <form action="<?php echo site_url() . "booking/confirmFinishBooking"; ?>" class="form-booking" method="POST">
+                <input type='hidden' name='order_id' class="form-booking__input" value="<?php echo $id; ?>">
+                <input type="hidden" name='room_id' class="form-booking__input" value="<?php echo $rooms['room_id']; ?>">
+                <input type='hidden' name='ordered_rooms' class="form-booking__input" value="<?php echo $rooms['num_rooms']; ?>">
+                <h4>Payment (Rp. <?= number_format($rooms['price']); ?>)</h4>
+                <input type="number" class="form-booking__input" name='payment' placeholder="Pay..." required>
+                <h4>Rating</h4>
+                <select name="rating" class="form-booking__input" required>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -49,20 +69,20 @@
                   <option value="10">10</option>
                 </select>
                 <br><br>
-                <input type="submit" value="Finish!">
+                <div class="u-center-text">
+                  <input type="submit" class='btn-inline u-center-text' value="Finish Order!">
+                </div>
                 <?php
-                  $error_message = $this->session->flashdata('error_message');
-                  echo "<p class='paragraph'>$error_message</p>";
+                $error_message = $this->session->flashdata('error_message');
+                echo "<p class='paragraph'>$error_message</p>";
                 ?>
               </form>
             </div>
           </div>
         </div>
       </main>
-
     </div>
   </div>
-
 </body>
 
 </html>
