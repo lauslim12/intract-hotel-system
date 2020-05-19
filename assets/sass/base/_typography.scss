@@ -28,11 +28,24 @@ body {
   &:not(:last-of-type) {
     margin-bottom: 2rem;
   }
+
+  &--bold-colored {
+    color: var(--color-grey-dark-3);
+    font-weight: 600;
+  }
+
 }
 
 .link {
   text-decoration: none;
   color: var(--color-secondary-dark);
+}
+
+.warning {
+  font-size: 1.2rem;
+  color: var(--color-secondary-dark);
+  font-weight: 600;
+  margin-bottom: .5rem;
 }
 
 
