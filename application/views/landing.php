@@ -15,15 +15,28 @@ defined('BASEPATH') or exit('No direct script access allowed');
 </head>
 
 <body class="landing-body">
+  <?php
+  if(isset($_POST['register_button'])) {
+    echo '
+        <script>
+          $(document).ready(function() {
+            $(".form-view__login").hide();
+            $(".form-view__register").show();
+          });
+        </script>
+      ';
+  }
+  ?>
   <main class="form-view">
     <div class="form-view__header">
       <h2>Intractive Hotel System</h2>
       <p>Sign up or login here!</p>
     </div>
     <div class="form-view__login u-margin-bottom-small">
+      <?php validation_errors(); ?>
       <form action='<?php echo site_url() . "authentication/login"; ?>' method="POST" class="form-view__form">
-        <input type="text" name="login_username" placeholder="Username" /><br>
-        <input type="password" name="login_password" placeholder="Password" /><br>
+        <input type="text" name="login_username" placeholder="Username" required /><br>
+        <input type="password" name="login_password" placeholder="Password" required /><br>
         <input type="submit" name="login_button" value="Submit" class="btn-inline"><br>
         <?php
         if ($this->session->flashdata('message') != '') {
@@ -34,17 +47,27 @@ defined('BASEPATH') or exit('No direct script access allowed');
       </form>
     </div>
     <div class="form-view__register u-margin-bottom-small">
+      <?php validation_errors(); ?>
       <form action="<?php echo site_url() . "authentication/register"; ?>" method="POST" class="form-view__form">
-        <input type="text" name="first_name" placeholder="First Name" required />
-        <input type="text" name="last_name" placeholder="Last Name" required />
-        <input type="text" name="username" placeholder="Username" required />
-        <input type="email" name="email" placeholder="Email" required />
-        <input type="password" name="password" placeholder="Password" required />
-        <input type="date" name="birthdate" required />
-        <select name="gender" required>
+        <input type="text" name="first_name" placeholder="First Name"/><br/>
+        <?php echo form_error('first_name'); ?>
+        <input type="text" name="last_name" placeholder="Last Name" required /><br/>
+        <?php echo form_error('last_name'); ?>
+        <input type="text" name="username" placeholder="Username" required /><br/>
+        <?php echo form_error('username'); ?>
+        <input type="email" name="email" placeholder="Email" required /><br/>
+        <?php echo form_error('email'); ?>
+        <input type="password" name="password" placeholder="Password" required /><br/>
+        <?php echo form_error('password'); ?>
+        <input type="password" name="passwordconf" placeholder="Confirm Password" required /><br/>
+        <?php echo form_error('passwordconf'); ?>
+        <input type="date" name="birthdate" required /><br/>
+        <?php echo form_error('birthdate'); ?>
+        <select name="gender" required><br/>
           <option value="M">Male</option>
           <option value="F">Female</option>
-        </select><br>
+        </select><br/>
+        <?php echo form_error('gender'); ?>
         <input type="submit" name="register_button" value="Submit" class="btn-inline">
         <br>
         <a href="#" id="login">Already have an account? Click me to login!</a>
