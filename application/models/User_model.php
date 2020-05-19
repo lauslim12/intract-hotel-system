@@ -44,12 +44,6 @@ class User_model extends CI_Model {
     redirect('welcome');
   }
 
-  public function getHistory($user_id) 
-  {
-    $query = $this->db->query("SELECT o.*, h.name FROM orders AS o JOIN hotels AS h ON (h.id = o.hotel_id) WHERE user_id = '$user_id'");
-    return $query->result_array();
-  }
-
   public function getUserTransactionsHotel($user_id) 
   {
     $this->db->select('*');
@@ -65,7 +59,6 @@ class User_model extends CI_Model {
       return $query->result_array();
     }
   }
-
 
   public function getUserTransactionsRooms($user_id) 
   {
