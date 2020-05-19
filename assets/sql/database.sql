@@ -62,11 +62,12 @@ CREATE TABLE reviews (
   id INT NOT NULL AUTO_INCREMENT UNIQUE,
   body TEXT,
   added_by INT,
-  user_to VARCHAR(100),
+  hotel_to INT,
   date_added DATETIME,
   image VARCHAR(255),
   PRIMARY KEY (id),
-  FOREIGN KEY (added_by) REFERENCES users(id) ON DELETE SET NULL
+  FOREIGN KEY (added_by) REFERENCES users(id) ON DELETE SET NULL,
+  FOREIGN KEY (hotel_to) REFERENCES hotels(id) ON DELETE SET NULL
 )
 ENGINE = InnoDB;
 
@@ -80,6 +81,7 @@ CREATE TABLE orders (
   date_check_out DATE,
   duration INT,
   price INT,
+  rating INT,
   finished BOOLEAN,
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL,
@@ -92,23 +94,8 @@ INSERT INTO users VALUES
 (1, 'Nicholas', 'Dwiarto',  'nicholasnwr', 'nicholas@nicholas.com', '$2y$10$2twydAVZ1MvZTv/Gk8nzQe6h9JGmPvade6u6046cE7IT3vS/.JmYK', '2000-04-07', 'M', '2020-04-07', '/assets/images/profile_pics/defaults/head_belize_hole.png', 1);
 
 INSERT INTO hotels VALUES
-  (1,
-  'InterContinental Bordeaux Le Grand Hotel',
-  'Bordeaux, France',
-  'Stay in the center of Bordeaux!',
-  'Directly opposite the Grand Théâtre, this 5-star hotel is in the heart of the historic center of Bordeaux. It offers a concierge service, a babysitting service upon request, gourmet restaurants and a 3281 ft² spa and wellness center. New Bordeaux Stadium is 3.7 mi away.',
-  '/assets/images/hotel_pics/bordeaux.jpg',
-  9,
-  5
-  ),
-  (2, 
-  'Parilio', 
-  'Kolympithres, Greece', 
-  'Get the celebrity treatment with world-class service at Parilio, a member of Design Hotels!', 
-  'Located in Kolympithres, a 12-minute walk from Kolymbithres beach, Parilio, a Member of Design Hotels has accommodations with a restaurant, free private parking, a seasonal outdoor swimming pool and a fitness center. Among the facilities at this property are a 24-hour front desk and room service, along with free WiFi throughout the property. The property offers bike rental and features a garden and sun terrace.',
-  '/assets/images/hotel_pics/parilio.jpg',
-  9.5,
-  5);
+(1, 'InterContinental Bordeaux Le Grand Hotel', 'Bordeaux, France', 'Stay in the center of Bordeaux!', 'Directly opposite the Grand Théâtre, this 5-star hotel is in the heart of the historic center of Bordeaux. It offers a concierge service, a babysitting service upon request, gourmet restaurants and a 3281 ft² spa and wellness center. New Bordeaux Stadium is 3.7 mi away.', '/assets/images/hotel_pics/bordeaux.jpg', 9, 5),
+(2, 'Parilio', 'Kolympithres, Greece', 'Get the celebrity treatment with world-class service at Parilio, a member of Design Hotels!', 'Located in Kolympithres, a 12-minute walk from Kolymbithres beach, Parilio, a Member of Design Hotels has accommodations with a restaurant, free private parking, a seasonal outdoor swimming pool and a fitness center. Among the facilities at this property are a 24-hour front desk and room service, along with free WiFi throughout the property. The property offers bike rental and features a garden and sun terrace.', '/assets/images/hotel_pics/parilio.jpg', 9.5, 5);
 
 INSERT INTO rooms VALUES 
 (1, 1, 'Presidental Suite', 5, 5000000),
