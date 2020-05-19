@@ -7,6 +7,8 @@ class Authentication extends CI_Controller {
   {
     parent::__construct();
     $this->load->model('User_model');
+    $this->load->helper('form');
+    $this->load->library('form_validation');
   }
   
   public function login() 
@@ -45,8 +47,53 @@ class Authentication extends CI_Controller {
     }
   }
 
+  public function registerValidations()
+  {
+    $this->form_validation->set_rules('first_name', 'First Name', 'trim|required', array(
+      'required' => "You must provide a first name!"
+    ));
+
+    $this->form_validation->set_rules('last_name', 'Last Name', 'trim|required', array(
+      'required' => "You must provide a last name!"
+    ));
+
+    $this->form_validation->set_rules('username', 'Username', 'trim|required|is_unique[users.username]', array(
+      'required' => "You must provide a username!",
+      'is_unique' => "Your username must be unique!"
+    ));
+
+    $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email', array(
+      'required' => "You must provide an email!",
+      'valid_email' => "Your email is not a valid email!"
+    ));
+
+    $this->form_validation->set_rules('password', 'Password', 'trim|required', array(
+      'required' => "You must provide a password!"
+    ));
+
+    $this->form_validation->set_rules('passwordconf', 'Password Confirm', 'trim|required|matches[password]', array(
+      'required' => "You must fill this column!",
+      'matches' => "Your passwords do not match!"
+    ));
+
+    $this->form_validation->set_rules('birthdate', 'Birthdate', 'trim|required', array(
+      'required' => "You must provide a birthdate!"
+    ));
+
+    $this->form_validation->set_rules('gender', 'Gender', 'trim|required', array(
+      'required' => "You must provide a gender!"
+    ));
+  }
+
   public function register() 
   {
+    $this->registerValidations();
+
+    if($this->form_validation->run() == FALSE) {
+      $this->load->view('landing');
+      return;
+    }
+
     $registerData = [
       'id' => '',
       'first_name' => $this->input->post('first_name', TRUE),
