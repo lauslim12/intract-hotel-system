@@ -36,11 +36,14 @@ Notes:
 @import 'base/animation';
 @import 'base/base';
 @import 'base/typography';
+@import 'base/utilities';
 
 // 3. Components.
+@import 'components/booking-table';
 @import 'components/button';
 @import 'components/comment-section';
 @import 'components/cta';
+@import 'components/form-booking';
 @import 'components/form-view';
 @import 'components/gallery';
 @import 'components/hotel-card';
