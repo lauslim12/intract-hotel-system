@@ -26,6 +26,9 @@ class Authentication extends CI_Controller {
           $session_data = [
             'user_id' => $i->id,
             'username' => $i->username,
+            'first_name' => $i->first_name,
+            'last_name' => $i->last_name,
+            'gender' => $i->gender,
             'profile_pic' => $i->profile_pic,
             'privilege_level' => $i->privilege_level
           ];
