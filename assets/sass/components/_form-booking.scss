@@ -1,0 +1,16 @@
+.form-booking {
+
+  &__input,
+  &__input--readonly {
+    width: 100%;
+    margin-bottom: .5rem;
+    border: 1px solid var(--color-grey-dark-1);
+    padding: .5rem;
+    border-radius: 1px;
+  
+    &--readonly {
+      background-color: var(--color-grey-light-4);
+    }
+  }
+
+}
