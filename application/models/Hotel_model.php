@@ -136,6 +136,7 @@ class Hotel_model extends CI_Model {
     }
   }
 
+  /* Under Revamping */
   public function reduceAvailableRoom($roomPurchased, $roomId) 
   {
     $sql = "UPDATE rooms SET room_count = IF(room_count - ? >= 0, room_count - ?, room_count) WHERE id = ?";
@@ -144,14 +145,41 @@ class Hotel_model extends CI_Model {
     return $status;
   }
 
-  public function payHotel($orderedRoom, $roomId, $orderId) 
+  public function payHotel($orderedRoom, $roomId, $orderId, $rating, $hotel_id) 
   {
+    $this->db->trans_begin();
     $restore_room_query = "UPDATE rooms SET room_count = room_count + ? WHERE id = ?";
     $this->db->query($restore_room_query, [$orderedRoom, $roomId]);
     
-    $finish_order_query = "UPDATE orders SET finished = 1 WHERE id = ?";
-    $this->db->query($finish_order_query, [$orderId]);
+    $finish_order_query = "UPDATE orders SET finished = 1, rating = ? WHERE id = ?";
+    $this->db->query($finish_order_query, [$rating, $orderId]);
+
+    $this->updateRating($hotel_id);
+    $this->db->trans_complete();
   }
+
+  public function updateRating($hotel_id)
+  {
+    $this->db->select_avg('rating');
+    $this->db->from('orders');
+    $this->db->where('hotel_id', $hotel_id);
+    $average = $this->db->get()->row()->rating;
+    var_dump($average);
+    
+    $this->db->trans_begin();
+    $this->db->set('rating', $average);
+    $this->db->where('id', $hotel_id);
+    $this->db->update('hotels');
+    $this->db->trans_complete();
+
+    if($this->db->trans_status() === FALSE) {
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
+  }
+  /* End of Revamping */
 
   public function searchHotel($keyword) 
   {
