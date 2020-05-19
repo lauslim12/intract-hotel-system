@@ -15,38 +15,28 @@
 
 <body>
   <div class="container">
-    <?php
-      echo $navigation;
-    ?>
-
+    <?= $navigation; ?>
     <div class="content">
-      <?php
-        echo $sidebar;
-      ?>
-
+      <?= $sidebar; ?>
       <main class="hotel-view">
         <div class="profile-detail detail">
           <div class="profile__container">
-
             <div class="profile">
               <div class="profile__profile-picture">
                 <img src="<?php echo base_url() . $user_data['profile_pic']; ?>" alt="">
               </div>
-
               <div class="profile__content">
                 <?php echo "<p class='paragraph--bold'>" . $user_data['first_name'] . " " . $user_data['last_name'] . "</p>"; ?>
                 <?php echo "<p class='paragraph'>" . $user_data['birthdate'] .  "</p>"; ?>
-                  
                 <div class="profile__text-gallery">
                   <p class='profile__text-gallery__text-par'>Posts 0</p>
                   <p class='profile__text-gallery__text-par'>Likes 0</p>
                   <p class='profile__text-gallery__text-par'>Friends 0</p>
                   <p class='profile__text-gallery__text-par'>Reputation 0</p>
                 </div>
-                <a href="index.php">Return to Home</a>
+                <a href="<?php echo site_url(); ?>">Return to Home</a>
               </div>
             </div>
-
             <?php
               if($user_data['username'] === $this->session->userdata('username')) {
                 $username = $user_data['username'];
@@ -63,15 +53,12 @@
             ?>
           </div>
         </div>
-
         <div class="profile-detail detail">
           <div class="profile__container">
             <div class="profile">
-              
               <?php
                 if($user_hotel !== FALSE && $this->session->userdata('username') === $user_data['username']) {
               ?>
-
               <h2>My Transactions</h2>
               <table class='profile__table'>
                 <thead class='profile__table__header'>
@@ -117,7 +104,6 @@
                   ?>
                 </tbody>
               </table>
-
               <?php
                 }
                 else if($this->session->userdata('username') !== $user_data['username']) {
@@ -127,16 +113,12 @@
                   echo "<h2>You currently have no transactions!</h2>";
                 }
               ?>
-            
             </div>
           </div>
         </div>
-
       </main>
-
     </div>
   </div>
-
 </body>
 
 </html>

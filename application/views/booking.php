@@ -131,7 +131,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
         </div>
         -->
         <?php
-        $booking_url = site_url() . "/booking/showBooking/$id";
+        $booking_url = site_url() . "booking/showBooking/$id";
         if ($rooms != FALSE) {
         ?>
           <div class="cta">
