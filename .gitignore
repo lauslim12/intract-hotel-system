@@ -132,8 +132,6 @@ application/logs/*
 
 !application/*/.htaccess
 
-composer.lock
-
 user_guide_src/build/*
 user_guide_src/cilexer/build/*
 user_guide_src/cilexer/dist/*
