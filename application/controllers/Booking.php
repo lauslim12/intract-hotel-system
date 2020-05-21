@@ -8,6 +8,7 @@ class Booking extends CI_Controller {
     parent::__construct();
     $this->load->model('Hotel_model');
     $this->load->model('Room_model');
+    $this->load->model('Order_model');
     $this->load->helper('form');
     $this->load->library('form_validation');
     $this->form_validation->set_error_delimiters('<p class="warning">', '</p>');
@@ -23,6 +24,16 @@ class Booking extends CI_Controller {
     if(empty($array)) {
       redirect('dashboard');
     }
+  }
+
+  public function setChosenHotel($hotel_id)
+  {
+    $this->session->set_userdata('chosen_hotel_id', $hotel_id);
+  }
+
+  public function unsetChosenHotel()
+  {
+    $this->session->unset_userdata('chosen_hotel_id');
   }
 
   public function compareDate($string)
@@ -42,7 +53,7 @@ class Booking extends CI_Controller {
   public function compareRooms($number)
   {
     $roomWanted = $this->input->post('room', TRUE);
-    $hotel_id = $this->input->post('hotel_id', TRUE);
+    $hotel_id = $this->session->userdata('chosen_hotel_id');
     $roomAvailable = $this->Room_model->getRoomAvailableByRoomName($hotel_id, $roomWanted);
 
     if($number > $roomAvailable) {
@@ -77,7 +88,8 @@ class Booking extends CI_Controller {
     $data['hotel'] = $this->Hotel_model->getHotel($data['id']);
     $data['headlines'] = $this->Hotel_model->getHotelHeadlines($data['id']);
     $data['rooms'] = $this->Hotel_model->getHotelRooms($data['id']);
-
+    $data['votes'] = $this->Order_model->getNumberOfRatings($data['id']);
+    
     $this->guard($data['hotel']);
     $this->load->view('booking', $data);
   }
@@ -93,9 +105,11 @@ class Booking extends CI_Controller {
       $data['id'] = $id;
     }
 
+    $this->setChosenHotel($data['id']);
     $data['hotel'] = $this->Hotel_model->getHotel($data['id']);
     $data['headlines'] = $this->Hotel_model->getHotelHeadlines($data['id']);
     $data['rooms'] = $this->Hotel_model->getHotelRooms($data['id']);
+    $data['votes'] = $this->Order_model->getNumberOfRatings($data['id']);
     $this->guard($data['hotel']);
     $this->session->set_userdata('if_transaction_fail', current_url());
     $this->load->view('pages/bookingSection', $data);
@@ -103,7 +117,7 @@ class Booking extends CI_Controller {
 
   public function confirmBooking() 
   {
-    $id = $this->input->post('hotel_id');
+    $id = $this->session->userdata('chosen_hotel_id');
     $this->validateBooking();
     if($this->form_validation->run() === FALSE) {
       $this->showBooking($id);
@@ -113,12 +127,12 @@ class Booking extends CI_Controller {
     $data = call_frontend($this);
 
     $data['user_orders'] = [
-      'id' => $this->input->post('hotel_id'),
-      'hotel_name' => $this->input->post('hotel_name'),
-      'num_rooms' => $this->input->post('num_rooms'),
-      'date_check_in' => $this->input->post('date_check_in'),
-      'date_check_out' => $this->input->post('date_check_out'),
-      'room' => $this->input->post('room')
+      'id' => $id,
+      'hotel_name' => $this->input->post('hotel_name', TRUE),
+      'num_rooms' => $this->input->post('num_rooms', TRUE),
+      'date_check_in' => $this->input->post('date_check_in', TRUE),
+      'date_check_out' => $this->input->post('date_check_out', TRUE),
+      'room' => $this->input->post('room', TRUE)
     ];
 
     $data['user_orders']['duration'] = strtotime($data['user_orders']['date_check_out']) - strtotime($data['user_orders']['date_check_in']);
@@ -130,6 +144,7 @@ class Booking extends CI_Controller {
     $data['room_id'] = $row->id;
 
     $this->setBookingData($data);
+    $this->unsetChosenHotel();
     $this->load->view('pages/bookingConfirm', $data); 
   }
 
@@ -183,7 +198,7 @@ class Booking extends CI_Controller {
     $data['id'] = $this->uri->segment(3);
     $data['rooms'] = $this->Hotel_model->getRoomByOrder($data['id']);
     $this->guard($data['rooms']);
-    if($data['rooms']['user_id'] != $this->session->userdata('user_id')) {
+    if($data['rooms']['user_id'] != $this->session->userdata('user_id') || $data['rooms']['finished'] == 1) {
       redirect('dashboard');
     }
     $this->load->view('pages/bookingFinish', $data);
