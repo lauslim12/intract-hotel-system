@@ -29,6 +29,72 @@
               <li class="breadcrumb-item active" aria-current="page">Edit Hotel</li>
             </ol>
           </div>
+          <!-- Interface -->
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <h5 class='text-center'>You can use these interfaces to add or delete hotel features! Remember, one at a time!</h5>
+              </div>
+            </div>
+          </div>
+          <!-- Add New Feature -->
+          <div class="row">
+            <div class="col-lg-12">
+              <!-- General Element -->
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Add Hotel Feature</h6>
+                </div>
+                <div class="card-body">
+                  <?php validation_errors(); ?>
+                  <?php echo form_open_multipart('admin/newFeature'); ?>
+                  <input type="hidden" name="hotel_id" value="<?php echo $hotel['id']; ?>"/>
+                  <div class="form-group">
+                    <label for="hotel_feat">Hotel Feature</label>
+                    <input id="hotel_feat" type="text" class="form-control" name="hotel_feature" placeholder="Swimming pool..." />
+                  </div>
+                  <input type="submit" class="btn btn-primary" value="Add Hotel Feature" />
+                  <?php echo form_close(); ?>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Delete Hotel Feature -->
+          <div class="row">
+            <div class="col-lg-12">
+              <!-- General Element -->
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Delete Hotel Feature</h6>
+                </div>
+                <div class="card-body">
+                  <?php validation_errors(); ?>
+                  <?php echo form_open_multipart('admin/deleteFeature'); ?>
+                  <input type="hidden" name="hotel_id" value="<?php echo $hotel['id']; ?>"/>
+                  <div class="form-group">
+                    <label for="hotel_feat">Hotel Feature</label>
+                    <select name="feature" class="form-control" required>
+                    <?php foreach ($features as $feature) {
+                      $feature = $feature['feature'];
+                      echo "<option value='$feature'>$feature</option>";
+                    }
+                    ?>
+                    </select>
+                  </div>
+                  <input type="submit" class="btn btn-primary" value="Delete Hotel Feature" />
+                  <?php echo form_close(); ?>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Interface -->
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <h5 class='text-center'>You can use these interfaces to edit the data of a hotel! Remember, one at a time!</h5>
+              </div>
+            </div>
+          </div>
           <!-- Edit Hotel (Main) -->
           <div class="row">
             <div class="col-lg-12">
