@@ -51,17 +51,17 @@
               <input type="hidden" name="room_id" value="">
               <div class="form-group">
                 <label for="exampleFormControlInput1">Room Name</label>
-                <input type="text" name="room_name" value="" class="form-control" id="exampleFormControlInput1" placeholder="Bordeaux Le Grand Hotel? Fill me up!">
+                <input type="text" name="room_name" value="" class="form-control" id="exampleFormControlInput1" placeholder="Bordeaux Le Grand Hotel? Fill me up!" required>
                 <?php echo form_error('name', '<small><p class="form-text text-danger">', '</small></p>'); ?>
               </div>
               <div class="form-group">
                 <label for="exampleFormControlInput2">Room Availability</label>
-                <input type="text" name="room_count" value="" class="form-control" id="exampleFormControlInput2" placeholder="Bordeaux, France? Fill me up!">
+                <input type="text" name="room_count" value="" class="form-control" id="exampleFormControlInput2" placeholder="Bordeaux, France? Fill me up!" required>
                 <?php echo form_error('location', '<small><p class="form-text text-danger">', '</small></p>'); ?>
               </div>
               <div class="form-group">
                 <label for="exampleFormControlInput3">Room Price</label>
-                <input type="number" name="room_price" value="" class="form-control" id="exampleFormControlInput3" placeholder="5 stars, maybe? Fill me with numbers!">
+                <input type="number" name="room_price" value="" class="form-control" id="exampleFormControlInput3" placeholder="5 stars, maybe? Fill me with numbers!" required>
                 <?php echo form_error('star', '<small><p class="form-text text-danger">', '</small></p>'); ?>
               </div>
             </div>
@@ -88,17 +88,17 @@
               <input type="hidden" name="hotel_id" value="">
               <div class="form-group">
                 <label for="exampleFormControlInput1">Room Name</label>
-                <input type="text" name="room_name" value="" class="form-control" id="exampleFormControlInput1" placeholder="Bordeaux Le Grand Hotel? Fill me up!">
+                <input type="text" name="room_name" value="" class="form-control" id="exampleFormControlInput1" placeholder="Bordeaux Le Grand Hotel? Fill me up!" required>
                 <?php echo form_error('name', '<small><p class="form-text text-danger">', '</small></p>'); ?>
               </div>
               <div class="form-group">
                 <label for="exampleFormControlInput2">Room Availability</label>
-                <input type="text" name="room_count" value="" class="form-control" id="exampleFormControlInput2" placeholder="Bordeaux, France? Fill me up!">
+                <input type="text" name="room_count" value="" class="form-control" id="exampleFormControlInput2" placeholder="Bordeaux, France? Fill me up!" required>
                 <?php echo form_error('location', '<small><p class="form-text text-danger">', '</small></p>'); ?>
               </div>
               <div class="form-group">
                 <label for="exampleFormControlInput3">Room Price</label>
-                <input type="number" name="room_price" value="" class="form-control" id="exampleFormControlInput3" placeholder="5 stars, maybe? Fill me with numbers!">
+                <input type="number" name="room_price" value="" class="form-control" id="exampleFormControlInput3" placeholder="5 stars, maybe? Fill me with numbers!" required>
                 <?php echo form_error('star', '<small><p class="form-text text-danger">', '</small></p>'); ?>
               </div>
             </div>
@@ -158,6 +158,7 @@
                         $name = $room['room_name'];
                         $room_count = $room['room_count'];
                         $price = $room['price'];
+                        $name = preg_replace('/\s+/', '_', $name);
                         echo "<tr>";
                           echo "<td>" . $id . "</td>";
                           echo "<td>" . $room['room_name'] . "</td>";
