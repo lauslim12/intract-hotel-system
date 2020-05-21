@@ -82,12 +82,26 @@ CREATE TABLE orders (
   duration INT,
   price INT,
   rating INT,
+  -- comments TEXT,
   finished BOOLEAN,
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL,
   FOREIGN KEY (hotel_id) REFERENCES hotels(id) ON DELETE SET NULL,
   FOREIGN KEY (room_id) REFERENCES rooms(id) ON DELETE SET NULL
 ) 
+ENGINE = InnoDB;
+
+CREATE TABLE hotel_chosen_reviews (
+  id INT NOT NULL AUTO_INCREMENT UNIQUE,
+  hotel_id INT,
+  user_id INT,
+  score INT,
+  date_reviewed DATE,
+  review TEXT,
+  PRIMARY KEY (id),
+  FOREIGN KEY (hotel_id) REFERENCES hotels(id) ON DELETE SET NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+)
 ENGINE = InnoDB;
 
 INSERT INTO users VALUES
