@@ -68,7 +68,8 @@
                   <div class="form-group">
                     <p>Hotel Thumbnail</p>
                     <div class="custom-file">
-                      <input type="file" name="picture" class="form-control-file" id="customFile">
+                      <input type="file" name="picture" class="custom-file-input" id="hotel_thumbnail">
+                      <label class="custom-file-label" for="hotel_thumbnail">Choose file</label>
                       <?php echo "<small><p class='form-text text-danger'>" . $error_image . "</p></small>"; ?>
                     </div>
                   </div>
@@ -100,21 +101,24 @@
                   <div class="form-group">
                     <p>Hotel Headline #1</p>
                     <div class="custom-file">
-                      <input type="file" name="headline_picture_1" class="form-control-file" id="customFile">
+                      <input type="file" name="headline_picture_1" class="custom-file-input" id="hotel_headline_1">
+                      <label class="custom-file-label" for="hotel_headline_1">Choose file</label>
                       <?php echo "<small><p class='form-text text-danger'>" . $error_image . "</p></small>"; ?>
                     </div>
                   </div>
                   <div class="form-group">
                     <p>Hotel Headline #2</p>
                     <div class="custom-file">
-                      <input type="file" name="headline_picture_2" class="form-control-file" id="customFile">
+                      <input type="file" name="headline_picture_2" class="custom-file-input" id="hotel_headline_2">
+                      <label class="custom-file-label" for="hotel_headline_2">Choose file</label>
                       <?php echo "<small><p class='form-text text-danger'>" . $error_image . "</p></small>"; ?>
                     </div>
                   </div>
                   <div class="form-group">
                     <p>Hotel Headline #3</p>
                     <div class="custom-file">
-                      <input type="file" name="headline_picture_3" class="form-control-file" id="customFile">
+                      <input type="file" name="headline_picture_3" class="custom-file-input" id="hotel_headline_3">
+                      <label class="custom-file-label" for="hotel_headline_3">Choose file</label>
                       <?php echo "<small><p class='form-text text-danger'>" . $error_image . "</p></small>"; ?>
                     </div>
                   </div>

@@ -51,7 +51,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
           </div>
           <div class="overview__rating">
             <div class="overview__rating-average"><?php echo $hotel[0]['rating']; ?></div>
-            <div class="overview__rating-count">888 votes</div>
+            <div class="overview__rating-count"><?= $votes; ?> votes</div>
           </div>
         </div>
         <div class="detail">
@@ -60,7 +60,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
               <?php
                 echo $hotel[0]['headline'];
               ?>
-            </h3>
+            </h3><br/>
             <p class="paragraph">
               <?php
               echo $hotel[0]['description'];
@@ -118,7 +118,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                   validation_errors();
                 ?>
                   <form action="<?php echo site_url() . "booking/confirmBooking"; ?>" class='form_booking' method="POST">
-                    <input type='hidden' name='hotel_id' class='form-booking__input' value="<?php echo $id; ?>" readonly>
                     <p class="paragraph--bold-colored">Hotel:</p>
                     <input type="text" name='hotel_name' class='form-booking__input--readonly' value="<?php echo $hotel[0]['name']; ?>" readonly>
                     <p class="paragraph--bold-colored">Rooms:</p>

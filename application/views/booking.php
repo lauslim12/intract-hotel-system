@@ -49,11 +49,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
           </div>
           <div class="overview__rating">
             <div class="overview__rating-average"><?php echo $hotel[0]['rating']; ?></div>
-            <div class="overview__rating-count">888 votes</div>
+            <div class="overview__rating-count"><?= $votes; ?> votes</div>
           </div>
         </div>
         <div class="detail">
           <div class="description">
+            <h3 class="paragraph--center">
+              <?php
+                echo $hotel[0]['headline'];
+              ?>
+            </h3><br/>
             <p class="paragraph">
               <?php
               echo $hotel[0]['description'];
