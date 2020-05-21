@@ -62,13 +62,13 @@
               <h2>My Transactions</h2>
               <table class='profile__table'>
                 <thead class='profile__table__header'>
-                  <th>Order ID</th>
-                  <th>Hotel Name</th>
-                  <th>Room Name</th>
-                  <th>Rooms</th>
-                  <th>Nights</th>
-                  <th>Price (Rp.)</th>
-                  <th>Action</th>
+                  <th class='table-text'>OID</th>
+                  <th class='table-text'>Hotel</th>
+                  <th class='table-text'>Type</th>
+                  <th class='table-text'>Rooms/Nights</th>
+                  <th class='table-text'>Price</th>
+                  <th class='table-text'>Action</th>
+                  <th class="table-text">Rating</th>
                 </thead>
                 <tbody class='profile__table__body'>
                   <?php
@@ -84,26 +84,32 @@
                       $price = number_format($user_hotel[$i]['price']);
                       $num_rooms = $user_hotel[$i]['num_rooms'];
                       $status = $transaction_data[$i]['finished'];
+                      $rating = $user_hotel[$i]['rating'];
                       $path_to_finish = site_url() . "booking/finishBooking/$order_id";
 
                       echo "<tr>";
-                        echo "<td>$order_id</td>";
-                        echo "<td>$hotel_name</td>";
-                        echo "<td>$room_name</td>";
-                        echo "<td>$num_rooms</td>";
-                        echo "<td>$duration</td>";
-                        echo "<td>$price</td>";
+                        echo "<td class='table-text'>$order_id</td>";
+                        echo "<td class='table-text'>$hotel_name</td>";
+                        echo "<td class='table-text'>$room_name</td>";
+                        echo "<td class='table-text'>$num_rooms/$duration</td>";
+                        echo "<td class='table-text'>$price</td>";
                         if($status == 0) {
-                          echo "<td><a href=$path_to_finish>Finish</a></td>";
+                          echo "<td class='table-text'><a href=$path_to_finish>Finish Order!</a></td>";
+                          echo "<td class='table-text'>None</td>";
                         }
                         else {
-                          echo "<td>Done!</td>";
+                          echo "<td class='table-text'>Finished!</td>";
+                          echo "<td class='table-text'>$rating/10</td>";
                         }
                       echo "</tr>";
                     }
                   ?>
                 </tbody>
               </table>
+              <p class="paragraph u-margin-top">
+                * OID means Order ID.<br/>
+                * Price is in Indonesian Rupiah (IDR)!
+              </p>
               <?php
                 }
                 else if($this->session->userdata('username') !== $user_data['username']) {
