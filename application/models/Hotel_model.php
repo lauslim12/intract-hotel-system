@@ -287,10 +287,26 @@ class Hotel_model extends CI_Model {
     }
   }
 
-  public function insertFeature($dataFeature)
+  public function newFeature($dataFeature)
   {
     $this->db->trans_begin();
     $this->db->insert('hotel_features', $dataFeature);
+    $this->db->trans_complete();
+
+    if($this->db->trans_status() === FALSE) {
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
+  }
+
+  public function deleteFeature($hotel_id, $feature)
+  {
+    $this->db->trans_begin();
+    $this->db->where('hotel_id', $hotel_id);
+    $this->db->where('feature', $feature);
+    $this->db->delete('hotel_features');
     $this->db->trans_complete();
 
     if($this->db->trans_status() === FALSE) {
