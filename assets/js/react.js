@@ -238,7 +238,7 @@ class Footer extends React.Component {
               <b><a href="https://nicholasdw.com" target="_blank"> Nicholas Dwiarto</a></b>
             </span><br/><br/>
             <span>
-              Powered by <i class="fab fa-react"></i> <b>React.js</b>
+              Powered by <i class="fab fa-react"></i> <b>React.js</b> and <i class="fab fa-php"></i> <b>PHP</b>
             </span>
           </div>
         </div>
