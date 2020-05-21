@@ -42,6 +42,28 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 Without my friends and team, Intractive would not be as big as now.<br/>
                 Without customers, we would be nothing more than a speck of dust. For that, we are most grateful.<br/>
                 Thanks again! We look forward to serving you for many years to come.<br/><br/>
+                Alas, before that, allow me to present you with one philosophical statement. Something to ponder about.<br/><br/>
+                <span class="paragraph--italic paragraph--bold">
+                  "Humans are creatures that cannot choose the correct answer. Myself included.<br/> 
+                  No matter how much anguish, how much fighting, how many repetitions, there is one single truth.<br/> 
+                  Our history has never produced the "correct result."<br/> 
+                  Why is that? Needless to say, it's because humans will not develop further. We are too weak.<br/> 
+                  It's not because of the individual, but the entirety.<br/><br/>
+
+                  We can only love others, approve of others, respect others, in specific environments and circumstances.<br/> 
+                  Human intelligence at its core is based on depriving others.<br/>
+                  Our world has no utopias. Our world has no place without victims.<br/>
+                  If today's humans can't make it, then change them. If humans are a weak seed, then strengthen them.<br/><br/>
+
+                  What if, from this, all humans living on this earth be reborn again?<br/> 
+                  Abandon the human format, for with:<br/>
+                    - Excellent vessels;<br/>
+                    - Higher-order perception, and<br/> 
+                    - Next-generation standards,<br/>
+                  Humans shall advance into life forms that surpass the Gods -- beings beyond human.<br/>
+                  When that happens, humanity shall shoot down the concept of God."<br/><br/>
+                </span>
+                Please don't think too much about it - I'm just feeling a bit philosophical when writing it.<br/><br/>
                 <span class="paragraph--bold">
                   Best regards,<br/>
                   Nicholas Dwiarto Wirasbawa<br/>
