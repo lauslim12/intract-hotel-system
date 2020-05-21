@@ -96,6 +96,7 @@
         <h6 class="collapse-header">Tables</h6>
         <a class="collapse-item active" href="<?php echo site_url() . "admin/showData"; ?>">All Hotels</a>
         <a class="collapse-item" href="<?php echo site_url() . "admin/showOrders"; ?>">All Orders</a>
+        <a class="collapse-item" href="<?php echo site_url() . "admin/showUsers"; ?>">All Users</a>
       </div>
     </div>
   <?php }
@@ -110,6 +111,23 @@
         <h6 class="collapse-header">Tables</h6>
         <a class="collapse-item" href="<?php echo site_url() . "admin/showData"; ?>">All Hotels</a>
         <a class="collapse-item active" href="<?php echo site_url() . "admin/showOrders"; ?>">All Orders</a>
+        <a class="collapse-item" href="<?php echo site_url() . "admin/showUsers"; ?>">All Users</a>
+      </div>
+    </div>
+  <?php
+  }
+  else if(strpos($_SERVER['REQUEST_URI'], "showUsers")) { ?>
+  <li class="nav-item active">
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true" aria-controls="collapseTable">
+      <i class="fas fa-fw fa-table"></i>
+      <span>Tables</span>
+    </a>
+    <div id="collapseTable" class="collapse show" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Tables</h6>
+        <a class="collapse-item" href="<?php echo site_url() . "admin/showData"; ?>">All Hotels</a>
+        <a class="collapse-item" href="<?php echo site_url() . "admin/showOrders"; ?>">All Orders</a>
+        <a class="collapse-item active" href="<?php echo site_url() . "admin/showUsers"; ?>">All Users</a>
       </div>
     </div>
   <?php
@@ -125,6 +143,7 @@
         <h6 class="collapse-header">Tables</h6>
         <a class="collapse-item" href="<?php echo site_url() . "admin/showData"; ?>">All Hotels</a>
         <a class="collapse-item" href="<?php echo site_url() . "admin/showOrders"; ?>">All Orders</a>
+        <a class="collapse-item" href="<?php echo site_url() . "admin/showUsers"; ?>">All Users</a>
       </div>
     </div>
   <?php } ?>
