@@ -21,6 +21,10 @@ body {
     font-weight: 600;
   }
 
+  &--italic {
+    font-style: italic;
+  }
+
   &--center {
     text-align: center;
   }
@@ -48,5 +52,8 @@ body {
   margin-bottom: .5rem;
 }
 
-
+.table-text {
+  font-size: 1.2rem;
+  color: var(--color-primary-dark);
+}
 
