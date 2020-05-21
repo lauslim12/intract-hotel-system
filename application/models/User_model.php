@@ -12,6 +12,12 @@ class User_model extends CI_Model {
   {
     return $this->session->userdata('privilege_level');
   }
+
+  public function getUsers()
+  {
+    $query = $this->db->get('users');
+    return $query->result_array();
+  }
   
   public function checkUser($username, $password) 
   {
@@ -121,7 +127,20 @@ class User_model extends CI_Model {
     else {
       return TRUE;
     }
+  }
 
+  public function deleteUser($user_id)
+  {
+    $this->db->trans_begin();
+    $this->db->where('id', $user_id);
+    $this->db->delete('users');
+    $this->db->trans_complete();
+    if($this->db->trans_status() === FALSE) {
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
   }
 
 }
