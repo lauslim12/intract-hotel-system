@@ -43,6 +43,18 @@ class Admin extends CI_Controller {
     }
   }
 
+  public function showUsers()
+  {
+    if($this->User_model->isAdmin() == 1) {
+      $data = call_frontend_admin($this);
+      $data['users'] = $this->User_model->getUsers();
+      $this->load->view('pages/admin/showUsers', $data);
+    }
+    else {
+      redirect('dashboard');
+    }
+  }
+
   public function showOrders()
   {
     if($this->User_model->isAdmin() == 1) {
@@ -404,10 +416,38 @@ class Admin extends CI_Controller {
     redirect($redirect_path);
   }
 
+  public function newFeature()
+  {
+    $hotel_id = $this->input->post('hotel_id', TRUE);
+    $data = [
+      'hotel_id' => $hotel_id,
+      'feature' => $this->input->post('hotel_feature', TRUE)
+    ];
+
+    $this->Hotel_model->newFeature($data);
+    redirect('admin');
+  }
+
+  public function deleteFeature()
+  {
+    $hotel_id = $this->input->post('hotel_id', TRUE);
+    $feature = $this->input->post('feature', TRUE);
+    
+    $this->Hotel_model->deleteFeature($hotel_id, $feature);
+    redirect('admin');
+  }
+
   public function deleteRoom()
   {
     $id = $this->input->post('room_id', TRUE);
     $this->Hotel_model->deleteRoom($id);
     redirect('admin');
+  }
+
+  public function deleteUser()
+  {
+    $id = $this->input->post('user_id', TRUE);
+    $this->User_model->deleteUser($id);
+    redirect('admin/showUsers');
   }
 }
