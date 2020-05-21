@@ -68,12 +68,27 @@ $(document).ready(function () {
   });
 
   // Added JavaScript
+  function replaceFakePath(fileName) {
+    return fileName.replace(/C:\\fakepath\\/i, '');
+  }
+
+  $("#deleteNicholas").click(function() {
+    alert("You cannot delete Nicholas Dwiarto from this website.");
+  });
+
+  $('#hotel_thumbnail, #hotel_headline_1, #hotel_headline_2, #hotel_headline_3').change(function() {
+    let fileName = replaceFakePath($(this).val());
+    $(this).next('.custom-file-label').html(fileName);
+  });
+
   $('.exampleModalEdit').on('show.bs.modal', function(e) {
     let hotel_id = $(e.relatedTarget).data('hotel_id');
     let room_id = $(e.relatedTarget).data('room_id');
     let room_name = $(e.relatedTarget).data('room_name');
     let room_count = $(e.relatedTarget).data('room_count');
     let price = $(e.relatedTarget).data('price');
+    room_name = room_name.replace(/_/g, ' ');
+
     $(e.currentTarget).find('input[name="hotel_id"]').val(hotel_id);
     $(e.currentTarget).find('input[name="room_id"]').val(room_id);
     $(e.currentTarget).find('input[name="room_name"]').val(room_name);
@@ -90,6 +105,11 @@ $(document).ready(function () {
     let hotel_id = $(e.relatedTarget).data('room_id');
     $(e.currentTarget).find('input[name="hotel_id"]').val(hotel_id);
   });
+
+  $('#modalDeleteUser').on('show.bs.modal', function(e) {
+    let user_id = $(e.relatedTarget).data('user_id');
+    $(e.currentTarget).find('input[name="user_id"]').val(user_id);
+  })
 
   $('.modal').on('show.bs.modal', function(e) {
     let hotel_id = $(e.relatedTarget).data('hotel_id');
