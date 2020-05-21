@@ -91,6 +91,9 @@ body {
 .paragraph--bold {
   font-weight: 600; }
 
+.paragraph--italic {
+  font-style: italic; }
+
 .paragraph--center {
   text-align: center; }
 
@@ -110,6 +113,10 @@ body {
   color: var(--color-secondary-dark);
   font-weight: 600;
   margin-bottom: .5rem; }
+
+.table-text {
+  font-size: 1.2rem;
+  color: var(--color-primary-dark); }
 
 .u-center-text {
   text-align: center !important; }
@@ -910,12 +917,16 @@ body {
       padding-bottom: .8rem;
       text-align: center;
       font-size: 1.6rem; }
+      .profile__table__header th {
+        padding: 1rem; }
       .profile__table__header tr:hover {
         background-color: #FFEEDB; }
     .profile__table__body {
       border-bottom: 1px solid var(--color-grey-dark);
       text-align: center;
       font-size: 1.5rem; }
+      .profile__table__body td {
+        padding: 1rem; }
 
 .search-results__display {
   display: flex;
