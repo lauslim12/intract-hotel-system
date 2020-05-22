@@ -9,6 +9,12 @@ class Hotel_model extends CI_Model {
     return $query->result_array();
   }
 
+  public function getNumberOfHotels()
+  {
+    $this->db->get('users');
+    return json_encode($this->db->count_all_results(), JSON_NUMERIC_CHECK);
+  }
+
   public function getOrders()
   {
     $query = $this->db->get('orders');
