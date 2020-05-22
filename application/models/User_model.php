@@ -18,6 +18,13 @@ class User_model extends CI_Model {
     $query = $this->db->get('users');
     return $query->result_array();
   }
+
+  public function getNumberOfUsers()
+  {
+    $this->db->select('id');
+    $this->db->from('users');
+    return json_encode($this->db->count_all_results(), JSON_NUMERIC_CHECK);
+  }
   
   public function checkUser($username, $password) 
   {
@@ -72,6 +79,7 @@ class User_model extends CI_Model {
     $this->db->from('orders');
     $this->db->join('rooms', 'rooms.id = orders.room_id');
     $this->db->where('user_id', $user_id);
+    $this->db->order_by('orders.id ASC');
     $query = $this->db->get();
     
     if($query->num_rows() === 0) {

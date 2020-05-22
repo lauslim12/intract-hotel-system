@@ -84,7 +84,7 @@
                       $price = number_format($user_hotel[$i]['price']);
                       $num_rooms = $user_hotel[$i]['num_rooms'];
                       $status = $transaction_data[$i]['finished'];
-                      $rating = $user_hotel[$i]['rating'];
+                      $rating = $transaction_data[$i]['rating'];
                       $path_to_finish = site_url() . "booking/finishBooking/$order_id";
 
                       echo "<tr>";
