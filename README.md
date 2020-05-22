@@ -48,7 +48,6 @@ TOA:
 * Refactor EVERY code, add comments, and apply the DRY principle.
 
 TODO:
-* REST API for Database Usage (React-friendly)
 * Messaging System
 * Add every dependency at `assets/vendors` to NPM, also the React.
 
@@ -74,7 +73,7 @@ In due time, I will place the public files two-levels below root for more securi
 
 ## Installations and Usage
 Same like the old Intract,
-* Use PHP with version more than 5.6.
+* Use PHP with version more than 7.2. and your CodeIgniter version equals 3.1.11 or maybe more if it exists. CodeIgniter 4 is not supported.
 * Use `git pull repo` to fetch the code, or download it by using `git clone`.
 * Copy the repository into the `htdocs` folder in XAMPP or any other local host web server that you have.
 * Import the `.sql` file that is located in the `assets/dev` folder.
