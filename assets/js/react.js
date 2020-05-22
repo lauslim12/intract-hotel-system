@@ -4,14 +4,19 @@
 *   Mainly using ES6 syntax.
 */
 
-const BASEURL = "http://localhost/Intractive";
-const APIURL = `${BASEURL}/api/logged_user`;
-const LOGOIMG = `${BASEURL}/assets/images/icons/logo.png`;
-const ADMINURL = `${BASEURL}/admin/`;
-const LOGOUTURL = `${BASEURL}/dashboard/logout`;
-const PROFILEURL = `${BASEURL}/profile/view`;
+const BASEURL = "http://localhost/Intractive/";
+const APIURL = `${BASEURL}api/logged_user`;
+const EARNINGSAPI = `${BASEURL}api/fetch_earnings`;
+const SALESAPI = `${BASEURL}api/fetch_sales`;
+const USERSAPI = `${BASEURL}api/fetch_users`;
+const HOTELSAPI = `${BASEURL}api/fetch_hotels`;
+const LOGOIMG = `${BASEURL}assets/images/icons/logo.png`;
+const ADMINURL = `${BASEURL}admin/`;
+const LOGOUTURL = `${BASEURL}dashboard/logout`;
+const PROFILEURL = `${BASEURL}profile/view`;
 const HOTELURL = `${ADMINURL}showData`;
 const ORDERURL = `${ADMINURL}showOrders`;
+const USERSURL = `${ADMINURL}showUsers`;
 
 const borderColor = {
   borderColor: '#3f51b5'
@@ -219,11 +224,181 @@ class Sidebar extends React.Component {
             <h6 class="collapse-header">Tables</h6>
             <a class="collapse-item" href={HOTELURL}>All Hotels</a>
             <a class="collapse-item" href={ORDERURL}>All Orders</a>
+            <a class="collapse-item" href={USERSURL}>All Users</a>
           </div>
         </div>
       </li>
       <hr class="sidebar-divider"/>
     </ul>
+    )
+  }
+}
+
+class HeadBar extends React.Component {
+  render() {
+    return (
+      <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="./">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+        </ol>
+      </div>
+    )
+  }
+}
+
+class CardStatisticsOne extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      earnings: 0
+    };
+  }
+  
+  componentDidMount() {
+    fetch(EARNINGSAPI)
+      .then(res => res.json())
+      .then(res => this.setState({earnings: res}));
+  }
+
+  toCommas(value) {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
+
+  render() {
+    let earnings = this.state.earnings;
+    earnings = this.toCommas(earnings);
+
+    return (
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-uppercase mb-1">Earnings (Rp.)</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{earnings}</div>
+              <div class="mt-2 mb-0 text-muted text-xs">
+                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 5.3%</span>
+                <span>Nice!</span>
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-calendar fa-2x text-primary"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
+
+class CardStatisticsTwo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sales: 0
+    };
+  }
+  
+  componentDidMount() {
+    fetch(SALESAPI)
+      .then(res => res.json())
+      .then(res => this.setState({sales: res}));
+  }
+
+  render() {
+    return (
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-uppercase mb-1">Sales</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{this.state.sales}</div>
+              <div class="mt-2 mb-0 text-muted text-xs">
+                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i>12%</span>
+                <span>Since last year!</span>
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-shopping-cart fa-2x text-success"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
+
+class CardStatisticsThree extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: 0
+    };
+  }
+
+  componentDidMount() {
+    fetch(USERSAPI)
+      .then(res => res.json())
+      .then(res => this.setState({users: res}));
+  }
+  
+  render() {
+    return (
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-uppercase mb-1">Users</div>
+              <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{this.state.users}</div>
+              <div class="mt-2 mb-0 text-muted text-xs">
+                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 20.4%</span>
+                <span>Since last month</span>
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-users fa-2x text-info"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
+
+class CardStatisticsFour extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hotels: 0
+    };
+  }
+
+  componentDidMount() {
+    fetch(HOTELSAPI)
+      .then(res => res.json())
+      .then(res => this.setState({hotels: res}));
+  }
+  
+  render() {
+    return (
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-uppercase mb-1">Hotels</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{this.state.hotels}</div>
+              <div class="mt-2 mb-0 text-muted text-xs">
+                <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
+                <span>Since yesterday</span>
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-comments fa-2x text-warning"></i>
+            </div>
+          </div>
+        </div>
+      </div>
     )
   }
 }
@@ -243,10 +418,15 @@ class Footer extends React.Component {
           </div>
         </div>
       </footer>
-      )
+    )
   }
 }
 
 ReactDOM.render(<Header/>, document.getElementById('header'));
+ReactDOM.render(<HeadBar/>, document.getElementById('headbar'));
 ReactDOM.render(<Sidebar/>, document.getElementById('sidebar'));
 ReactDOM.render(<Footer/>, document.getElementById('footer'));
+ReactDOM.render(<CardStatisticsOne />, document.getElementById('cardOne'));
+ReactDOM.render(<CardStatisticsTwo />, document.getElementById('cardTwo'));
+ReactDOM.render(<CardStatisticsThree />, document.getElementById('cardThree'));
+ReactDOM.render(<CardStatisticsFour />, document.getElementById('cardFour'));
