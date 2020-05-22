@@ -17,7 +17,7 @@ const fetchAsync = async () => {
 
 const parseData = async () => {
   await fetchAsync();
-  globalData.forEach((el, index, array) => {
+  globalData.forEach((el) => {
     labels.add(el.username);
     values.push(el.average);
   });
