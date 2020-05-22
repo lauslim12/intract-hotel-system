@@ -55,6 +55,12 @@ class Api extends RestController {
     $hotels = $this->Hotel_model->getNumberOfHotels();
     $this->respondJSON($hotels);
   }
+
+  public function fetch_statistics_get()
+  {
+    $stats = $this->Order_model->getStatisticsForUserRating();
+    $this->respondJSON($stats);
+  }
 }
 
 
