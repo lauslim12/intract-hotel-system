@@ -33,17 +33,17 @@ For now, the website has three features, more will be added as the project progr
 * Transaction History
 * Hotel Searching
 * Profile System
+* Customer's Rating System
+* Admin Panel
+* All is Validated!
+* Chart for Admin
 
 Features that is available at the classic Intract, but not yet ported here:
 * Wall System (Complete with infinite scrolling!)
 
 TOA:
-* Admin Panel
-* Customer's Rating System
 * Edit Basic Profile Information
 * Refine the Filter Search (based on room price, and add filter based on stars other than 5)
-* CodeIgniter Validations for Register and Login
-* Graphical Statistics for Admin
 * User Interface
 * Refactor EVERY code, add comments, and apply the DRY principle.
 
@@ -78,7 +78,8 @@ Same like the old Intract,
 * Use `git pull repo` to fetch the code, or download it by using `git clone`.
 * Copy the repository into the `htdocs` folder in XAMPP or any other local host web server that you have.
 * Import the `.sql` file that is located in the `assets/dev` folder.
-* Use `composer install` to resolve PHP dependencies.
+* Use `composer install` to resolve PHP dependencies. If you do not install this, then you can't use the REST API.
+* Make sure to be connected to the Internet, because I used Content Delivery Networks for jQuery, React, and Bootstrap.
 * Register an account to be used at the website.
 * Done.
 
@@ -86,6 +87,7 @@ For Developers,
 
 SASS:
 * You can use `npm install` in order to modify the SASS file and or production CSS code.
+* I used [Hugo Giraudel's SASS Boilerplate](https://github.com/HugoGiraudel/sass-boilerplate) as the basic folder structure of the SASS.
 * Then, utilize `npm start` to start the production SASS code.
 * The production SASS code is to auto compile the SASS code to CSS.
 * Use `npm run build:project` to concat, auto prefix, and compress the SASS/CSS code.
