@@ -15,33 +15,11 @@ class Order_model extends CI_Model {
 
   public function getStatisticsForUserRating()
   {
-    $query = $this->db->query("SELECT AVG(orders.rating) AS average, 
-                    u.username AS user FROM orders
-                    JOIN users as u on u.id = orders.user_id 
-                    WHERE rating IS NOT NULL;");
+    $sql = "SELECT u.username, AVG(orders.rating) AS average FROM users AS u JOIN orders ON u.id = orders.user_id WHERE rating IS NOT NULL GROUP BY 1";
+    $query = $this->db->query($sql);
     return $query->result_array();
   }
-
-  public function getUserRating()
-  {
-    $notNull = "rating IS NOT NULL";
-    $this->db->select_avg('rating');
-    $this->db->from('orders');
-    $this->db->where($notNull);
-    $query = $this->db->get();
-
-    return $query->result_array();
-  }
-
-  public function getHotelName()
-  {
-    $this->db->select('name');
-    $this->db->from('hotels');
-    $query = $this->db->get();
-    
-    return $query->result_array();
-  }
-
+  
   public function getEarnings()
   {
     $this->db->select_sum('price');
