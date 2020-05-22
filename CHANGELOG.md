@@ -1,6 +1,10 @@
 # Changelog
 See the changelog of the repository by checking the commit history. The ones listed here are the major progresses.
 
+## Version 4.0 (22/05/2020, 17:00 GMT+7):
+* Most of the Admin Panel are done.
+* Almost all of the basic functionality is done.
+
 ## Version 3.0 (15/05/2020, 17:00 GMT+7):
 * Most of the basic features are done.
 * Started to use React for admin panel styling.
