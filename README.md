@@ -64,11 +64,15 @@ Still the same like old Intract:
 * Compress / obfuscate the CSS code to prevent scrapers.
 * Run all for production code.
 
+## Production Code for React.js
+* `npm run watch:webpack` to tell Webpack to watch for any changes in the `main.js` file.
+* `npm run build:webpack` to tell Webpack to minify and build the `main.js` file.
+
 ## Project Structure
 The project structure will follow the standard CodeIgniter's Model, View, Controller principles. However, there are some small changes, which are:
 * An `.architecture` folder to store the plans regarding the project. Usually in the form of diagrams, whether it is Entity Relationship Diagram, or other diagrams that might be useful in the design process.
 * There's a `index.js` file in the root folder to use Electron.
-* In the `assets/js` folder, there's a file called `react.js`.
+* In the `assets/js` folder, there's a file called `main.js`. It's the entry point of React.
 In due time, I will place the public files two-levels below root for more security (assuming I do not have time yet to port to Laravel / CodeIgniter 4). 
 
 ## Installations and Usage
@@ -78,7 +82,8 @@ Same like the old Intract,
 * Copy the repository into the `htdocs` folder in XAMPP or any other local host web server that you have.
 * Import the `.sql` file that is located in the `assets/dev` folder.
 * Use `composer install` to resolve PHP dependencies. If you do not install this, then you can't use the REST API.
-* Make sure to be connected to the Internet, because I used Content Delivery Networks for jQuery, React, and Bootstrap.
+* Use `npm install` to install all Node dependencies. If you do not install this, then you can't use the Admin Panel.
+* Make sure to be connected to the Internet, because I used Content Delivery Networks for jQuery, and Bootstrap.
 * Register an account to be used at the website.
 * Done.
 
@@ -97,8 +102,8 @@ Electron:
 * It's still a webview connected to [my web server](https://nicholasdw.com/Intractive) though, not a dedicated desktop application like Visual Studio Code, Slack, Atom, WhatsApp, etcetera.
 
 React:
-* Because the only component that used React is the Dashboard of the Admin Panel, I used React's CDN with Babel.
-* The React file is located at `assets/js/react.js`. Fetch and edit it from there.
+* I make my own build scripts. Check it at `package.json`.
+* The main React.js file can be found at `assets/main.js`. Fetch and edit it from there.
 
 Notes:
 * Without `npm install`, it is still possible to use the website application though, as the node packages are only used for development dependencies.
