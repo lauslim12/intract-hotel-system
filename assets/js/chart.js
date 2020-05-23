@@ -1,14 +1,14 @@
 // Set new default font family and font color to mimic Bootstrap's default styling
-Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-Chart.defaults.global.defaultFontColor = '#858796';
+// Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+// Chart.defaults.global.defaultFontColor = '#858796';
 
 // Fetch API
-const URLAPI = "http://localhost/Intractive/api/fetch_statistics";
-const ctx = document.getElementById("myAreaChart");
-let globalData = {};
-let labels = new Set();
-let values = [];
-
+//const URLAPI = "http://localhost/Intractive/api/fetch_statistics";
+//const ctx = document.getElementById("myAreaChart");
+//let globalData = {};
+//let labels = new Set();
+//let values = [];
+/*
 const fetchAsync = async () => {
   let response = await fetch(URLAPI);
   let data = await response.json();
@@ -143,4 +143,4 @@ const createChart = async () => {
 
 fetchAsync();
 parseData();
-createChart();
+createChart();*/
