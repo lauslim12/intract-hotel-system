@@ -39,12 +39,13 @@ For now, the website has three features, more will be added as the project progr
 * All Pages Validated!
 * Chart for Admin
 * Edit Basic Profile Information
+* Filter Hotels to your Budget!
+* Hotel Reviews with Image
 
 Features that is available at the classic Intract, but not yet ported here:
-* Wall System / Hotel Reviews (Complete with infinite scrolling!)
+* Comment on the review, and reviews are complete with infinite scrolling!
 
 TOA:
-* Refine the Filter Search (based on room price, and add filter based on stars other than 5)
 * User Interface
 * Refactor EVERY code, add comments, and apply the DRY principle.
 
