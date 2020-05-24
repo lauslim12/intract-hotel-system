@@ -12,3 +12,4 @@ export const PROFILEURL = `${BASEURL}profile/view`;
 export const HOTELURL = `${ADMINURL}showData`;
 export const ORDERURL = `${ADMINURL}showOrders`;
 export const USERSURL = `${ADMINURL}showUsers`;
+export const NEWHOTELURL = `${ADMINURL}showNewHotel`;
