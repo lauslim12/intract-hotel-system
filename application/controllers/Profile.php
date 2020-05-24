@@ -68,7 +68,36 @@ class Profile extends CI_Controller {
     else {
       redirect('profile/view');
     }
+  }
 
+  public function changeUserData()
+  {
+    $user_id = $this->session->userdata('user_id');
+
+    if($this->input->post('password') == '') {
+      $password = $this->input->post('password_prev');
+    }
+    else {
+      $password = $this->input->post('password', TRUE);
+    }
+
+    $data = [
+      'first_name' => $this->input->post('first_name', TRUE),
+      'last_name' => $this->input->post('last_name', TRUE),
+      'email' => $this->input->post('email', TRUE),
+      'password' => $password
+    ];
+
+    $update_status = $this->User_model->changeUserData($data, $user_id);
+    $redirect_url = 'profile/view/' . $this->session->userdata('username');
+    if($update_status === TRUE) {
+      $this->session->set_userdata('first_name', $data['first_name']);
+      $this->session->set_userdata('last_name', $data['last_name']);
+      redirect($redirect_url);
+    }
+    else {
+      redirect($redirect_url);
+    }
   }
 
 }

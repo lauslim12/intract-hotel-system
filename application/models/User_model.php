@@ -151,4 +151,18 @@ class User_model extends CI_Model {
     }
   }
 
+  public function changeUserData($data, $user_id)
+  {
+    $this->db->trans_begin();
+    $this->db->where('id', $user_id);
+    $this->db->update('users', $data);
+    $this->db->trans_complete();
+    if($this->db->trans_status() === FALSE) {
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
+  }
+
 }
