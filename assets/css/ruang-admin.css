@@ -1938,3 +1938,20 @@ body.sidebar-toggled footer.sticky-footer {
   background-color: #3f51b5;
   border-color: #3f51b5;
 }
+
+/* Personal CSS */
+.detail-img {
+  display: inline-block;
+  max-width: 15rem;
+  max-height: 15rem;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.hotel-picture-detail {
+  max-width: 25rem;
+  max-width: 25rem;
+  display: inline-block;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
