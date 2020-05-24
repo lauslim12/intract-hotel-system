@@ -23,6 +23,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<a href="<?= site_url() . "search/sortByRating/ascending"; ?>">Sort by Rating (Asc) &nbsp;&nbsp;&nbsp;</a>
 					<a href="<?= site_url() . "search/sortByRating/descending"; ?>">Sort by Rating (Desc) &nbsp;&nbsp;&nbsp;</a>
 					<a href="<?= site_url() . "search/filterByStar"; ?>">Filter Star (5)</a>
+					
+					<!--
+					<form action="<?php echo site_url() . "search/filterPrice"; ?>" class="search" name="search_form" method="GET">
+						<input type="text" class="search__input" name="q" autocomplete="off" placeholder="Filter your own price...">
+						<button class="search__button">
+							<svg class="search__icon">
+								<use xlink:href="<?php echo base_url() . "/assets/images/svg/sprite.svg#icon-magnifying-glass"; ?>"></use>
+							</svg>
+						</button>
+					</form>
+					-->
 				</div>
 				<!-- List of Hotels -->
 				<?php
@@ -34,7 +45,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					$picture = base_url() . $hotel['picture'];
 					$rating = $hotel['rating'];
 					$star = $hotel['star'];
-					$stars = '';
 					$link_to_hotel = site_url() . "booking/showDetail/$id";
 				?>
 					<div class='detail'>

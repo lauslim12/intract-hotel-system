@@ -82,10 +82,11 @@
                         $id = $hotel['id'];
                         $path_to_hotel = site_url() . "admin/showEditHotel/$id";
                         $path_to_room = site_url() . "admin/showEditRoom/$id";
+                        $path_to_detail = site_url() . "admin/showDetailHotel/$id";
                         echo "<tr>";
                           echo "<td>" . $id . "</td>";
                           echo "<td>" . $hotel['name'] . "</td>";
-                          echo "<td><button class='btn btn-sm btn-primary'>Detail</button></td>";
+                          echo "<td><a href='$path_to_detail'><button class='btn btn-sm btn-primary'>Detail</button></a></td>";
                           echo "<td><a href='$path_to_hotel'><button class='btn btn-sm btn-success'>Edit Hotel</button></a></td>";
                           echo "<td><button class='btn btn-sm btn-warning' data-toggle='modal' data-target='#exampleModalCenter' data-hotel_id=$id id='#modalCenter'>Delete</button></td>";
                           echo "<td><a href='$path_to_room'><button class='btn btn-sm btn-info'>Room Info</button></a></td>";

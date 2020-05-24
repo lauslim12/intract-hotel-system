@@ -42,14 +42,18 @@
                 $username = $user_data['username'];
             ?>
               <div class="profile__change-picture">
+                <?php validation_errors(); ?>
                 <?php echo form_open_multipart('profile/changeUserData'); ?>
                   <p class='paragraph--center'>Change your user data here! You cannot change your username, date of birth, and gender.</p>
                   <p class="paragraph--bold-colored">First Name:</p>
-                  <input type="text" name="first_name" class="form-booking__input" value="<?= $user_data['first_name']; ?>">
+                  <input type="text" name="first_name" class="form-booking__input" value="<?= $user_data['first_name']; ?>" required>
+                  <?php echo form_error('first_name'); ?>
                   <p class="paragraph--bold-colored">Last Name:</p>
-                  <input type="text" name="last_name" class="form-booking__input" value="<?= $user_data['last_name']; ?>">
+                  <input type="text" name="last_name" class="form-booking__input" value="<?= $user_data['last_name']; ?>" required>
+                  <?php echo form_error('last_name'); ?>
                   <p class="paragraph--bold-colored">Email:</p>
-                  <input type="text" name="email" class="form-booking__input" value="<?= $user_data['email']; ?>">
+                  <input type="text" name="email" class="form-booking__input" value="<?= $user_data['email']; ?>" required>
+                  <?php echo form_error('email'); ?>
                   <p class="paragraph--bold-colored">Password:</p>
                   <input type="hidden" name="password_prev" value="<?= $user_data['password']; ?>">
                   <input type="text" name="password" class="form-booking__input" placeholder="Change your password here!">
