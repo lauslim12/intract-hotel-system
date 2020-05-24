@@ -54,6 +54,11 @@ class Search extends CI_Controller {
     }
   }
 
+  public function filterPrice()
+  {
+    
+  }
+
   public function filterByStar() 
   {
     $filtered_hotels = $this->Hotel_model->filterHotel();

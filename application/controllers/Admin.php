@@ -67,6 +67,22 @@ class Admin extends CI_Controller {
     }
   }
 
+  public function showDetailHotel()
+  {
+    if($this->User_model->isAdmin() == 1) {
+      $id = $this->uri->segment(3);
+      $data = call_frontend_admin($this);
+      $data['hotel'] = $this->Hotel_model->getHotelEssentialData($id);
+      $data['headlines'] = $this->Hotel_model->getHotelHeadlines($id);
+      $data['features'] = $this->Hotel_model->getHotelFeatures($id);
+      $this->guard($data['hotel']);
+      $this->load->view('pages/admin/showDetailHotel', $data);
+    }
+    else {
+      redirect('dashboard');
+    }
+  }
+
   public function showNewHotel($errorArray = null)
   {
     if($this->User_model->isAdmin() == 1) {

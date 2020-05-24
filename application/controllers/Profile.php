@@ -9,6 +9,24 @@ class Profile extends CI_Controller {
     $this->load->model('User_model');
     $this->load->model('Hotel_model');
     $this->load->helper('form');
+    $this->load->library('form_validation');
+  }
+
+  public function profileValidations()
+  {
+    $this->form_validation->set_rules('first_name', 'First Name', 'trim|required', array(
+      'required' => "You must provide a first name!"
+    ));
+
+    $this->form_validation->set_rules('last_name', 'Last Name', 'trim|required', array(
+      'required' => "You must provide a last name!"
+    ));
+
+    $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]', array(
+      'required' => "You must provide an email!",
+      'valid_email' => "Your email is not a valid email!",
+      'is_unique' => "Your email must be unique!"
+    ));
   }
 
   public function index() 
@@ -72,6 +90,7 @@ class Profile extends CI_Controller {
 
   public function changeUserData()
   {
+    $this->profileValidations();
     $user_id = $this->session->userdata('user_id');
 
     if($this->input->post('password') == '') {
