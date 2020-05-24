@@ -105,7 +105,8 @@ CREATE TABLE hotel_chosen_reviews (
 ENGINE = InnoDB;
 
 INSERT INTO users VALUES
-(1, 'Nicholas', 'Dwiarto',  'nicholasnwr', 'nicholas@nicholas.com', '$2y$10$2twydAVZ1MvZTv/Gk8nzQe6h9JGmPvade6u6046cE7IT3vS/.JmYK', '2000-04-07', 'M', '2020-04-07', '/assets/images/profile_pics/defaults/head_belize_hole.png', 1);
+(1, 'Nicholas', 'Dwiarto',  'nicholasnwr', 'nicholas@nicholas.com', '$2y$10$2twydAVZ1MvZTv/Gk8nzQe6h9JGmPvade6u6046cE7IT3vS/.JmYK', '2000-04-07', 'M', '2020-04-07', '/assets/images/profile_pics/defaults/head_belize_hole.png', 1),
+(2, 'Thomas', 'Administrator', 'admin', 'admin@admin.com', '$2y$10$1jiOy9DqoSrbkc0MSaPZAOIjNXyD.JqVMFRR6bCJMsY2ThYINoyEO', '2000-01-05', 'M', '2020-05-24', '/assets/images/profile_pics/defaults/head_belize_hole.png', 1);
 
 INSERT INTO hotels VALUES
 (1, 'InterContinental Bordeaux Le Grand Hotel', 'Bordeaux, France', 'Stay in the center of Bordeaux!', 'Directly opposite the Grand Théâtre, this 5-star hotel is in the heart of the historic center of Bordeaux. It offers a concierge service, a babysitting service upon request, gourmet restaurants and a 3281 ft² spa and wellness center. New Bordeaux Stadium is 3.7 mi away.', '/assets/images/hotel_pics/bordeaux.jpg', 9, 5),
@@ -144,3 +145,6 @@ INSERT INTO hotel_headlines VALUES
 (2, "/assets/images/hotel_headlines/parilio-1.jpg"),
 (2, "/assets/images/hotel_headlines/parilio-2.jpg"),
 (2, "/assets/images/hotel_headlines/parilio-3.jpg");
+
+INSERT INTO orders VALUES
+(1, 1, 1, 1, 1, 2020-05-24, 2020-05-25, 1, 5000000, 9, 1);
