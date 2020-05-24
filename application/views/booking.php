@@ -119,22 +119,55 @@ defined('BASEPATH') or exit('No direct script access allowed');
             </figure>
           </div>
         </div>
-        <!-- 
         <div class="detail">
           <div class="description--posts">
             <h2>REVIEWS</h2>
-            <form action='' method="POST" enctype='multipart/form-data' class='post-form'>
+            <form action='<?php echo site_url() . "review/submitPost"; ?>' method="POST" enctype='multipart/form-data' class='post-form'>
+              <input type="hidden" name="hotel_id" value="<?= $id; ?>">
               <input type="file" name="fileToUpload" id="fileToUpload" />
               <textarea name="post_text" id="post_text" rows="5" placeholder="A penny for your thoughts? Or want to share something with an image?"></textarea>
               <input type="submit" value="Post" name="post" id="post_button" class="btn-inline">
             </form>
             <div class="posts-area">
-              Placeholder Div
+              <?php
+              /* 
+              *  Knapsack
+              */
+                for($i = 0; $i < count($reviews); $i++) {
+                  $profile_pic = base_url() . $user_reviews[$i]['profile_pic'];
+                  $added_by = site_url() . "profile/view/" . $user_reviews[$i]['username'];
+                  $first_name = $user_reviews[$i]['first_name'];
+                  $last_name = $user_reviews[$i]['last_name'];
+                  $time_message = $reviews[$i]['date_added'];
+                  $image_path = base_url() . $reviews[$i]['image'];
+                  $body = $reviews[$i]['body'];
+                ?>
+                <div class='status-post'>
+                  <div class='status-post__profile-pic'>
+                    <img src='<?= $profile_pic; ?>' width='50'>
+                  </div>
+                  <div class='status-post__posted-by'>
+                    <a href='<?= $added_by; ?>'><?= $first_name . " " . $last_name; ?></a>
+                    <p class='paragraph'><?= $time_message; ?></p>
+                  </div>
+                </div>
+                <div class='status-post__body'>
+                  <div class='status-post__image'>
+                    <?php 
+                      if($reviews[$i]['image'] != NULL) {
+                        echo "<img src='$image_path' />";
+                      }
+                    ?>
+                    <p class='paragraph'><?= $body; ?></p>
+                  </div>
+                </div>
+                <hr>
+              <?php
+                }
+              ?>
             </div>
-            <img class="posts-area--loading" src="assets/images/icons/loading.gif" alt="Loading Icon">
           </div>
         </div>
-        -->
         <?php
         $booking_url = site_url() . "booking/showBooking/$id";
         if ($rooms != FALSE) {
