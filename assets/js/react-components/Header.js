@@ -1,28 +1,15 @@
 import React from 'react';
+import { Stylesheet, css } from 'aphrodite';
+import { BASEURL, APIURL, LOGOUTURL, PROFILEURL } from '../react-variables/Variables';
 
-const BASEURL = "http://localhost/Intractive/";
-const APIURL = `${BASEURL}api/logged_user`;
-const EARNINGSAPI = `${BASEURL}api/fetch_earnings`;
-const SALESAPI = `${BASEURL}api/fetch_sales`;
-const USERSAPI = `${BASEURL}api/fetch_users`;
-const HOTELSAPI = `${BASEURL}api/fetch_hotels`;
-const LOGOIMG = `${BASEURL}assets/images/icons/logo.png`;
-const ADMINURL = `${BASEURL}admin/`;
-const LOGOUTURL = `${BASEURL}dashboard/logout`;
-const PROFILEURL = `${BASEURL}profile/view`;
-const HOTELURL = `${ADMINURL}showData`;
-const ORDERURL = `${ADMINURL}showOrders`;
-const USERSURL = `${ADMINURL}showUsers`;
-const URLAPI = "http://localhost/Intractive/api/fetch_statistics";
-
-
-const borderColor = {
-  borderColor: '#3f51b5'
-};
-
-const imageMaxWidth = {
-  maxWidth: '60px'
-};
+const aphroditeStyle = Stylesheet.create({
+  blueBorder = {
+    borderColor: '#3f51b5'
+  },
+  imageMaWidth = {
+    maxWidth: '60px'
+  }
+});
 
 class Header extends React.Component {  
   constructor(props) {
@@ -68,7 +55,7 @@ class Header extends React.Component {
                 <form class="navbar-search">
                   <div class="input-group">
                     <input type="text" class="form-control bg-light border-1 small" placeholder="What do you want to look for?"
-                      aria-label="Search" aria-describedby="basic-addon2" style={borderColor}/>
+                      aria-label="Search" aria-describedby="basic-addon2" style={css(aphroditeStyle.blueBorder)}/>
                     <div class="input-group-append">
                       <button class="btn btn-primary" type="button">
                         <i class="fas fa-search fa-sm"></i>
@@ -88,7 +75,7 @@ class Header extends React.Component {
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <img class="img-profile rounded-circle" src={BASEURL + this.state.data.profile_pic} style={imageMaxWidth}></img>
+                <img class="img-profile rounded-circle" src={BASEURL + this.state.data.profile_pic} style={css(aphroditeStyle.imageMaWidth)}></img>
                 <span class="ml-2 d-none d-lg-inline text-white small">{this.state.data.username}</span>
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

@@ -1,5 +1,3 @@
-console.log("Works!");
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Chart from 'chart.js'; 
@@ -78,8 +76,6 @@ class AlertsCenter extends React.Component {
     ) 
   }
 }
-
-
 
 class SidebarDropdown extends React.Component {
   render() {

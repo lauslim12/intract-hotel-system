@@ -1,0 +1,14 @@
+export const BASEURL = "http://localhost/Intractive/";
+export const APIURL = `${BASEURL}api/logged_user`;
+export const EARNINGSAPI = `${BASEURL}api/fetch_earnings`;
+export const SALESAPI = `${BASEURL}api/fetch_sales`;
+export const USERSAPI = `${BASEURL}api/fetch_users`;
+export const HOTELSAPI = `${BASEURL}api/fetch_hotels`;
+export const STATSAPI = `${BASEURL}api/fetch_statistics`;
+export const LOGOIMG = `${BASEURL}assets/images/icons/logo.png`;
+export const ADMINURL = `${BASEURL}admin/`;
+export const LOGOUTURL = `${BASEURL}dashboard/logout`;
+export const PROFILEURL = `${BASEURL}profile/view`;
+export const HOTELURL = `${ADMINURL}showData`;
+export const ORDERURL = `${ADMINURL}showOrders`;
+export const USERSURL = `${ADMINURL}showUsers`;
