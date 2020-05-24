@@ -147,7 +147,7 @@ INSERT INTO hotel_headlines VALUES
 (2, "/assets/images/hotel_headlines/parilio-3.jpg");
 
 INSERT INTO orders VALUES
-(1, 1, 1, 1, 1, 2020-05-24, 2020-05-25, 1, 5000000, 9, 1);
+(1, 1, 1, 1, 1, '2020-05-24', '2020-05-25', 1, 5000000, 9, 1);
 
 INSERT INTO reviews VALUES
 (1, "I had asked for a room with two beds, and while there were indeed two twins, it ended up being really tight. I loved the headboard, which reminded me of Napoleon’s hat, as well as the red-and-white wallpaper on the wall behind it depicting pastoral country scenes.", 1, 1, '2020-05-24 20:00:00',  "/assets/images/reviewers/reviewer_photos/bordeaux-comfortable-bed.jpg");
