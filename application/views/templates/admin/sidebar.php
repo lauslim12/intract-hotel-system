@@ -31,8 +31,8 @@
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Hotel Management</h6>
         <a class="collapse-item active" href="<?php echo site_url() . "admin/showNewHotel"; ?>">New Hotel</a>
-        <a class="collapse-item" href="buttons.html">Edit Hotel</a>
-        <a class="collapse-item" href="dropdowns.html">Room Management</a>
+        <a class="collapse-item" href="<?php echo site_url() . "admin/showData"; ?>">Edit Hotel</a>
+        <a class="collapse-item" href="<?php echo site_url() . "admin/showData"; ?>">Room Management</a>
       </div>
     </div>
   <?php 
@@ -47,8 +47,8 @@
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Hotel Management</h6>
         <a class="collapse-item" href="<?php echo site_url() . "admin/showNewHotel"; ?>">New Hotel</a>
-        <a class="collapse-item" href="buttons.html">Edit Hotel</a>
-        <a class="collapse-item active" href="dropdowns.html">Room Management</a>
+        <a class="collapse-item" href="<?php echo site_url() . "admin/showData"; ?>">Edit Hotel</a>
+        <a class="collapse-item active" href="<?php echo site_url() . "admin/showData"; ?>">Room Management</a>
       </div>
     </div>
   <?php
@@ -63,8 +63,8 @@
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Hotel Management</h6>
         <a class="collapse-item" href="<?php echo site_url() . "admin/showNewHotel"; ?>">New Hotel</a>
-        <a class="collapse-item active" href="buttons.html">Edit Hotel</a>
-        <a class="collapse-item" href="dropdowns.html">Room Management</a>
+        <a class="collapse-item active" href="<?php echo site_url() . "admin/showData"; ?>">Edit Hotel</a>
+        <a class="collapse-item" href="<?php echo site_url() . "admin/showData"; ?>">Room Management</a>
       </div>
     </div>
   <?php
@@ -79,8 +79,8 @@
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Hotel Management</h6>
         <a class="collapse-item" href="<?php echo site_url() . "admin/showNewHotel"; ?>">New Hotel</a>
-        <a class="collapse-item" href="buttons.html">Edit Hotel</a>
-        <a class="collapse-item" href="dropdowns.html">Room Management</a>
+        <a class="collapse-item" href="<?php echo site_url() . "admin/showData"; ?>">Edit Hotel</a>
+        <a class="collapse-item" href="<?php echo site_url() . "admin/showData"; ?>">Room Management</a>
       </div>
     </div>
   <?php } ?>
