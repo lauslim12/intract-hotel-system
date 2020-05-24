@@ -6,13 +6,14 @@ Advanced form of [Intract Social Network](https://github.com/lauslim12/intract-s
   <img src="https://img.shields.io/badge/Made%20with-JavaScript-yellow"/>
   <img src="https://img.shields.io/badge/Made%20with-PHP-%232980b9"/>
   <img src="https://img.shields.io/badge/Made%20with-CodeIgniter-red"/>
+  <img src="https://img.shields.io/badge/Made%20with-React-%232980b9"/>
 </p>
 
 ## Architecture / Philosophies
 * Object Oriented.
 * Model, View, Controller Application Design Method.
 * IBM Programming Style and Techniques.
-* HTML, SCSS, JavaScript, Node.js, and React for the Front-End.
+* HTML, SCSS, JavaScript, and React.js for the Front-End.
 * CodeIgniter 3.1.11, MariaDB, IBM Cloud Services for the Back-End.
 * Block, Element, Modifier SCSS Methodology for Styling.
 * Low Coupling, High Cohesion Design Pattern
@@ -49,11 +50,27 @@ TOA:
 
 TODO:
 * Messaging System
-* Add every dependency at `assets/vendors` to NPM, also the React.
 
 Future work:
 * Swap to CodeIgniter 4
 * Port to Laravel (learning process)
+
+## Front-End Dependencies
+* Ἀφροδίτη.js
+* Bootstrap 4 (CDN)
+* Babel
+* Chart.js
+* Electron.js
+* jQuery (CDN)
+* jQuery Easing (CDN)
+* SASS
+* React.js
+* Webpack
+
+## Back-End Dependencies
+* CodeIgniter 3.1.11
+* CodeIgniter's REST Services
+* MariaDB
 
 ## Production Code for SASS/SCSS
 Still the same like old Intract:
@@ -65,8 +82,9 @@ Still the same like old Intract:
 * Run all for production code.
 
 ## Production Code for React.js
-* `npm run watch:webpack` to tell Webpack to watch for any changes in the `main.js` file.
-* `npm run build:webpack` to tell Webpack to minify and build the `main.js` file.
+* Watch the Webpack to check for any changes in the React's JavaScript main file.
+* Compile, compress, and obfuscate the JavaScript code to prevent scrapers.
+* Run all for production code. 
 
 ## Project Structure
 The project structure will follow the standard CodeIgniter's Model, View, Controller principles. However, there are some small changes, which are:
@@ -82,7 +100,7 @@ Same like the old Intract,
 * Copy the repository into the `htdocs` folder in XAMPP or any other local host web server that you have.
 * Import the `.sql` file that is located in the `assets/dev` folder.
 * Use `composer install` to resolve PHP dependencies. If you do not install this, then you can't use the REST API.
-* Use `npm install` to install all Node dependencies. If you do not install this, then you can't use the Admin Panel.
+* Use `npm install` or its yarn equivalent to install all Node dependencies. If you do not install this, then you can't use the Admin Panel.
 * Make sure to be connected to the Internet, because I used Content Delivery Networks for jQuery, and Bootstrap.
 * Register an account to be used at the website.
 * Done.
@@ -102,8 +120,11 @@ Electron:
 * It's still a webview connected to [my web server](https://nicholasdw.com/Intractive) though, not a dedicated desktop application like Visual Studio Code, Slack, Atom, WhatsApp, etcetera.
 
 React:
-* I make my own build scripts. Check it at `package.json`.
+* I make my own build scripts and setup my own React.js scripts manually. Check it at `package.json`.
+* The page that is powered by React.js is only the dashboard of the Admin Panel. The rest is powered with PHP.
 * The main React.js file can be found at `assets/main.js`. Fetch and edit it from there.
+* Utilize `npm run watch:webpack` to tell Webpack to watch your changes in the `assets/main.js` file.
+* Because this does not utilize the development server, you have to manually reload to see the changes.
 
 Notes:
 * Without `npm install`, it is still possible to use the website application though, as the node packages are only used for development dependencies.
