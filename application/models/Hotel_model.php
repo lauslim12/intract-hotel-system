@@ -11,7 +11,8 @@ class Hotel_model extends CI_Model {
 
   public function getNumberOfHotels()
   {
-    $this->db->get('users');
+    $this->db->select('id');
+    $this->db->from('hotels');
     return json_encode($this->db->count_all_results(), JSON_NUMERIC_CHECK);
   }
 
