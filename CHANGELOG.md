@@ -1,6 +1,9 @@
 # Changelog
 See the changelog of the repository by checking the commit history. The ones listed here are the major progresses.
 
+## Version 5.0 (24/05/2020, 10:00 GMT+7):
+* Setup custom Webpack, Babel, and React.js via NPM for standalone install.
+
 ## Version 4.0 (22/05/2020, 17:00 GMT+7):
 * Most of the Admin Panel are done.
 * Almost all of the basic functionality is done.
