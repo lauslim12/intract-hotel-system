@@ -9,6 +9,8 @@ class Booking extends CI_Controller {
     $this->load->model('Hotel_model');
     $this->load->model('Room_model');
     $this->load->model('Order_model');
+    $this->load->model('Review_model');
+    $this->load->model('User_model');
     $this->load->helper('form');
     $this->load->library('form_validation');
     $this->form_validation->set_error_delimiters('<p class="warning">', '</p>');
@@ -83,13 +85,22 @@ class Booking extends CI_Controller {
 
   public function showDetail() 
   {
+    $userReviewData = [];
+
     $data = call_frontend($this);
     $data['id'] = $this->uri->segment(3);
     $data['hotel'] = $this->Hotel_model->getHotel($data['id']);
     $data['headlines'] = $this->Hotel_model->getHotelHeadlines($data['id']);
     $data['rooms'] = $this->Hotel_model->getHotelRooms($data['id']);
     $data['votes'] = $this->Order_model->getNumberOfRatings($data['id']);
+    $data['reviews'] = $this->Review_model->getAllReviews($data['id']);
     
+    foreach($data['reviews'] as $review) {
+      $singleUserData = $this->User_model->getUserDataById($review['added_by']);
+      array_push($userReviewData, $singleUserData);
+    }
+    
+    $data['user_reviews'] = $userReviewData;
     $this->guard($data['hotel']);
     $this->load->view('booking', $data);
   }
