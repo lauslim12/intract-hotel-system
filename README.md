@@ -36,14 +36,14 @@ For now, the website has three features, more will be added as the project progr
 * Profile System
 * Customer's Rating System
 * Admin Panel
-* All is Validated!
+* All Pages Validated!
 * Chart for Admin
+* Edit Basic Profile Information
 
 Features that is available at the classic Intract, but not yet ported here:
-* Wall System (Complete with infinite scrolling!)
+* Wall System / Hotel Reviews (Complete with infinite scrolling!)
 
 TOA:
-* Edit Basic Profile Information
 * Refine the Filter Search (based on room price, and add filter based on stars other than 5)
 * User Interface
 * Refactor EVERY code, add comments, and apply the DRY principle.
