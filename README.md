@@ -90,7 +90,7 @@ Still the same like old Intract:
 The project structure will follow the standard CodeIgniter's Model, View, Controller principles. However, there are some small changes, which are:
 * An `.architecture` folder to store the plans regarding the project. Usually in the form of diagrams, whether it is Entity Relationship Diagram, or other diagrams that might be useful in the design process.
 * There's a `index.js` file in the root folder to use Electron.
-* In the `assets/js` folder, there's a file called `main.js`. It's the entry point of React.
+* In the `assets/js` folder, there's a file called `react.js`. It's the entry point of React.
 In due time, I will place the public files two-levels below root for more security (assuming I do not have time yet to port to Laravel / CodeIgniter 4). 
 
 ## Installations and Usage
@@ -122,8 +122,8 @@ Electron:
 React:
 * I make my own build scripts and setup my own React.js scripts manually. Check it at `package.json`.
 * The page that is powered by React.js is only the dashboard of the Admin Panel. The rest is powered with PHP.
-* The main React.js file can be found at `assets/main.js`. Fetch and edit it from there.
-* Utilize `npm run watch:webpack` to tell Webpack to watch your changes in the `assets/main.js` file.
+* The main React.js file can be found at `assets/react.js`. Fetch and edit it from there.
+* Utilize `npm run watch:webpack` to tell Webpack to watch your changes in the `assets/react.js` file.
 * Because this does not utilize the development server, you have to manually reload to see the changes.
 
 Notes:

@@ -1,6 +1,6 @@
 module.exports = {
   mode: 'development',
-	entry: "./assets/js/main.js",
+	entry: "./assets/js/react.js",
 	output: {
 		path: __dirname + "/assets/js",
 		publicPath: "/",
