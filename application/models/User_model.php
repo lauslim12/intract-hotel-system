@@ -121,6 +121,22 @@ class User_model extends CI_Model {
     }
   }
 
+  public function getUserDataById($user_id)
+  {
+    $this->db->select('*');
+    $this->db->from('users');
+    $this->db->where('id', $user_id);
+    $this->db->limit(1);
+    $query = $this->db->get();
+
+    if($query->num_rows() === 0) {
+      return FALSE;
+    }
+    else {
+      return $query->row_array();
+    }
+  }
+
   public function setDisplayPicture($user_id, $path_to_image) 
   {
     $this->db->trans_begin();
