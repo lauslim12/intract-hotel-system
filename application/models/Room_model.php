@@ -13,4 +13,21 @@ class Room_model extends CI_Model {
     return $this->db->get()->row()->room_count;
   }
 
+  public function getAllRoomsPriceRange()
+  {
+    $this->db->select("MIN(price) AS min, MAX(price) AS max");
+    $this->db->from('rooms');
+    $this->db->group_by('hotel_id');
+    return $this->db->get()->result_array();
+  }
+
+  public function getRoomBudget($budget)
+  {
+    $this->db->select("hotels.*, MIN(price) AS min, MAX(price) AS max");
+    $this->db->from('rooms');
+    $this->db->join('hotels', 'rooms.hotel_id = hotels.id');
+    $this->db->group_by('hotel_id');
+    $this->db->having('MIN(price) <=', $budget);
+    return $this->db->get()->result_array();
+  }
 }

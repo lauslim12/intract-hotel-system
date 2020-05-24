@@ -8,6 +8,7 @@ class Dashboard extends CI_Controller {
     parent::__construct();
     $this->load->model('User_model');
     $this->load->model('Hotel_model');
+    $this->load->model('Room_model');
   }
 
   public function index() 
@@ -15,6 +16,7 @@ class Dashboard extends CI_Controller {
     if($this->User_model->isLoggedIn()) {
       $data = call_frontend($this);
       $data['hotels'] = $this->Hotel_model->getHotels();
+      $data['prices'] = $this->Room_model->getAllRoomsPriceRange();
       $this->load->view("dashboard", $data);
     }
     else {

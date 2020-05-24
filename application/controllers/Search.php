@@ -7,6 +7,7 @@ class Search extends CI_Controller {
   {
     parent::__construct();
     $this->load->model('Hotel_model');
+    $this->load->model('Room_model');
   }
 
   public function index() 
@@ -30,23 +31,28 @@ class Search extends CI_Controller {
 
     $data = call_frontend($this);
     $data['hotels'] = $found_hotels;
+    $data['prices'] = $this->Room_model->getAllRoomsPriceRange();
+    $this->session->set_flashdata('filterMessage', "Your Results");
     $this->load->view("dashboard", $data);
   }
 
   public function sortByRating() 
   {
     $param = $this->uri->segment(3);
+    $this->session->set_flashdata('filterMessage', "Your Sorted Results");
 
     if($param === 'ascending') {
       $sorted_hotels = $this->Hotel_model->sortHotel(2);
       $data = call_frontend($this);
       $data['hotels'] = $sorted_hotels;
+      $data['prices'] = $this->Room_model->getAllRoomsPriceRange();
       $this->load->view("dashboard", $data);
     }
     else if($param === 'descending') {
       $sorted_hotels = $this->Hotel_model->sortHotel(1);
       $data = call_frontend($this);
       $data['hotels'] = $sorted_hotels;
+      $data['prices'] = $this->Room_model->getAllRoomsPriceRange();
       $this->load->view("dashboard", $data);
     }
     else {
@@ -56,7 +62,16 @@ class Search extends CI_Controller {
 
   public function filterPrice()
   {
-    
+    $budget = $this->input->get('q');
+    $filtered_hotels = $this->Room_model->getRoomBudget($budget);
+    $data = call_frontend($this);
+    $data['hotels'] = $filtered_hotels;
+    if(empty($data['hotels'])) {
+      redirect('dashboard');
+    }
+    $message = "Your Budget";
+    $this->session->set_flashdata('filterMessage', $message);
+    $this->load->view('dashboard', $data);
   }
 
   public function filterByStar() 
@@ -64,6 +79,8 @@ class Search extends CI_Controller {
     $filtered_hotels = $this->Hotel_model->filterHotel();
     $data = call_frontend($this);
     $data['hotels'] = $filtered_hotels;
+    $data['prices'] = $this->Room_model->getAllRoomsPriceRange();
+    $this->session->set_flashdata('filterMessage', "Filter By Star");
     $this->load->view("dashboard", $data);
   }
 
