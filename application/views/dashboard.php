@@ -19,33 +19,52 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			<?= $sidebar; ?>
 			<main class="hotel-view">
 				<div class="overview">
-					<h1 class="overview__heading">Available Hotels</h1>
+					<h1 class="overview__heading">
+						<?php
+							if($this->session->flashdata('filterMessage') == "") {
+								echo "Available Hotels";
+							}
+							else {
+								echo $this->session->flashdata('filterMessage');
+							}
+						?>
+					</h1>
 					<a href="<?= site_url() . "search/sortByRating/ascending"; ?>">Sort by Rating (Asc) &nbsp;&nbsp;&nbsp;</a>
 					<a href="<?= site_url() . "search/sortByRating/descending"; ?>">Sort by Rating (Desc) &nbsp;&nbsp;&nbsp;</a>
 					<a href="<?= site_url() . "search/filterByStar"; ?>">Filter Star (5)</a>
-					
-					<!--
 					<form action="<?php echo site_url() . "search/filterPrice"; ?>" class="search" name="search_form" method="GET">
-						<input type="text" class="search__input" name="q" autocomplete="off" placeholder="Filter your own price...">
+						<input type="text" class="search__input" name="q" autocomplete="off" placeholder="Fill your own budget!">
 						<button class="search__button">
 							<svg class="search__icon">
 								<use xlink:href="<?php echo base_url() . "/assets/images/svg/sprite.svg#icon-magnifying-glass"; ?>"></use>
 							</svg>
 						</button>
 					</form>
-					-->
 				</div>
 				<!-- List of Hotels -->
 				<?php
-				foreach ($hotels as $hotel) {
-					$id = $hotel['id'];
-					$name = $hotel['name'];
-					$location = $hotel['location'];
-					$headline = $hotel['headline'];
-					$picture = base_url() . $hotel['picture'];
-					$rating = $hotel['rating'];
-					$star = $hotel['star'];
+				/*  Combine joined arrays by its primary keys / foreign keys.
+        *   The length of the array should be same, as it's a simple logic - one cannot have more rooms that one had ordered.
+        *   Algorithm: Knapsack. Can't believe I have to use this in web development.
+				*/
+				for($i = 0; $i < count($hotels); $i++) {
+					$id = $hotels[$i]['id'];
+					$name = $hotels[$i]['name'];
+					$location = $hotels[$i]['location'];
+					$headline = $hotels[$i]['headline'];
+					$picture = base_url() . $hotels[$i]['picture'];
+					$rating = $hotels[$i]['rating'];
+					$star = $hotels[$i]['star'];
 					$link_to_hotel = site_url() . "booking/showDetail/$id";
+
+					if(!empty($prices)) {
+						$lowest_price_range = number_format($prices[$i]['min']);
+						$highest_price_range = number_format($prices[$i]['max']);
+					}
+					else {
+						$lowest_price_range = number_format($hotels[$i]['min']);
+						$highest_price_range = number_format($hotels[$i]['max']);
+					}
 				?>
 					<div class='detail'>
 						<div class='description'>
@@ -59,7 +78,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 								<p class='paragraph u-margin-top'><?= $headline; ?></p>
 								<div class='overview__stars u-margin-top'>
 									<?php
-									for ($i = 0; $i < $star; $i++) {
+									for ($k = 0; $k < $star; $k++) {
 									?>
 										<svg class='overview__icon-star'>
 											<use xlink:href="<?= base_url() . "/assets/images/svg/sprite.svg#icon-star" ?>"></use>
@@ -69,6 +88,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 									?>
 								</div>
 								<a href="<?= $link_to_hotel; ?>" class='btn-inline u-margin-top'>See more!</a>
+								<p class="paragraph u-margin-top">Prices start from Rp. <?= $lowest_price_range; ?> to Rp. <?= $highest_price_range; ?>!</p>
 							</div>
 						</div>
 						<div class='user-reviews'>
@@ -76,7 +96,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						</div>
 					</div>
 				<?php
-				}
+					}
 				?>
 			</main>
 		</div>
