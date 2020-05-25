@@ -49,19 +49,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
 										<a href="<?= site_url() . "search/sortByRating/descending"; ?>">Sort by Rating (Dsc)</a>
 									</li>
 									<li class="dropdown__content__list__item">
-										<a href="<?= site_url() . "search/filterByStar"; ?>">Filter Star (5)</a>
+										<a href="<?= site_url() . "search/filterByStar/5"; ?>">Filter Star (5)</a>
 									</li>
 									<li class="dropdown__content__list__item">
-										<a href="<?= site_url() . "search/filterByStar"; ?>">Filter Star (4)</a>
+										<a href="<?= site_url() . "search/filterByStar/4"; ?>">Filter Star (4)</a>
 									</li>
 									<li class="dropdown__content__list__item">
-										<a href="<?= site_url() . "search/filterByStar"; ?>">Filter Star (3)</a>
+										<a href="<?= site_url() . "search/filterByStar/3"; ?>">Filter Star (3)</a>
 									</li>
 									<li class="dropdown__content__list__item">
-										<a href="<?= site_url() . "search/filterByStar"; ?>">Filter Star (2)</a>
+										<a href="<?= site_url() . "search/filterByStar/2"; ?>">Filter Star (2)</a>
 									</li>
 									<li class="dropdown__content__list__item">
-										<a href="<?= site_url() . "search/filterByStar"; ?>">Filter Star (1)</a>
+										<a href="<?= site_url() . "search/filterByStar/1"; ?>">Filter Star (1)</a>
 									</li>
 								</ul>
 							</div>

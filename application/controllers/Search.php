@@ -76,10 +76,14 @@ class Search extends CI_Controller {
 
   public function filterByStar() 
   {
-    $filtered_hotels = $this->Hotel_model->filterHotel();
+    $star = $this->uri->segment(3);
+    $filtered_hotels = $this->Hotel_model->filterHotel($star);
     $data = call_frontend($this);
     $data['hotels'] = $filtered_hotels;
     $data['prices'] = $this->Room_model->getAllRoomsPriceRange();
+    if(empty($data['hotels'])) {
+      redirect('dashboard');
+    }
     $this->session->set_flashdata('filterMessage', "Filter By Star");
     $this->load->view("dashboard", $data);
   }

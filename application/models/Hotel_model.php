@@ -225,11 +225,11 @@ class Hotel_model extends CI_Model {
     return $query->result_array();
   }
 
-  public function filterHotel() 
+  public function filterHotel($star) 
   {
     $this->db->select('*');
     $this->db->from('hotels');
-    $this->db->where('star', 5);
+    $this->db->where('star', $star);
     $query = $this->db->get();
 
     return $query->result_array();
