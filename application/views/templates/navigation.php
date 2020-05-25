@@ -22,17 +22,12 @@
     </div>
 
     <div class="user-nav__icon-box">
-      <svg class="user-nav__icon">
-        <use xlink:href="<?php echo base_url() . "/assets/images/svg/sprite.svg#icon-bookmark"; ?>"></use>
-      </svg>
-      <span class="user-nav__notification">5</span>
-    </div>
-
-    <div class="user-nav__icon-box">
-      <svg class="user-nav__icon">
-        <use xlink:href="<?php echo base_url() . "/assets/images/svg/sprite.svg#icon-chat"; ?>"></use>
-      </svg>
-      <span class="user-nav__notification">10</span>
+      <a href='https://nicholasdw.com/'>
+        <svg class="user-nav__icon">
+          <use xlink:href="<?php echo base_url() . "/assets/images/svg/sprite.svg#icon-sphere"; ?>"></use>
+        </svg>
+        <span class="user-nav__notification">10</span>
+      </a>
     </div>
 
     <div class="user-nav__user">
