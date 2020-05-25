@@ -14,7 +14,12 @@
       font-size: 1.8rem;
       padding: 1.25rem 2rem;
     }
+  }
 
+  &__filters {
+    display: flex;
+    flex: 1;
+    flex-direction: row-reverse;
   }
 
   &__stars {

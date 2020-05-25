@@ -29,17 +29,44 @@ defined('BASEPATH') or exit('No direct script access allowed');
 							}
 						?>
 					</h1>
-					<a href="<?= site_url() . "search/sortByRating/ascending"; ?>">Sort by Rating (Asc) &nbsp;&nbsp;&nbsp;</a>
-					<a href="<?= site_url() . "search/sortByRating/descending"; ?>">Sort by Rating (Desc) &nbsp;&nbsp;&nbsp;</a>
-					<a href="<?= site_url() . "search/filterByStar"; ?>">Filter Star (5)</a>
-					<form action="<?php echo site_url() . "search/filterPrice"; ?>" class="search" name="search_form" method="GET">
-						<input type="text" class="search__input" name="q" autocomplete="off" placeholder="Fill your own budget!">
-						<button class="search__button">
-							<svg class="search__icon">
-								<use xlink:href="<?php echo base_url() . "/assets/images/svg/sprite.svg#icon-magnifying-glass"; ?>"></use>
-							</svg>
-						</button>
-					</form>
+					<div class="overview__filters">
+						<div class="dropdown">					
+							<h1 class="overview__heading">Filters</h1>
+							<div class="dropdown__content">
+								<ul class="dropdown__content__list">
+								<form action="<?php echo site_url() . "search/filterPrice"; ?>" class="search" name="search_form" method="GET">
+										<input type="text" class="search__input" name="q" autocomplete="off" placeholder="Fill your own budget!">
+										<button class="search__button">
+											<svg class="search__icon">
+												<use xlink:href="<?php echo base_url() . "/assets/images/svg/sprite.svg#icon-magnifying-glass"; ?>"></use>
+											</svg>
+										</button>
+									</form>
+									<li class="dropdown__content__list__item u-margin-top">
+										<a href="<?= site_url() . "search/sortByRating/ascending"; ?>">Sort by Rating (Asc)</a>
+									</li>
+									<li class="dropdown__content__list__item">
+										<a href="<?= site_url() . "search/sortByRating/descending"; ?>">Sort by Rating (Dsc)</a>
+									</li>
+									<li class="dropdown__content__list__item">
+										<a href="<?= site_url() . "search/filterByStar"; ?>">Filter Star (5)</a>
+									</li>
+									<li class="dropdown__content__list__item">
+										<a href="<?= site_url() . "search/filterByStar"; ?>">Filter Star (4)</a>
+									</li>
+									<li class="dropdown__content__list__item">
+										<a href="<?= site_url() . "search/filterByStar"; ?>">Filter Star (3)</a>
+									</li>
+									<li class="dropdown__content__list__item">
+										<a href="<?= site_url() . "search/filterByStar"; ?>">Filter Star (2)</a>
+									</li>
+									<li class="dropdown__content__list__item">
+										<a href="<?= site_url() . "search/filterByStar"; ?>">Filter Star (1)</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
 				</div>
 				<!-- List of Hotels -->
 				<?php
