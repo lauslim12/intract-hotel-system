@@ -44,18 +44,19 @@ For now, the website has three features, more will be added as the project progr
 * Edit Basic Profile Information
 * Filter Hotels to your Budget!
 * Hotel Reviews with Image
+* Like A Review
 
 Features that is available at the classic Intract, but not yet ported here:
 * Comment on the review, and reviews are complete with infinite scrolling!
 
 TOA:
-* User Interface
 * Refactor EVERY code, add comments, and apply the DRY principle.
 
 TODO:
 * Messaging System
 
 Future work:
+* Swap to Node
 * Swap to CodeIgniter 4
 * Port to Laravel (learning process)
 
