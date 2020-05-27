@@ -33,6 +33,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
       <p>Sign up or login here!</p>
     </div>
     <div class="form-view__login u-margin-bottom-small">
+      <img src="<?= base_url() . "assets/images/icons/logo.png"; ?>" class="form-view__logo" alt="Intract picture" />
+      <p class="form-view__par">Your personalized hotel system, now here!</p>
       <?php validation_errors(); ?>
       <form action='<?php echo site_url() . "authentication/login"; ?>' method="POST" class="form-view__form">
         <input type="text" name="login_username" placeholder="Username" required /><br>
@@ -44,9 +46,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
         }
         ?>
         <a href="#" id="register">Do not have an account yet? Sign up by clicking me!</a>
+        <p class="form-view__par">
+          Intractive Hotel System is powered by many programming languages, 
+          designed especially for your comfort.
+          Whether you want to take a look around, or place orders at your leisure, we support it!
+        </p>
       </form>
     </div>
     <div class="form-view__register u-margin-bottom-small">
+      <img src="<?= base_url() . "assets/images/icons/logo.png"; ?>" class="form-view__logo" alt="Intract picture" />
+      <p class="form-view__par">Register now to unleash the power of Intractive!</p>
       <?php validation_errors(); ?>
       <form action="<?php echo site_url() . "authentication/register"; ?>" method="POST" class="form-view__form">
         <input type="text" name="first_name" placeholder="First Name"/><br/>

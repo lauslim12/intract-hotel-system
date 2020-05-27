@@ -18,7 +18,6 @@
       max-width: 20rem;
       margin-bottom: 1rem;
     }
-
   }
 
   &__body {
@@ -30,15 +29,19 @@
   &__posted-by {
     color: --var(--color-grey-dark-2);
     padding: 2rem;
+    text-align: right;
   }
 
   &__profile-pic {
     margin-right: 1rem;
     
     & img {
-      border-radius: 500px;
+      border-radius: 50%;
+      width: 5rem;
+      height: 5rem;
+      object-fit: cover;
+      display: block;
     }
-
   }
 
   &__comments {
@@ -46,6 +49,12 @@
     text-decoration: none;
     color: var(--color-primary);
     border: none;
+  }
+
+  &__likes {
+    color: var(--color-primary);
+    padding-right: 2rem;
+    text-align: right;
   }
 
 }
