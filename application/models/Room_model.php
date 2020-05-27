@@ -30,4 +30,74 @@ class Room_model extends CI_Model {
     $this->db->having('MIN(price) <=', $budget);
     return $this->db->get()->result_array();
   }
+
+  public function getRoom($id)
+  {
+    $this->db->select('*');
+    $this->db->from('rooms');
+    $this->db->where('hotel_id', $id);
+    $query = $this->db->get();
+    return $query->result_array();
+  }
+
+  public function getHotelRooms($id) 
+  {
+    $this->db->select('*');
+    $this->db->from('rooms');
+    $this->db->where('hotel_id', $id);
+    $this->db->where('room_count > 0');
+    $query = $this->db->get();
+
+    if($query->num_rows() === 0) {
+      return FALSE;
+    }
+    else {
+      $query = $query->result_array();
+      return $query;
+    }
+  }
+
+  public function newRoom($data)
+  {
+    $this->db->trans_begin();
+    $this->db->insert('rooms', $data);
+    $this->db->trans_complete();
+    
+    if($this->db->trans_status() === FALSE) {
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
+  }
+
+  public function editRoom($data, $id)
+  {
+    $this->db->trans_begin();
+    $this->db->where('id', $id);
+    $this->db->update('rooms', $data);
+    $this->db->trans_complete();
+    
+    if($this->db->trans_status() === FALSE) {
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
+  }
+
+  public function deleteRoom($id)
+  {
+    $this->db->trans_begin();
+    $this->db->where('id', $id);
+    $this->db->delete('rooms');
+    $this->db->trans_complete();
+    
+    if($this->db->trans_status() === FALSE) {
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
+  }
 }
