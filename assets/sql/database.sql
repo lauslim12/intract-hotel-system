@@ -4,8 +4,8 @@ USE intractive;
 
 CREATE TABLE users (
   id INT NOT NULL AUTO_INCREMENT UNIQUE,
-  first_name VARCHAR(25) NOT NULL,
-  last_name VARCHAR(25) NOT NULL,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
   username VARCHAR(100) NOT NULL UNIQUE,
   email VARCHAR(100) NOT NULL UNIQUE,
   password VARCHAR(255) NOT NULL,
@@ -63,11 +63,22 @@ CREATE TABLE reviews (
   body TEXT,
   added_by INT,
   hotel_to INT,
+  likes INT,
   date_added DATETIME,
   image VARCHAR(255),
   PRIMARY KEY (id),
   FOREIGN KEY (added_by) REFERENCES users(id) ON DELETE SET NULL,
   FOREIGN KEY (hotel_to) REFERENCES hotels(id) ON DELETE SET NULL
+)
+ENGINE = InnoDB;
+
+CREATE TABLE likes (
+  id INT NOT NULL AUTO_INCREMENT UNIQUE,
+  user_id INT,
+  review_id INT,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (review_id) REFERENCES reviews(id) ON DELETE CASCADE
 )
 ENGINE = InnoDB;
 
@@ -150,4 +161,4 @@ INSERT INTO orders VALUES
 (1, 1, 1, 1, 1, '2020-05-24', '2020-05-25', 1, 5000000, 9, 1);
 
 INSERT INTO reviews VALUES
-(1, "I had asked for a room with two beds, and while there were indeed two twins, it ended up being really tight. I loved the headboard, which reminded me of Napoleon’s hat, as well as the red-and-white wallpaper on the wall behind it depicting pastoral country scenes.", 1, 1, '2020-05-24 20:00:00',  "/assets/images/reviewers/reviewer_photos/bordeaux-comfortable-bed.jpg");
+(1, "I had asked for a room with two beds, and while there were indeed two twins, it ended up being really tight. I loved the headboard, which reminded me of Napoleon's hat, as well as the red-and-white wallpaper on the wall behind it depicting pastoral country scenes.", 1, 1, 0, '2020-05-24 20:00:00', "/assets/images/reviewers/reviewer_photos/bordeaux-comfortable-bed.jpg");
