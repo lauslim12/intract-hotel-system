@@ -1,0 +1,19 @@
+SET @ARRIVALDATE = "2020-05-22";
+SET @FINISHDATE = "2020-05-03";
+SET @HOTELID = 1;
+SET @ROOMNAME = '';
+
+SELECT r.id AS Room_ID, r.room_name AS Room_Name, r.room_number AS Room_Number, r.hotel_id AS Hotel_ID, h.name AS Hotel_Name
+FROM rooms AS r
+JOIN hotels AS h ON r.hotel_id = h.id
+WHERE r.id NOT IN 
+(
+  SELECT o.room_id 
+  FROM orders AS o 
+  JOIN rooms_booked AS rb ON o.room_id = rb.room_id 
+  WHERE (o.date_check_in <= @ARRIVALDATE AND o.date_check_out >= @ARRIVALDATE) 
+  OR (o.date_check_in < @FINISHDATE AND o.date_check_out >= @FINISHDATE) 
+  OR (@ARRIVALDATE <= o.date_check_in AND @ARRIVALDATE >= o.date_check_in)
+)
+AND r.hotel_id = 1
+ORDER BY RAND();
