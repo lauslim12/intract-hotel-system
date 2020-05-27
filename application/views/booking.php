@@ -141,13 +141,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
                   $time_message = $reviews[$i]['date_added'];
                   $image_path = base_url() . $reviews[$i]['image'];
                   $body = $reviews[$i]['body'];
+                  $like_count = $reviews[$i]['likes'];
+                  $post_id = $reviews[$i]['id'];
                 ?>
                 <div class='status-post'>
                   <div class='status-post__profile-pic'>
                     <img src='<?= $profile_pic; ?>' width='50'>
                   </div>
                   <div class='status-post__posted-by'>
-                    <a href='<?= $added_by; ?>'><?= $first_name . " " . $last_name; ?></a>
+                    <a class='link' href='<?= $added_by; ?>'><?= $first_name . " " . $last_name; ?></a>
                     <p class='paragraph'><?= $time_message; ?></p>
                   </div>
                 </div>
@@ -158,7 +160,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         echo "<img src='$image_path' />";
                       }
                     ?>
-                    <p class='paragraph'><?= $body; ?></p>
+                    <p class='paragraph'>
+                      <?= $body; ?>
+                    </p>
+                  </div>
+                </div>
+                <div class="status-post">
+                  <div class="status-post__comments">
+                    <p>Comment</p>
+                  </div>
+                  <div class="status-post__likes">
+                    <p><a href="<?= site_url() . "review/addLike/$post_id"; ?>">Like (<?= $like_count; ?>)</a></p>
                   </div>
                 </div>
                 <hr>
@@ -197,32 +209,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
       </main>
     </div>
   </div>
-
-  <!--
-  <p>booking</p>
-  <p>hotel pilihan anda: </p>
-
-  <p>id: <?php echo $id; ?></p>
-
-  <hr>
-  <p>nama: <?php echo $hotel[0]['name']; ?></p>
-  <p>lokasi: <?php echo $hotel[0]['location']; ?></p>
-  <p>deskripsi: <?php echo $hotel[0]['description']; ?></p>
-  <p>rooms: <?php echo $hotel[0]['rooms']; ?></p>
-  <p>price: <?php echo $hotel[0]['price']; ?></p>
-
-  <hr>
-  
-  <form action="<?php echo site_url() . "/booking/orderHotel/$id"; ?>" method="POST">
-    <p>berapa kamar yang anda mau</p>
-    <input type="text" name="room_count">
-    <input type="hidden" name="price" value="<?php echo $hotel[0]['price']; ?>">
-    <input type="hidden" name="rooms" value="<?php echo $hotel[0]['rooms']; ?>">
-
-    <input type="submit" value="Submit">
-  </form>
-  -->
-
 </body>
 
 </html>
