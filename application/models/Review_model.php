@@ -34,4 +34,31 @@ class Review_model extends CI_Model {
     }
   }
 
+  public function addLike($user_id, $post_id, $likesData)
+  {
+    $this->db->trans_begin();
+    $this->db->select('*');
+    $this->db->from('likes');
+    $this->db->where('user_id', $user_id);
+    $this->db->where('review_id', $post_id);
+
+    if($this->db->count_all_results() > 0) {
+      $this->db->trans_complete();
+      return FALSE;
+    }
+    else {
+      $this->db->insert('likes', $likesData);
+      $this->db->select('likes');
+      $this->db->from('reviews');
+      $this->db->where('id', $post_id);
+      $likes = $this->db->get()->row()->likes;
+      $likes = $likes + 1;
+
+      $this->db->set('likes', $likes);
+      $this->db->update('reviews');
+      $this->db->where('id', $post_id);
+      $this->db->trans_complete();
+    }
+  }
+
 }

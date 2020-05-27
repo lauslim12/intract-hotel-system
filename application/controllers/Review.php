@@ -59,6 +59,7 @@ class Review extends CI_Controller {
       'body' => $post,
       'added_by' => $added_by,
       'hotel_to' => $hotel_to,
+      'likes' => 0,
       'date_added' => $date_added,
       'image' => $image
     ];
@@ -66,6 +67,21 @@ class Review extends CI_Controller {
     $this->Review_model->post($data);
     $redirect_path = "booking/showDetail/" . $hotel_to;
     redirect($redirect_path);
+  }
+
+  public function addLike()
+  {
+    $user_id = $this->session->userdata('user_id');
+    $post_id = $this->uri->segment(3);
+
+    $data = [
+      'id' => '',
+      'user_id' => $user_id,
+      'review_id' => $post_id
+    ];
+    
+    $this->Review_model->addLike($user_id, $post_id, $data);
+    redirect($_SERVER['HTTP_REFERER']);
   }
 
 }
