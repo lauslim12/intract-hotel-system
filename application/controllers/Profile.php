@@ -42,6 +42,7 @@ class Profile extends CI_Controller {
     $data['user_hotel'] = $this->User_model->getUserTransactionsHotel($data['user_data']['id']);
     $data['user_rooms'] = $this->User_model->getUserTransactionsRooms($data['user_data']['id']);
     $data['transaction_data'] = $this->User_model->getUserTransactionData($data['user_data']['id']);
+    $data['user_posts'] = $this->User_model->getNumberOfPosts($data['user_data']['id']);
 
     if($data['user_data'] === FALSE) {
       redirect('welcome');

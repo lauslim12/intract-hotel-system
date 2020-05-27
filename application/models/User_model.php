@@ -25,6 +25,14 @@ class User_model extends CI_Model {
     $this->db->from('users');
     return json_encode($this->db->count_all_results(), JSON_NUMERIC_CHECK);
   }
+
+  public function getNumberOfPosts($user_id)
+  {
+    $this->db->select('id');
+    $this->db->from('reviews');
+    $this->db->where('added_by', $user_id);
+    return $this->db->count_all_results();
+  }
   
   public function checkUser($username, $password) 
   {
