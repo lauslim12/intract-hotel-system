@@ -8,6 +8,8 @@ class Admin extends CI_Controller {
     parent::__construct();
     $this->load->model('User_model');
     $this->load->model('Hotel_model');
+    $this->load->model('Order_model');
+    $this->load->model('Room_model');
     $this->load->helper('form');
     $this->load->library('form_validation');
   }
@@ -59,7 +61,7 @@ class Admin extends CI_Controller {
   {
     if($this->User_model->isAdmin() == 1) {
       $data = call_frontend_admin($this);
-      $data['orders'] = $this->Hotel_model->getOrders();
+      $data['orders'] = $this->Order_model->getOrders();
       $this->load->view('pages/admin/showOrders', $data);
     }
     else {
@@ -95,10 +97,13 @@ class Admin extends CI_Controller {
     }
   }
 
-  public function showEditHotel()
+  public function showEditHotel($id = NULL)
   {
     if($this->User_model->isAdmin() == 1) {
-      $id = $this->uri->segment(3);
+      if($id === NULL) {
+        $id = $this->uri->segment(3);
+      }
+
       $data = call_frontend_admin($this);
       $data['hotel'] = $this->Hotel_model->getHotelEssentialData($id);
       $data['headlines'] = $this->Hotel_model->getHotelHeadlines($id);
@@ -116,7 +121,7 @@ class Admin extends CI_Controller {
     if($this->User_model->isAdmin() == 1) {
       $id = $this->uri->segment(3);
       $data = call_frontend_admin($this);
-      $data['rooms'] = $this->Hotel_model->getRoom($id);
+      $data['rooms'] = $this->Room_model->getRoom($id);
       $data['hotel_id'] = $id;
       $this->guard($data['rooms']);
       $this->load->view('pages/admin/showEditRoom', $data);
@@ -126,7 +131,7 @@ class Admin extends CI_Controller {
     }
   }
 
-  public function validateNewHotel()
+  public function validateHotel($marker)
   {
     $this->form_validation->set_rules('name', 'Hotel Name', 'required|min_length[5]', array(
       'required' => "You must provide a clear hotel name!",
@@ -153,53 +158,27 @@ class Admin extends CI_Controller {
       'min_length' => "Minimum 40 characters for the description!"
     ));
 
-    $this->form_validation->set_rules('room_name', 'Room Name', 'required', array(
-      'required' => "You must fill the room name!"
-    ));
-
-    $this->form_validation->set_rules('room_count', 'Room Count', 'required|numeric', array(
-      'required' => "You have to fill the number of available rooms!",
-      'numeric' => "The number of available rooms has to be numeric in value!"
-    ));
-
-    $this->form_validation->set_rules('price', 'Price', 'required|numeric', array(
-      'required' => "You have to fill the number of the room price!",
-      'numeric' => "The price has to be numeric in value!"
-    ));
-
-    $this->form_validation->set_rules('feature', 'Hotel Feature', 'required|min_length[5]|max_length[40]', array(
-      'required' => "You have to fill the number of available rooms!",
-      'min_length' => "Minimum length is five characters!",
-      'max_length' => "Maximum length of a feature is 40 characters!"
-    ));
-  }
-
-  public function validateEditHotel()
-  {
-    $this->form_validation->set_rules('name', 'Hotel Name', 'required|min_length[5]', array(
-      'required' => "You must provide a clear hotel name!",
-      'min_length' => "Minimum characters are five!"
-    ));
-    
-    $this->form_validation->set_rules('location', 'Location', 'required', array(
-      'required' => "You must provide a location!"
-    ));
-
-    $this->form_validation->set_rules('star', 'Star', 'trim|required|numeric', array(
-      'required' => "Please fill the star of the hotel!",
-      'numeric' => "Star must be a numeric value!"
-    ));
-
-    $this->form_validation->set_rules('headline', 'Headline', 'required|min_length[10]|max_length[60]', array(
-      'required' => "You must fill the headline of the hotel!",
-      'min_length' => "Minimum 10 characters are needed!",
-      'max_length' => "Maximum is 60 characters!"
-    ));
-
-    $this->form_validation->set_rules('description', 'Description', 'required|min_length[40]', array(
-      'required' => "You must fill the description!",
-      'min_length' => "Minimum 40 characters for the description!"
-    ));
+    if($marker === 1) {
+      $this->form_validation->set_rules('room_name', 'Room Name', 'required', array(
+        'required' => "You must fill the room name!"
+      ));
+  
+      $this->form_validation->set_rules('room_count', 'Room Count', 'required|numeric', array(
+        'required' => "You have to fill the number of available rooms!",
+        'numeric' => "The number of available rooms has to be numeric in value!"
+      ));
+  
+      $this->form_validation->set_rules('price', 'Price', 'required|numeric', array(
+        'required' => "You have to fill the number of the room price!",
+        'numeric' => "The price has to be numeric in value!"
+      ));
+  
+      $this->form_validation->set_rules('feature', 'Hotel Feature', 'required|min_length[5]|max_length[40]', array(
+        'required' => "You have to fill the number of available rooms!",
+        'min_length' => "Minimum length is five characters!",
+        'max_length' => "Maximum length of a feature is 40 characters!"
+      ));
+    }
   }
 
   public function uploadImage($file, $path_img) 
@@ -239,7 +218,7 @@ class Admin extends CI_Controller {
 
   public function newHotel()
   {
-    $this->validateNewHotel();
+    $this->validateHotel(0);
     if(!$this->form_validation->run()) {
       $this->showNewHotel();
       return;
@@ -302,6 +281,8 @@ class Admin extends CI_Controller {
 
   public function editHotel()
   {
+    $id = $this->input->post('hotel_id', TRUE);
+
     if($_FILES['picture']['size'] === 0) {
       $image = $this->input->post('thumbnail_previous', TRUE);
     }
@@ -309,13 +290,11 @@ class Admin extends CI_Controller {
       $image = $this->uploadImage('picture', 1);
     }
 
-    $this->validateEditHotel();
+    $this->validateHotel(1);
     if(!$this->form_validation->run()) {
-      $this->showEditHotel();
+      $this->showEditHotel($id);
       return;
     }
-
-    $id = $this->input->post('hotel_id', TRUE);
 
     $dataHotel = [
       'name' => $this->input->post('name', TRUE),
@@ -411,7 +390,7 @@ class Admin extends CI_Controller {
       'price' => $this->input->post('room_price', TRUE)
     ];
 
-    $this->Hotel_model->newRoom($data);
+    $this->Room_model->newRoom($data);
     $path_to_redirect = 'admin/showEditRoom/' . $hotel_id;
     redirect($path_to_redirect);
   }
@@ -427,7 +406,7 @@ class Admin extends CI_Controller {
       'price' => $this->input->post('room_price', TRUE)
     ];
 
-    $this->Hotel_model->editRoom($data, $id);
+    $this->Room_model->editRoom($data, $id);
     $redirect_path = 'admin/showEditRoom/' . $hotel_id;
     redirect($redirect_path);
   }
@@ -456,7 +435,7 @@ class Admin extends CI_Controller {
   public function deleteRoom()
   {
     $id = $this->input->post('room_id', TRUE);
-    $this->Hotel_model->deleteRoom($id);
+    $this->Room_model->deleteRoom($id);
     redirect('admin');
   }
 

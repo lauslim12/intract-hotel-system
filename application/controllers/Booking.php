@@ -91,7 +91,7 @@ class Booking extends CI_Controller {
     $data['id'] = $this->uri->segment(3);
     $data['hotel'] = $this->Hotel_model->getHotel($data['id']);
     $data['headlines'] = $this->Hotel_model->getHotelHeadlines($data['id']);
-    $data['rooms'] = $this->Hotel_model->getHotelRooms($data['id']);
+    $data['rooms'] = $this->Room_model->getHotelRooms($data['id']);
     $data['votes'] = $this->Order_model->getNumberOfRatings($data['id']);
     $data['reviews'] = $this->Review_model->getAllReviews($data['id']);
     
@@ -119,7 +119,7 @@ class Booking extends CI_Controller {
     $this->setChosenHotel($data['id']);
     $data['hotel'] = $this->Hotel_model->getHotel($data['id']);
     $data['headlines'] = $this->Hotel_model->getHotelHeadlines($data['id']);
-    $data['rooms'] = $this->Hotel_model->getHotelRooms($data['id']);
+    $data['rooms'] = $this->Room_model->getHotelRooms($data['id']);
     $data['votes'] = $this->Order_model->getNumberOfRatings($data['id']);
     $this->guard($data['hotel']);
     $this->session->set_userdata('if_transaction_fail', current_url());
@@ -200,7 +200,7 @@ class Booking extends CI_Controller {
     ];
 
     $this->clearBookingData();
-    $this->Hotel_model->purchaseRoom($purchaseData);
+    $this->Order_model->purchaseRoom($purchaseData);
   }
 
   public function finishBooking() 
