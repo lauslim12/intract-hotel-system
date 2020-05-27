@@ -9,6 +9,9 @@ Advanced form of [Intract Social Network](https://github.com/lauslim12/intract-s
   <img src="https://img.shields.io/badge/Made%20with-React-%232980b9"/>
 </p>
 
+## Disclaimer
+All of the hotel media, hotel names, and hotel photos that might be available here is not mine. All Rights Reserved to their owners. All of the rating and stars that are shown here are not representative of their real-world counterpart's stars and rating.
+
 ## Architecture / Philosophies
 * Object Oriented.
 * Model, View, Controller Application Design Method.
