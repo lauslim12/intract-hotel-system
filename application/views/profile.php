@@ -29,7 +29,7 @@
                 <?php echo "<p class='paragraph--bold'>" . $user_data['first_name'] . " " . $user_data['last_name'] . "</p>"; ?>
                 <?php echo "<p class='paragraph'>" . $user_data['birthdate'] .  "</p>"; ?>
                 <div class="profile__text-gallery">
-                  <p class='profile__text-gallery__text-par'>Posts 0</p>
+                  <p class='profile__text-gallery__text-par'>Posts <?= $user_posts; ?></p>
                   <p class='profile__text-gallery__text-par'>Likes 0</p>
                   <p class='profile__text-gallery__text-par'>Friends 0</p>
                   <p class='profile__text-gallery__text-par'>Reputation 0</p>
