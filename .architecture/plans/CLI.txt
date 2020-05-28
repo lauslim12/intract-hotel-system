@@ -1,5 +1,5 @@
-SET @ARRIVALDATE = "2020-05-22";
-SET @FINISHDATE = "2020-05-03";
+SET @ARRIVALDATE = "2020-05-10";
+SET @FINISHDATE = "2020-05-11";
 SET @HOTELID = 1;
 SET @ROOMNAME = '';
 
@@ -8,7 +8,7 @@ FROM rooms AS r
 JOIN hotels AS h ON r.hotel_id = h.id
 WHERE r.id NOT IN 
 (
-  SELECT o.room_id 
+  SELECT o.room_id
   FROM orders AS o 
   JOIN rooms_booked AS rb ON o.room_id = rb.room_id 
   WHERE (o.date_check_in <= @ARRIVALDATE AND o.date_check_out >= @ARRIVALDATE) 
