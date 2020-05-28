@@ -104,10 +104,12 @@ Same like the old Intract,
 * Use `git pull repo` to fetch the code, or download it by using `git clone`.
 * Copy the repository into the `htdocs` folder in XAMPP or any other local host web server that you have.
 * Import the `.sql` file that is located in the `assets/dev` folder.
+* Make sure to name the repository to be `Intractive`, as the base URL is set to that.
+* Ensure that the repository is not plainly copy-pasted into the root folder. It has to be inside the `Intractive` folder, unless you want to do some settings.
 * Use `composer install` to resolve PHP dependencies. If you do not install this, then you can't use the REST API.
-* Use `npm install` or its yarn equivalent to install all Node dependencies. If you do not install this, then you can't use the Admin Panel.
+* Use `npm install` or its yarn equivalent `yarn install` to install all Node dependencies. If you do not install this, then you can't use the Admin Panel.
 * Make sure to be connected to the Internet, because I used Content Delivery Networks for jQuery, and Bootstrap.
-* Register an account to be used at the website.
+* Register an account to be used at the website, or use `admin` as the username and `admin` as the password.
 * Done.
 
 For Developers,
@@ -133,3 +135,12 @@ React:
 
 Notes:
 * Without `npm install`, it is still possible to use the website application though, as the node packages are only used for development dependencies.
+
+## Deployment Notes
+* Use `yarn install --production` or `npm install --production` to install the Node packages.
+* Use `composer install --no-dev --optimize-autoloader` in the production server.
+* Setup your own Web Server to be used.
+* Remember to change the following:
+  * `$config['base_url']` in the `application/config/config.php` file.
+  * Database credentials in the `application/config/database.php` file.
+  * Base URL link in the `assets/js/react-variables/Variables.js` file (don't forget to rebuild the Webpack).
