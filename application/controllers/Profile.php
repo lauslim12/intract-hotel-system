@@ -44,6 +44,7 @@ class Profile extends CI_Controller {
     $data['transaction_data'] = $this->User_model->getUserTransactionData($data['user_data']['id']);
     $data['user_posts'] = $this->User_model->getNumberOfPosts($data['user_data']['id']);
     $data['user_likes'] = $this->User_model->getNumberOfLikes($data['user_data']['id']);
+    $data['user_orders'] = $this->User_model->getNumberOfOrders($data['user_data']['id']);
 
     if($data['user_data'] === FALSE) {
       redirect('welcome');

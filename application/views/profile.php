@@ -33,6 +33,7 @@
                   <p class='profile__text-gallery__text-par'>Likes <?= $user_likes; ?></p>
                   <p class='profile__text-gallery__text-par'>Friends 0</p>
                   <p class='profile__text-gallery__text-par'>Reputation 0</p>
+                  <p class="profile__text-gallery__text-par">Orders <?= $user_orders; ?></p>
                 </div>
                 <a href="<?php echo site_url(); ?>">Return to Home</a>
               </div>

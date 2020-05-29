@@ -19,6 +19,14 @@ class User_model extends CI_Model {
     return $query->result_array();
   }
 
+  public function getNumberOfOrders($user_id)
+  {
+    $this->db->select('*');
+    $this->db->from('orders');
+    $this->db->where('user_id', $user_id);
+    return $this->db->count_all_results();
+  }
+
   public function getNumberOfUsers()
   {
     $this->db->select('id');
