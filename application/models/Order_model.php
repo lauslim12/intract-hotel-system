@@ -91,7 +91,6 @@ class Order_model extends CI_Model {
     $this->db->from('orders');
     $this->db->where('hotel_id', $hotel_id);
     $average = $this->db->get()->row()->rating;
-    var_dump($average);
     
     $this->db->trans_begin();
     $this->db->set('rating', $average);
