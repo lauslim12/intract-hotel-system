@@ -59,7 +59,7 @@ class Booking extends CI_Controller {
     $roomAvailable = $this->Room_model->getRoomAvailableByRoomName($hotel_id, $roomWanted);
 
     if($number > $roomAvailable) {
-      $this->form_validation->set_message('compareRooms', 'We do not have that much room!');
+      $this->form_validation->set_message('compareRooms', 'We do not have that many rooms!');
       return FALSE;
     }
     else {
@@ -232,8 +232,9 @@ class Booking extends CI_Controller {
       redirect('booking/finishBooking');
     }
     else {
-      $this->Hotel_model->payHotel($bookingFinishedData['num_rooms'], $bookingFinishedData['room_id'], $bookingFinishedData['id'], $bookingFinishedData['rating'], $result['hotel_id']);
-      redirect('profile');
+      $this->Order_model->payHotel($bookingFinishedData['num_rooms'], $bookingFinishedData['room_id'], $bookingFinishedData['id'], $bookingFinishedData['rating'], $result['hotel_id']);
+      $redirect_path = 'profile/view/' . $this->session->userdata('username');
+      redirect($redirect_path);
     }
 
   }
