@@ -118,6 +118,7 @@ class ChartStats extends React.Component {
             ticks: {
               maxTicksLimit: 5,
               padding: 10,
+              beginAtZero: true,
               callback: function(value, index, values) {
                 return number_format(value);
               }
