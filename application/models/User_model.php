@@ -33,6 +33,14 @@ class User_model extends CI_Model {
     $this->db->where('added_by', $user_id);
     return $this->db->count_all_results();
   }
+
+  public function getNumberOfLikes($user_id)
+  {
+    $this->db->select('*');
+    $this->db->from('likes');
+    $this->db->where('user_id', $user_id);
+    return $this->db->count_all_results();
+  }
   
   public function checkUser($username, $password) 
   {
