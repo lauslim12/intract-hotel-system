@@ -55,8 +55,8 @@ class Review_model extends CI_Model {
       $likes = $likes + 1;
 
       $this->db->set('likes', $likes);
-      $this->db->update('reviews');
       $this->db->where('id', $post_id);
+      $this->db->update('reviews');
       $this->db->trans_complete();
     }
   }
