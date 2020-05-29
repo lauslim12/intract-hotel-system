@@ -105,6 +105,11 @@
     & tr {
       border-bottom: 2px solid #e0e0e0;
       border-collapse: collapse;
+
+      @include respond(small) {
+        display: block;
+      }
+
     }
 
     & tr:nth-child(even) {
@@ -126,6 +131,11 @@
 
       & th {
         padding: 1rem;
+        
+        @include respond(small) {
+          display: none;
+        }
+
       }
 
       & tr:hover {
@@ -140,6 +150,56 @@
 
       & td {
         padding: 1rem;
+        position: relative;
+
+        @include respond(small) {
+          display: block;
+          padding: .5rem;
+          text-align: right;
+          border-bottom: 1px solid var(--color-grey-light-2);
+          
+          &:nth-of-type(1)::before {
+            content: "Order ID";
+            left: 0;
+            position: absolute;
+          }
+
+          &:nth-of-type(2)::before {
+            content: "Hotel";
+            left: 0;
+            position: absolute;
+          }
+
+          &:nth-of-type(3)::before {
+            content: "Type";
+            left: 0;
+            position: absolute;
+          }
+
+          &:nth-of-type(4)::before {
+            content: "Rooms/Nights";
+            left: 0;
+            position: absolute;
+          }
+
+          &:nth-of-type(5)::before {
+            content: "Price";
+            left: 0;
+            position: absolute;
+          }
+
+          &:nth-of-type(6)::before {
+            content: "Action";
+            left: 0;
+            position: absolute;
+          }
+
+          &:nth-of-type(7)::before {
+            content: "Rating";
+            left: 0;
+            position: absolute;
+          }
+        }
       }
     }
 
