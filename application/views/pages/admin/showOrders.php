@@ -50,14 +50,15 @@
                         <th>Rooms</th>
                         <th>Check In</th>
                         <th>Check Out</th>
-                        <th>Duration</th>
                         <th>Price (Rp.)</th>
                         <th>Status</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php
                       foreach ($orders as $order) {
+                        $finish_order = site_url() . "admin/finishOrder/" . $order['id'];
                         echo "<tr>";
                           echo "<td>" . $order['user_id'] . "</td>";
                           echo "<td>" . $order['hotel_id'] . "</td>";
@@ -65,7 +66,6 @@
                           echo "<td>" . $order['num_rooms'] . "</td>";
                           echo "<td>" . $order['date_check_in'] . "</td>";
                           echo "<td>" . $order['date_check_out'] . "</td>";
-                          echo "<td>" . $order['duration'] . "</td>";
                           echo "<td>" . $order['price'] . "</td>";
                           if($order['finished'] == 0) {
                             echo "<td><span class='badge badge-danger'>Incomplete</span></td>";
@@ -75,6 +75,12 @@
                           }
                           else {
                             echo "<td>" . $order['finished'] . "</td>";
+                          }
+                          if($order['finished'] == 0) {
+                            echo "<td><a href=$finish_order><span class='badge badge-danger'>Finish</span></a></td>";
+                          }
+                          else {
+                            echo "<td><span class='badge badge-success'>Finished</span></td>";
                           }
                         echo "</tr>";
                       }
