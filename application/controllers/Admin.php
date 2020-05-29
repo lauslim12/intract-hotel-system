@@ -445,4 +445,13 @@ class Admin extends CI_Controller {
     $this->User_model->deleteUser($id);
     redirect('admin/showUsers');
   }
+
+  public function finishOrder()
+  {
+    $id = $this->uri->segment(3);
+    $orders = $this->Order_model->getOrder($id);
+    $this->Order_model->forceFinishOrder($id, $orders);
+    redirect('admin/showOrders');
+  }
+
 }

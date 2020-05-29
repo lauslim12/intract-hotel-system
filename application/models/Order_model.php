@@ -8,6 +8,14 @@ class Order_model extends CI_Model {
     $query = $this->db->get('orders');
     return $query->result_array();
   }
+
+  public function getOrder($id)
+  {
+    $this->db->select('*');
+    $this->db->from('orders');
+    $this->db->where('id', $id);
+    return $this->db->get()->row_array();
+  }
   
   public function getNumberOfRatings($hotel_id) 
   {
@@ -105,6 +113,11 @@ class Order_model extends CI_Model {
       return TRUE;
     }
   }
-  /* End of Revamping */
 
+  public function forceFinishOrder($id, $orders)
+  {
+    $this->payHotel($orders['room_count'], $orders['room_id'], $id, 10, $orders['hotel_id']);
+    return TRUE;
+  }
+  /* End of Revamping */
 }
