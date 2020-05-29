@@ -1,3 +1,5 @@
+SET NAMES utf8;
+
 DROP DATABASE IF EXISTS intractive;
 CREATE DATABASE IF NOT EXISTS intractive;
 USE intractive;
