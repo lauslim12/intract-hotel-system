@@ -46,7 +46,7 @@
         <svg class="side-nav__icon">
           <use xlink:href="<?php echo base_url() . "/assets/images/svg/sprite.svg#icon-magnifying-glass"; ?>"></use>
         </svg>
-        <span>Search Results</span>
+        <span>Search</span>
       </a>
     </li>
 
@@ -58,7 +58,7 @@
         <svg class="side-nav__icon">
           <use xlink:href="<?php echo base_url() . "/assets/images/svg/sprite.svg#icon-star"; ?>"></use>
         </svg>
-        <span>Admin Panel</span>
+        <span>Admin</span>
       </a>
     </li>
     <?php
