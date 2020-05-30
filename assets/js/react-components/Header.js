@@ -45,9 +45,13 @@ class Header extends React.Component {
             <i className="fa fa-bars"></i>
           </button>
           <ul className="navbar-nav ml-auto">
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link" href="https://nicholasdw.com/">
+                <i class="fas fa-trophy"></i>
+              </a>
+            </li>
             <li className="nav-item dropdown no-arrow">
-              <a className="nav-link dropdown-toggle" href="https://github.com/lauslim12/intract-hotel-system" id="searchDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+              <a className="nav-link dropdown-toggle" href="https://github.com/lauslim12/intract-hotel-system">
                 <i className="fab fa-fw fa-github"></i>
               </a>
             </li>
