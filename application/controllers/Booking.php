@@ -38,6 +38,22 @@ class Booking extends CI_Controller {
     $this->session->unset_userdata('chosen_hotel_id');
   }
 
+  public function isToday($str)
+  {
+    $now = new DateTime();
+    $checkIn = new DateTime($str);
+    $now->setTime(0, 0, 0);
+    $checkIn->setTime(0, 0, 0);
+
+    if($now > $checkIn) {
+      $this->form_validation->set_message('isToday', 'The start date cannot be less than today!');
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
+  }
+
   public function compareDate($string)
   {
     $startDate = strtotime($this->input->post('date_check_in', TRUE));
@@ -74,7 +90,7 @@ class Booking extends CI_Controller {
       'numeric' => "The data you entered is not a numerical value!"
     ));
 
-    $this->form_validation->set_rules('date_check_in', 'Check In Date', 'required|callback_compareDate', array(
+    $this->form_validation->set_rules('date_check_in', 'Check In Date', 'required|callback_isToday|callback_compareDate', array(
       'required' => "You have to fill the check in date!"
     ));
 
