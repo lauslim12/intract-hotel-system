@@ -116,7 +116,7 @@ class Order_model extends CI_Model {
 
   public function forceFinishOrder($id, $orders)
   {
-    $this->payHotel($orders['room_count'], $orders['room_id'], $id, 10, $orders['hotel_id']);
+    $this->payHotel($orders['num_rooms'], $orders['room_id'], $id, 10, $orders['hotel_id']);
     return TRUE;
   }
   /* End of Revamping */
