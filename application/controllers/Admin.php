@@ -420,7 +420,7 @@ class Admin extends CI_Controller {
     ];
 
     $this->Hotel_model->newFeature($data);
-    redirect('admin');
+    redirect('admin/showData');
   }
 
   public function deleteFeature()
@@ -429,14 +429,14 @@ class Admin extends CI_Controller {
     $feature = $this->input->post('feature', TRUE);
     
     $this->Hotel_model->deleteFeature($hotel_id, $feature);
-    redirect('admin');
+    redirect('admin/showData');
   }
 
   public function deleteRoom()
   {
     $id = $this->input->post('room_id', TRUE);
     $this->Room_model->deleteRoom($id);
-    redirect('admin');
+    redirect('admin/showData');
   }
 
   public function deleteUser()
