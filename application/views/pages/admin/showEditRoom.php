@@ -51,17 +51,17 @@
               <input type="hidden" name="room_id" value="">
               <div class="form-group">
                 <label for="exampleFormControlInput1">Room Name</label>
-                <input type="text" name="room_name" value="" class="form-control" id="exampleFormControlInput1" placeholder="Bordeaux Le Grand Hotel? Fill me up!" required>
+                <input type="text" name="room_name" value="" class="form-control" id="exampleFormControlInput1" placeholder="The name of the room..." required>
                 <?php echo form_error('name', '<small><p class="form-text text-danger">', '</small></p>'); ?>
               </div>
               <div class="form-group">
                 <label for="exampleFormControlInput2">Room Availability</label>
-                <input type="text" name="room_count" value="" class="form-control" id="exampleFormControlInput2" placeholder="Bordeaux, France? Fill me up!" required>
+                <input type="text" name="room_count" value="" class="form-control" id="exampleFormControlInput2" placeholder="Availability of the room..." required>
                 <?php echo form_error('location', '<small><p class="form-text text-danger">', '</small></p>'); ?>
               </div>
               <div class="form-group">
                 <label for="exampleFormControlInput3">Room Price</label>
-                <input type="number" name="room_price" value="" class="form-control" id="exampleFormControlInput3" placeholder="5 stars, maybe? Fill me with numbers!" required>
+                <input type="number" name="room_price" value="" class="form-control" id="exampleFormControlInput3" placeholder="Fill room price here..." required>
                 <?php echo form_error('star', '<small><p class="form-text text-danger">', '</small></p>'); ?>
               </div>
             </div>
@@ -88,17 +88,17 @@
               <input type="hidden" name="hotel_id" value="">
               <div class="form-group">
                 <label for="exampleFormControlInput1">Room Name</label>
-                <input type="text" name="room_name" value="" class="form-control" id="exampleFormControlInput1" placeholder="Bordeaux Le Grand Hotel? Fill me up!" required>
+                <input type="text" name="room_name" value="" class="form-control" id="exampleFormControlInput1" placeholder="The name of the room..." required>
                 <?php echo form_error('name', '<small><p class="form-text text-danger">', '</small></p>'); ?>
               </div>
               <div class="form-group">
                 <label for="exampleFormControlInput2">Room Availability</label>
-                <input type="text" name="room_count" value="" class="form-control" id="exampleFormControlInput2" placeholder="Bordeaux, France? Fill me up!" required>
+                <input type="text" name="room_count" value="" class="form-control" id="exampleFormControlInput2" placeholder="Availability of the room..." required>
                 <?php echo form_error('location', '<small><p class="form-text text-danger">', '</small></p>'); ?>
               </div>
               <div class="form-group">
                 <label for="exampleFormControlInput3">Room Price</label>
-                <input type="number" name="room_price" value="" class="form-control" id="exampleFormControlInput3" placeholder="5 stars, maybe? Fill me with numbers!" required>
+                <input type="number" name="room_price" value="" class="form-control" id="exampleFormControlInput3" placeholder="Fill room price here..." required>
                 <?php echo form_error('star', '<small><p class="form-text text-danger">', '</small></p>'); ?>
               </div>
             </div>
