@@ -93,8 +93,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
           <div class="user-reviews">
             <figure class="review">
               <blockquote class="review__text">
-                During a trip to France this summer, I spent my last night at the InterContinental Bordeaux Le Grand Hôtel.
-                I’d actually stayed there several years before when it was part of Regent Hotels, but was eager to stay again now that it’s part of IHG.
+                During a trip to France this summer, I spent my last holiday using Intractive Hotel System.
+                I'd actually used different online booking platforms, but when it comes to the services, Intractive Hotel System gives me the best experience!
               </blockquote>
               <figcaption class="review__user">
                 <img src="<?php echo base_url() . "/assets/images/reviewers/reviewer-1.jpg"; ?>" alt="Photo of reviewer 1" class="review__photo">
@@ -102,12 +102,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
                   <p class="review__user-name">Nicholas Dwiarto</p>
                   <p class="review__user-date">Dec 31st, 2019</p>
                 </div>
-                <div class="review__rating">4.5</div>
+                <div class="review__rating">9.5</div>
               </figcaption>
             </figure>
             <figure class="review">
               <blockquote class="review__text">
-                Our view overlooked one of the hotel’s central courtyards, which was nice and quiet, and the windows actually opened, so we could enjoy some fresh air.
+                Intractive Hotel System gives me sleek booking system, and it is extremely easy to use this system! I love using this system and will use this again on my next holiday!
               </blockquote>
               <figcaption class="review__user">
                 <img src="<?php echo base_url() . "/assets/images/reviewers/reviewer-2.jpg"; ?>" alt="Photo of reviewer 2" class="review__photo">
@@ -115,7 +115,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                   <p class="review__user-name">Marie Julis-Alexia</p>
                   <p class="review__user-date">Jan 1st, 2020</p>
                 </div>
-                <div class="review__rating">4.75</div>
+                <div class="review__rating">9</div>
               </figcaption>
             </figure>
           </div>
