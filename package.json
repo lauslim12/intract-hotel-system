@@ -2,6 +2,7 @@
   "name": "intractive",
   "version": "6.0.0",
   "description": "Intractive Hotel System",
+  "private": "true",
   "main": "index.js",
   "scripts": {
     "watch:webpack": "webpack --watch",
@@ -22,7 +23,7 @@
     "url": "git+https://github.com/lauslim12/intract-hotel-system.git"
   },
   "author": "Nicholas Dwiarto",
-  "license": "ISC",
+  "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/lauslim12/intract-hotel-system/issues"
   },
