@@ -1,8 +1,6 @@
 # Intractive Hotel System
 Advanced form of [Intract Social Network](https://github.com/lauslim12/intract-social-network). The name is Intractive Hotel System, built with CodeIgniter 3.1.11. The theme is now extended - aside from a simple social network for the reviews of hotels, now users could see more hotels, even order some rooms for a time! Of course the 'ordering' system is just a mockup, but this is as close as I can get to be a business-ready website!
 
-Website is live at [my web server!](https://nicholasdw.com/Intractive/)
-
 <p align="center">
   <a href="https://code.visualstudio.com/"><img src="https://img.shields.io/badge/Made%20with-VS%20Code-blue" alt="Made with VS Code" /></a>
   <img src="https://img.shields.io/badge/Made%20with-JavaScript-yellow"/>
